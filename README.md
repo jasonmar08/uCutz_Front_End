@@ -63,8 +63,8 @@ uCutz provides a more efficient way to schedule your next haircut. As a customer
 
 ---
 
-### **_Resources_**
+## **_Resources_**
 
-##### [Backend GitHub Link](https://github.com/jasonmar08/uCutz_Back_End)
+**Back-End Repo: [Backend GitHub Link](https://github.com/jasonmar08/uCutz_Back_End)**
 
-##### [Trello Link](https://trello.com/invite/b/CEbsyhcc/b827462dedffdd5d0e34d487a8183d73/ucutz-full-stack-pern)
+**Planning: [ERD](https://lucid.app/lucidchart/93340747-74cf-4619-ace3-a9a14f4e0b94/edit?viewport_loc=-64%2C1617%2C1577%2C1001%2C0_0&invitationId=inv_5887dcc7-665d-48dc-b0fa-595ab11fb57f#) | [Component Hierarchy Diagram](https://lucid.app/lucidchart/04f550a3-8881-4b26-87bc-105c179c5572/edit?viewport_loc=23%2C-72%2C1929%2C1001%2C0_0&invitationId=inv_33c06eff-7677-4fa8-b7f5-fa40f33fa92c#) [Trello Board](https://trello.com/invite/b/CEbsyhcc/b827462dedffdd5d0e34d487a8183d73/ucutz-full-stack-pern)**
