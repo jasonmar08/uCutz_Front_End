@@ -8,7 +8,8 @@
 
 ---
 
-#### By: Jason Martinez <a href="https://www.linkedin.com/in/martinez-jason/" target="_blank" rel="noreferrer">LinkedIn</a> | <a href="https://github.com/jasonmar08" target="_blank" rel="noreferrer">GitHub</a>
+#### By: Jason Martinez
+<a href="https://www.linkedin.com/in/martinez-jason/" target="_blank" rel="noreferrer">LinkedIn</a> | <a href="https://github.com/jasonmar08" target="_blank" rel="noreferrer">GitHub</a>
 
 ---
 
