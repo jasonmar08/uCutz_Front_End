@@ -41,7 +41,7 @@ uCutz provides a more efficient way to schedule your next haircut. You can easil
 
 ## Technologies Used
 
-<img style="center" src="https://repository-images.githubusercontent.com/248812720/56902700-c5bd-11ea-813f-ed8631377258"  width="500">
+<img style="center" src="https://i.postimg.cc/9fsrDs1d/PERN.png"  width="500">
 
 - JavaScript
 - PostgreSQL
