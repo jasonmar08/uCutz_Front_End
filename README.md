@@ -2,7 +2,7 @@
 
 ## Front-End
 
-### Schedule endless fresh cutz, fellas!
+### 💈 Schedule endless fresh cutz, fellas! 💈
 
 ### Date: 09/01/2022
 
