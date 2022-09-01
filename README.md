@@ -2,7 +2,7 @@
 
 ## Front-End
 
-### A simple way to your fresh cutz
+### A simple way to your best fresh cutz
 
 ### Date: 09/01/2022
 
