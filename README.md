@@ -19,7 +19,7 @@
 
 ## Description
 
-uCutz provides a more efficient way to schedule your next haircut. You can easily browse for barbershops or mobile barbers, sort by reviews, and read about customers' experiences to find the best barber near you. If you are a barber or barbershop, you can create an account to manage appointments and optimize your business. Our priority is helping barbers run their business more effectively while also allowing customers to seamlessly schedule their next haircut and feel ready to face the world looking fresh!
+uCutz provides a more efficient way to schedule your next haircut. As a customer, you can easily browse for barbershops or mobile barbers, sort them by reviews, and read about customers' experiences to find the best barber near you. Whether you are a barbershop or an independent barber looking to freelance your talent, you can create an account to manage appointments and optimize your business. Our priority is helping barbers run their business more effectively while also allowing customers to seamlessly schedule their next haircut and feel ready to face the world looking fresh!
 
 ---
 
