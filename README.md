@@ -18,7 +18,7 @@
 
 ## Description
 
-An app that aims to provide the most efficient way to schedule your next fresh haircut. You can easily browse for barbershops or mobile barbers near you. Sort by ratings and reviews to find the best barbers to get you looking fresh and ready to face the world! 
+uCutz provides a more efficient way to schedule your next haircut. You can easily browse for barbershops or mobile barbers, sort by reviews, and read about customers' experiences to find the best barber near you. If you are a barber or barbershop, you can create an account to manage appointments and optimize your business. Our priority is helping barbers run their business more effectively while also allowing customers to seamlessly schedule their next haircut and feel ready to face the world looking fresh!
 
 ---
 
