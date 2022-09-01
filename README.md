@@ -1,4 +1,4 @@
-<img style="center" src="" alt="uCutz Banner"  width="1000">
+<img style="center" src="https://www.signsworldwide.com/images/thumbnails/1007/387/detailed/4/Barber-Shop-Stripes-banner.jpg" alt="uCutz Banner"  width="1000">
 
 ## Front-End
 
