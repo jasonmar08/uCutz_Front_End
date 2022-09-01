@@ -24,8 +24,8 @@ uCutz provides a more efficient way to schedule your next haircut. You can easil
 
 ## Getting Started
 
-    1.   Fork and clone
-    2.   Run npm i
+    1.   `Fork` and `Clone` this repo.
+    2.   Run `npm i` to install dependencies.
 
 ---
 
