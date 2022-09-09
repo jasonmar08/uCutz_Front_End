@@ -8,9 +8,22 @@ import BarberProfile from './pages/BarberProfile'
 import ReviewBarber from './pages/ReviewBarber'
 import ReviewBarbershop from './pages/ReviewBarbershop'
 import { Routes, Route } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import { BASE_URL } from './globals'
 import './App.css'
 
 const App = () => {
+  const [barbershops, setBarbershops] = useState([])
+
+  useEffect(() => {
+    const getBarbershops = async () => {
+      const res = await axios.get(`${BASE_URL}/barbershops/all`)
+      setBarbershops(res.data)
+    }
+    getBarbershops()
+  }, [])
+
   return (
     <div className="App">
       <header>
