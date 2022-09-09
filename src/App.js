@@ -1,4 +1,5 @@
 import NavBar from './components/NavBar'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
 
 const App = () => {
@@ -7,7 +8,14 @@ const App = () => {
       <header>
         <NavBar />
       </header>
-      <main></main>
+      <main>
+        <Routes>
+          <Route />
+          <Route />
+          <Route />
+          <Route />
+        </Routes>
+      </main>
     </div>
   )
 }
