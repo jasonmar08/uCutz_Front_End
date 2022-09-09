@@ -31,7 +31,7 @@ const App = () => {
       </header>
       <main>
         <Routes>
-          <Route index element={<Home />} />
+          <Route index element={<Home barbershops={barbershops} />} />
           <Route
             path="/barbershops/:barbershopId"
             element={<BarbershopDetails />}
