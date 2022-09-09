@@ -1,5 +1,9 @@
 const BarberRegisterLogin = () => {
-  return <div>Barber Register / Login</div>
+  return (
+    <div>
+      <h1>Barber Register / Login</h1>
+    </div>
+  )
 }
 
 export default BarberRegisterLogin

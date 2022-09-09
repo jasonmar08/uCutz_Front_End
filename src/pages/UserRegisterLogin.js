@@ -1,5 +1,9 @@
 const UserRegisterLogin = () => {
-  return <div className="register-login">User Register / Login</div>
+  return (
+    <div>
+      <h1>User Register / Login</h1>
+    </div>
+  )
 }
 
 export default UserRegisterLogin
