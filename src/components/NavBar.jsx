@@ -1,15 +1,30 @@
+import UserDropdownLoginForm from './UserDropdownLoginForm'
 import { NavLink } from 'react-router-dom'
 
-const NavBar = () => {
+const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown }) => {
+  const handleClickedDropdown = () => {
+    if (displayLoginDropdown === true) {
+      return (
+        <UserDropdownLoginForm
+          // userLoggedIn={userLoggedIn}
+          // setUserLoggedIn={setUserLoggedIn}
+          toggleDropdown={toggleDropdown}
+        />
+      )
+    }
+  }
 
   return (
     <nav>
-      <h1>uCutz ✄</h1>
       <div className='navbar'>
-        <NavLink to='/barber/login' className='nav-link'>Are you a barber?</NavLink>
-        <NavLink to='/' className='nav-link'>Home</NavLink>
-        <NavLink to='/user/login' className='nav-link'>Login</NavLink>
+        <NavLink to='/' className='logo'><h1>uCutz ✄</h1></NavLink>
+        <div className='nav-labels'>
+          <NavLink to='/barber/login' onClick={() => setDisplayLoginDropdown(false)} className='nav-link'>Are you a barber?</NavLink>
+          <NavLink to='/' onClick={() => setDisplayLoginDropdown(false)} className='nav-link'>Home</NavLink>
+          <a onClick={() => toggleDropdown()} className='nav-link'>Sign In</a>
+        </div>
       </div>
+      {handleClickedDropdown()}
     </nav>
   )
 }
