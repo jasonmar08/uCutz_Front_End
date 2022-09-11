@@ -1,8 +1,9 @@
+import { SignInUser } from '../services/Auth'
 import { useState } from "react"
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 
-const UserLoginForm = ({ toggleDropdown }) => {
-  // let navigate = useNavigate()
+const UserLoginForm = ({ setUser, toggleAuthenticated, setDisplayProfileDropdown }) => {
+  let navigate = useNavigate()
 
   const [formValues, setFormValues] = useState({
     email: '',
@@ -16,17 +17,18 @@ const UserLoginForm = ({ toggleDropdown }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    await RegisterUser({
-      email: formValues.email,
-      password: formValues.password
-    })
+    const payload = await SignInUser(formValues)
 
     setFormValues({
       email: '',
       password: ''
     })
 
-    // navigate(`/user/profile/${user_id}`)
+    setUser(payload)
+    toggleAuthenticated(true)
+
+    navigate('/')
+    setDisplayProfileDropdown(false)
     console.log(`Signed in with user, ${formValues.email}`)
   }
 
@@ -36,7 +38,8 @@ const UserLoginForm = ({ toggleDropdown }) => {
       <form onSubmit={handleSubmit} className="user-register-form">
         <input onChange={handleChange} type="email" name='email' placeholder="Email" value={formValues.email} required></input>
         <input onChange={handleChange} type="password" name='password' placeholder="Password" value={formValues.password} required></input>
-        <button>Create Account</button>
+        <button disabled={!formValues.email || !formValues.password}>Sign In</button>
+        <span>Don't have an account? <NavLink to='/user/register'>Sign Up</NavLink></span>
       </form>
     </div>
   )

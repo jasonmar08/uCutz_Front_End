@@ -38,6 +38,7 @@ body {
 .nav-labels {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 18em;
 }
 
@@ -63,7 +64,7 @@ body {
   width: 37vh;
   background-color: rgb(65 82 97);
   border-radius: 3% / 4%;
-  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
 }
 
 .login-dropdown h3, span {
@@ -195,4 +196,41 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+
+
+
+.profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2vh;
+  padding: 1vh 0 1vh 0;
+  background-color: green;
+  border: 2px solid black;
+  width: 24vh;
+  position: fixed;
+  right: 0.5%;
+  top: 5.5%;
+}
+
+.profile-dropdown a {
+  color: white;
+  text-decoration: none;
+}
+
+.profile-dropdown a:hover {
+  background-color: rgba(160, 205, 160, 0.646);
+}
+
+.nav-labels img {
+  padding: 5px;
+  height: 3vh;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.appointment-placeholder {
+  color: red;
 }

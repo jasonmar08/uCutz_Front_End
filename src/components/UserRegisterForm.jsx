@@ -1,8 +1,8 @@
 import { RegisterUser } from '../services/Auth'
 import { useState } from "react"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 
-const UserRegisterForm = ({ toggleDropdown }) => {
+const UserRegisterForm = () => {
   let navigate = useNavigate()
 
   const [formValues, setFormValues] = useState({
@@ -47,9 +47,8 @@ const UserRegisterForm = ({ toggleDropdown }) => {
       user_image: '../../assets/profile_pic_icon.png'
     })
 
-    navigate('/')
-    toggleDropdown()
-    console.log(`Create user, ${formValues.firstName}`)
+    navigate('/user/login')
+    console.log(`Created user, ${formValues.firstName}`)
   }
 
   return (
@@ -65,6 +64,7 @@ const UserRegisterForm = ({ toggleDropdown }) => {
         <input onChange={handleChange} type="text" name='state' placeholder="State" value={formValues.state} required></input>
         <input onChange={handleChange} type="text" name='zip_code' placeholder="Zip Code" value={formValues.zip_code} required></input>
         <button disabled={!formValues.email || (!formValues.password && formValues.confirmPassword === formValues.password)}>Create Account</button>
+        <span>Already have an account? <NavLink to='/user/login'>Sign In</NavLink></span>
       </form>
     </div>
   )
