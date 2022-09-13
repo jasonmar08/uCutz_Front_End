@@ -9,7 +9,7 @@ const BarbershopDetails = ({
 }) => {
   return (
     <div>
-      <h1>Barbershop Details</h1>
+      {/* <h1>Barbershop Details</h1> */}
       <BarbershopDetailsCard
         user={user}
         authenticated={authenticated}

@@ -25,7 +25,7 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
   return user && authenticated ? (
     <div>
       <div className='barbershop-details-page'>
-        <h2>{business_name}</h2>
+        <h1>{business_name}</h1>
         <div className="barbershop-container" key={id}>  
           <div className="map-container">
             <img src={business_image} alt='map' />
