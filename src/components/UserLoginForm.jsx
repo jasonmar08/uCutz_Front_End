@@ -33,9 +33,9 @@ const UserLoginForm = ({ setUser, toggleAuthenticated, setDisplayProfileDropdown
   }
 
   return (
-    <div className="user-register-container">
+    <div className="user-login-container">
       <h2>User Login</h2>
-      <form onSubmit={handleSubmit} className="user-register-form">
+      <form onSubmit={handleSubmit} className="user-login-form">
         <input onChange={handleChange} type="email" name='email' placeholder="Email" value={formValues.email} required></input>
         <input onChange={handleChange} type="password" name='password' placeholder="Password" value={formValues.password} required></input>
         <button disabled={!formValues.email || !formValues.password}>Sign In</button>

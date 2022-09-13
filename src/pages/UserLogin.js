@@ -7,7 +7,7 @@ const UserLogin = ({
   setDisplayProfileDropdown
 }) => {
   return (
-    <div className="user-register-page">
+    <div className="user-login-page">
       <h1>User Login Page</h1>
       <UserLoginForm
         setUser={setUser}

@@ -187,14 +187,14 @@ body {
   box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.7);
 }
 
-.user-register-form {
+.user-register-form, .user-login-form {
   display: flex;
   flex-direction: column;
   row-gap: 2vh;
   width: 30vh;
 }
 
-.user-register-form input, .barber-register-form input {
+.user-register-form input, .user-login-form input, .barber-register-form input, .barber-login-form input {
   height: 4vh;
   padding: 0 1vh 0 1vh;
   font-size: 15px;
@@ -203,7 +203,7 @@ body {
   background-color: rgb(245, 246, 246);
 }
 
-.user-register-form button, .barber-register-form button {
+.user-register-form button, .user-login-form button, .barber-register-form button, .barber-login-form button {
   height: 4vh;
   padding: 0 1vh 0 1vh;
   font-size: 15px;
@@ -214,9 +214,30 @@ body {
   border: none;
 }
 
-.user-register-form button:hover, .barber-register-form button:hover {
+.user-register-form button:hover, .user-login-form button:hover, .barber-register-form button:hover, .barber-login-form button:hover {
   background-color: rgb(102, 145, 182);
   color: white;
+}
+
+.user-register-form span, .user-login-form span {
+  text-decoration: none;
+  color: rgb(162, 166, 170);
+  padding: 5px;
+}
+
+.user-register-form a, .user-login-form a {
+  text-decoration: none;
+  color: rgb(102, 145, 182);
+  padding: 5px;
+}
+
+.user-register-form a:hover, .user-login-form a:hover {
+  background-color: rgba(102, 145, 182, 0.308);
+  border-radius: 8% / 19%;
+}
+
+.user-register-form a:active, .user-login-form a:active {
+  background-color: rgba(102, 145, 182, 0.58);
 }
 
 /* ============>> BARBER REGISTER PAGE <<============ */
@@ -232,13 +253,13 @@ body {
   flex-direction: column;
   align-items: center;
   width: 55vh;
-  margin-bottom: 10vh;
+  margin-bottom: 8vh;
   height: 85vh;
   border-radius: 2% / 1%;
   box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.7);
 }
 
-.barber-register-form {
+.barber-register-form, .barber-login-form {
   display: flex;
   flex-direction: column;
   row-gap: 2vh;
@@ -250,6 +271,67 @@ body {
   justify-content: center;
   align-items: center;
   column-gap: 1vh;
+}
+
+.barber-register-form span {
+  text-decoration: none;
+  color: rgb(162, 166, 170);
+  padding: 5px;
+}
+
+.barber-register-form a {
+  text-decoration: none;
+  color: rgb(102, 145, 182);
+  padding: 5px;
+}
+
+.barber-register-form a:hover {
+  background-color: rgba(102, 145, 182, 0.308);
+  border-radius: 8% / 19%;
+}
+
+.barber-register-form a:active {
+  background-color: rgba(102, 145, 182, 0.58);
+}
+
+/* ============>> BARBER LOGIN PAGE <<============ */
+
+.barber-login-page, .user-login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.barber-login-container, .user-login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 55vh;
+  margin-top: 13vh;
+  height: 32vh;
+  border-radius: 2% / 1%;
+  box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.7);
+}
+
+.barber-login-form span {
+  text-decoration: none;
+  color: rgb(162, 166, 170);
+  padding: 5px;
+}
+
+.barber-login-form a {
+  text-decoration: none;
+  color: rgb(102, 145, 182);
+  padding: 5px;
+}
+
+.barber-login-form a:hover {
+  background-color: rgba(102, 145, 182, 0.308);
+  border-radius: 8% / 19%;
+}
+
+.barber-login-form a:active {
+  background-color: rgba(102, 145, 182, 0.58);
 }
 
 /* ============>> USER PROFILE PAGE <<============ */
