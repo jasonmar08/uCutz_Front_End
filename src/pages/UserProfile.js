@@ -53,6 +53,7 @@ const UserProfile = ({
       zip_code,
       user_image
     })
+    navigate('/')
     console.log('FORMSTATE:', formState)
   }
 
@@ -94,7 +95,7 @@ const UserProfile = ({
       <h2>Hi, {formState.firstName}!</h2>
       <div className="user-profile-container">
         <div className="profile-img-grid">
-          <img src={user_image} alt="user image" />
+          <img src={formState.user_image} alt="user image" />
           <h4>Add your photo to allow your barber to better serve you</h4>
         </div>
         <form onSubmit={handleSubmit} className="user-profile-form">
