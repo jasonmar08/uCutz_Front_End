@@ -9,9 +9,14 @@ import BarberRegisterLogin from './pages/BarberRegisterLogin'
 import BarberProfile from './pages/BarberProfile'
 import ReviewBarber from './pages/ReviewBarber'
 import ReviewBarbershop from './pages/ReviewBarbershop'
+import BarberAvailability from './pages/BarberAvailability'
 import UserAppointment from './pages/UserAppointment'
 import { CheckSessionUser } from './services/Auth'
-import { GetAppointmentsByUserId } from './services/UserServices'
+import {
+  GetBarberAvailabilityDates,
+  GetBarberServicesById
+} from './services/BarberServices'
+import { GetAppointmentsByUserId, GetUserById } from './services/UserServices'
 import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -21,12 +26,16 @@ import './App.css'
 const App = () => {
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState([])
   const [barber, setBarber] = useState(null)
 
   const [barbershops, setBarbershops] = useState([])
+  const [barbersInBarbershop, setBarbersInBarbershop] = useState([])
   const [userAppointments, setUserAppointments] = useState([])
   const [displayLoginDropdown, setDisplayLoginDropdown] = useState(false)
   const [displayProfileDropdown, setDisplayProfileDropdown] = useState(false)
+  const [barberAvailabilityDates, setBarberAvailabilityDates] = useState([])
+  const [barberServices, setBarberServices] = useState([])
 
   const checkToken = async () => {
     const user = await CheckSessionUser()
@@ -34,32 +43,50 @@ const App = () => {
     toggleAuthenticated(true)
   }
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token')
-  //   if (token) {
-  //     checkToken()
-  //   }
-  // }, [])
-
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
       checkToken()
     }
+  }, [])
 
+  // GETTING CURRENTLY LOGGED IN USER //
+  const getCurrentUser = async (userId) => {
+    const user = await GetUserById(userId)
+    console.log('CURRENT USER:', user)
+    setCurrentUser(user)
+  }
+
+  // GETTING BARBER'S AVAILABLE DATES WITH TIMES JOINED //
+  const getBarberAvailDates = async (id) => {
+    console.log('ID', id)
+    const dates = await GetBarberAvailabilityDates(id)
+    console.log('DATES', dates)
+    setBarberAvailabilityDates(dates)
+  }
+  console.log('avail dates', barberAvailabilityDates)
+
+  // GETTING EACH BARBER'S SERVICES //
+  const getBarberServices = async (barberId) => {
+    const services = await GetBarberServicesById(barberId)
+    setBarberServices(services)
+  }
+
+  // GETTING USER'S UPCOMING APPOINTMENTS FOR HOMEPAGE //
+  const getUserAppointments = async (id) => {
+    console.log('USER ID', id)
+    const appointments = await GetAppointmentsByUserId(id)
+    setUserAppointments(appointments)
+  }
+
+  // GETTING LIST OF BARBERSHOPS FOR HOMEPAGE (not protected) //
+  useEffect(() => {
     const getBarbershops = async () => {
       const res = await axios.get(`${BASE_URL}/barbershops/all`)
       setBarbershops(res.data)
     }
     getBarbershops()
   }, [])
-
-  // const getUserAppointments = async () => {
-  //   const res = await GetAppointmentsByUserId()
-  //   console.log(user)
-  //   setUserAppointments(res.data)
-  // }
-  // getUserAppointments()
 
   const toggleDropdown = () => {
     displayLoginDropdown === false
@@ -98,12 +125,34 @@ const App = () => {
                 barbershops={barbershops}
                 user={user}
                 authenticated={authenticated}
+                getUserAppointments={getUserAppointments}
+                userAppointments={userAppointments}
               />
             }
           />
           <Route
             path="/barbershops/:barbershopId"
-            element={<BarbershopDetails />}
+            element={
+              <BarbershopDetails
+                user={user}
+                authenticated={authenticated}
+                barbershops={barbershops}
+                barbersInBarbershop={barbersInBarbershop}
+                setBarbersInBarbershop={setBarbersInBarbershop}
+              />
+            }
+          />
+          <Route
+            path="/barbershops/barbers/:barberId/availability"
+            element={
+              <BarberAvailability
+                getBarberAvailDates={getBarberAvailDates}
+                barberAvailabilityDates={barberAvailabilityDates}
+                barbersInBarbershop={barbersInBarbershop}
+                getBarberServices={getBarberServices}
+                barberServices={barberServices}
+              />
+            }
           />
           <Route path="/user/register" element={<UserRegister />} />
           <Route
@@ -116,8 +165,28 @@ const App = () => {
               />
             }
           />
-          <Route path="/user/appointments" element={<UserAppointment />} />
-          <Route path="/user/profile/:userId" element={<UserProfile />} />
+          <Route
+            path="/user/appointments/:userId"
+            element={
+              <UserAppointment
+                user={user}
+                authenticated={authenticated}
+                getUserAppointments={getUserAppointments}
+                userAppointments={userAppointments}
+              />
+            }
+          />
+          <Route
+            path="/user/profile/:userId"
+            element={
+              <UserProfile
+                user={user}
+                authenticated={authenticated}
+                getCurrentUser={getCurrentUser}
+                currentUser={currentUser}
+              />
+            }
+          />
           <Route path="/barber/login" element={<BarberRegisterLogin />} />
           <Route path="/barber/profile/:barberId" element={<BarberProfile />} />
           <Route path="/barbers/:barberId/review" element={<ReviewBarber />} />

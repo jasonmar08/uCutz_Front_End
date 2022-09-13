@@ -1,14 +1,26 @@
 import BarbershopHomeCard from '../components/BarbershopHomeCard'
 import AppointmentCard from '../components/AppointmentCard'
 
-const Home = ({ barbershops, user, authenticated }) => {
+const Home = ({
+  barbershops,
+  user,
+  authenticated,
+  getUserAppointments,
+  userAppointments
+}) => {
+  // console.log(barbershops)
+
   return user && authenticated ? (
-    <div>
+    <div className="home-page-container">
       <h1>Home</h1>
-      <section className="home-appointments">
+      <section>
         <h2>Upcoming Appointments:</h2>
-        <div className="home-appts-container">
-          <AppointmentCard />
+        <div>
+          <AppointmentCard
+            getUserAppointments={getUserAppointments}
+            userAppointments={userAppointments}
+            userId={user.id}
+          />
         </div>
       </section>
       <section className="page" id="barbershop-list">
@@ -22,6 +34,7 @@ const Home = ({ barbershops, user, authenticated }) => {
                 city={city}
                 state={state}
                 thumbnail={business_image}
+                id={id}
               />
             )
           )}
@@ -29,7 +42,7 @@ const Home = ({ barbershops, user, authenticated }) => {
       </section>
     </div>
   ) : (
-    <div>
+    <div className="home-page-container">
       <h1>Home</h1>
       <section className="page" id="barbershop-list">
         <h2>Barbershops</h2>
@@ -42,6 +55,7 @@ const Home = ({ barbershops, user, authenticated }) => {
                 city={city}
                 state={state}
                 thumbnail={business_image}
+                id={id}
               />
             )
           )}

@@ -14,13 +14,14 @@ const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown,
   const handleClickLogOut = () => {
     setUser(null)
     toggleAuthenticated(false)
+    localStorage.clear()
   }
 
   const handleClickProfilePic = () => {
     if (displayProfileDropdown === true) {
     return (
       <div className='profile-dropdown'>
-        <NavLink to='/user/profile/:userId' onClick={() => setDisplayProfileDropdown(false)}>Profile</NavLink>
+        <NavLink to={`/user/profile/${user.id}`} onClick={() => setDisplayProfileDropdown(false)}>Profile</NavLink>
         <NavLink to='/' onClick={() => {handleClickLogOut()}}>Log Out</NavLink>
       </div>
     )}
@@ -32,7 +33,7 @@ const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown,
         <NavLink to='/' onClick={() => setDisplayProfileDropdown(false)} className='logo'><h1>uCutz ✄</h1></NavLink>
         <div className='nav-labels'>
           <NavLink to='/' onClick={() => setDisplayProfileDropdown(false)} className='nav-link'>Home</NavLink>
-          <NavLink to='/user/appointments' onClick={() => setDisplayProfileDropdown(false)} className='nav-link'>Appointments</NavLink>
+          <NavLink to={`/user/appointments/${user.id}`} onClick={() => setDisplayProfileDropdown(false)} className='nav-link'>Appointments</NavLink>
           <img src='../../assets/profile_pic_icon.png' onClick={() => toggleProfileDropdown()} alt='profile picture' />
         </div>
       </div>

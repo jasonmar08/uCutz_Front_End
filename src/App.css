@@ -10,6 +10,12 @@ body {
   font-family: Tahoma, sans-serif;
 }
 
+.App main {
+  min-height: 78.4vh;
+}
+
+/* ============>> NAVBAR <<============ */
+
 .navbar {
   display: flex;
   align-items: center;
@@ -39,7 +45,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 18em;
+  width: 20em;
 }
 
 .nav-link {
@@ -51,6 +57,8 @@ body {
 .nav-link:hover {
   color: rgb(93 201 227);
 }
+
+/* ============>> NAVBAR / LOGIN DROPDOWN <<============ */
 
 .login-dropdown {
   display: flex;
@@ -115,10 +123,55 @@ body {
   color: white;
 }
 
+.dropdown-form button:active {
+  background-color: rgb(68, 105, 138);
+  color: rgb(230, 230, 230);
+}
+
+/* ============>> NAV AND PROFILE DROPDOWN <<============ */
+
+.profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  right: 1%;
+  top: 5.5%;
+  padding: 2vh 0 2vh 0;
+  row-gap: 0.5vh;
+  width: 23vh;
+  background-color: rgb(65 82 97);
+  border-radius: 3% / 4%;
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
+}
+
+.profile-dropdown a {
+  color: white;
+  text-decoration: none;
+  width: 21vh;
+  padding: 1.5vh 0;
+}
+
+.profile-dropdown a:hover {
+  background-color: rgba(102, 145, 182, 0.799);
+  border-radius: 4% / 24%;
+}
+
+.nav-labels img {
+  padding: 5px;
+  height: 3vh;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* ============>> USER REGISTER PAGE <<============ */
+
 .user-register-page {
   display: flex;
   flex-direction: column;
   align-items: center;
+
 }
 
 .user-register-container {
@@ -127,6 +180,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 55vh;
+  margin-bottom: 10vh;
   height: 70vh;
   border-radius: 2% / 1%;
   box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.7);
@@ -164,16 +218,97 @@ body {
   color: white;
 }
 
+/* ============>> USER PROFILE PAGE <<============ */
+
+.user-profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 8vh;
+  column-gap: 12vw;
+}
+
+.user-profile-container img {
+  padding: 0;
+  height: 38vh;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 3px groove rgb(147, 210, 233);
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
+}
+
+.profile-img-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 43vh;
+  row-gap: 3vh;
+}
+
+.user-profile-form {
+  display: flex;
+  flex-direction: column;
+  width: 35vh;
+  margin-bottom: 8vh;
+}
+
+.user-profile-form h4 {
+  margin: 0 0 0.5vh 0;
+  padding: 0;
+  text-align: left;
+}
+
+.user-profile-form input {
+  height: 4vh;
+  margin: 0 0 1.5vh 0;
+  padding: 0 1vh 0 1vh;
+  font-size: 15px;
+  border: 1px solid rgb(65 82 97);
+  border-radius: 2% / 19%;
+  background-color: rgb(245, 246, 246);
+}
+
+.user-profile-form button {
+  height: 4vh;
+  padding: 0 1vh 0 1vh;
+  font-size: 15px;
+  background-color: rgb(202, 207, 212);
+  color: rgb(44 56 66);
+  border-radius: 2% / 19%;
+  cursor: pointer;
+  border: none;
+}
+
+.user-profile-form button:hover {
+  background-color: rgb(102, 145, 182);
+  color: white;
+}
+
+/* ============>> HOME / BARBERSHOPS LIST <<============ */
+
+.home-page-container {
+  margin: 0 13vh;
+}
+
+.page {
+  margin-top: 8vh;
+}
+
 .flex-items {
   display: flex;
   align-items: center;
-  justify-content: center;
-  column-gap: 1.5em;
+  /* justify-content: center; */
+  column-gap: 4vh;
 }
 
 .barbershop-card {
   height: 21em;
-  width: 16.5em;
+  width: 18em;
+}
+
+.thumbnail {
+  display: flex;
+  justify-content: center;
 }
 
 .thumbnail img {
@@ -184,6 +319,237 @@ body {
   cursor: pointer;
 }
 
+/* ============>> HOME / USER APPOINTMENTS LIST <<============ */
+
+.home-appts-container {
+  display: flex;
+  column-gap: 6vh;
+  /* justify-content: center; */
+}
+
+.home-appts-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-appts-card h4 {
+  margin: 1vh 0;
+}
+
+.appt-thumbnail img {
+  height: 9em;
+  width: 13em;
+  object-fit: contain;
+  border: 1px solid rgb(210, 210, 210);
+  cursor: pointer;
+  border-radius: 10% / 14%;
+}
+
+/* ============>> BARBERSHOP DETAILS PAGE <<============ */
+
+.barbershop-details-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.barbershop-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 12vw;
+  padding: 3vh 0 3vh 0;
+  width: 140vh;
+  border-top: 1px solid rgb(173, 218, 240);
+  border-bottom: 1px solid rgb(173, 218, 240);
+}
+
+.barbershop-container img {
+  height: 40vh;
+}
+
+.barbershop-info-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3vh;
+}
+
+.barbershop-info-container h4, h5, p, h3, a {
+  margin: 0;
+  padding: 5px 1em 5px 1em;
+}
+
+.barbershop-barbers-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 4.5vh;
+  margin: 2.5vh 0 4vh 0;
+}
+
+.barbershop-barbers-grid {
+  display: flex;
+  column-gap: 4vh;
+}
+
+.thumbnail-round img {
+  height: 20vh;
+  width: 20vh;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgb(147, 210, 233);
+}
+
+.thumbnail-round img:hover {
+  border: 2px solid rgb(221, 255, 188);
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
+}
+
+.thumbnail-round img:active {
+  border: 2px solid rgba(177, 212, 142, 0.89);
+}
+
+/* ============>> BARBER AVAILABILITY PAGE <<============ */
+
+.barber-avail-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5vh;
+}
+
+.barber-avail-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  column-gap: 12vw;
+  width: 140vh;
+  padding: 3vh 0 3vh 0;
+  border-top: 1px solid rgb(173, 218, 240);
+  border-bottom: 1px solid rgb(173, 218, 240);
+}
+
+.barber-avail-pic img {
+  height: 45vh;
+  width: 45vh;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px groove rgb(147, 210, 233);
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
+}
+
+.dates-services-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.barber-avail-dates {
+  display: flex;
+  column-gap: 8vh;
+  border: 1px solid rgb(147, 210, 233);
+  border-radius: 4% / 8%;
+  padding: 2vh 3vh 4vh 3vh;
+  box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
+}
+
+.barber-avail-dates h4, h5 {
+  margin: 0;
+}
+
+.avail-dates {
+  border-bottom: 1px solid rgb(147, 210, 233);
+  padding-bottom: 5px;
+}
+
+.avail-times {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 3%;
+  row-gap: 2.5vh;
+  margin-top: 2vh;
+}
+
+.times {
+  border-radius: 9% / 22%;
+  padding: 3px 0;
+  cursor: pointer;
+  box-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.7);
+}
+
+.times:hover {
+  background-color: rgb(147, 210, 233);
+}
+
+.times:active {
+  background-color: rgb(82, 137, 156);
+}
+
+.barber-services-dropdown {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4vh;
+  margin-top: 4vh;
+}
+
+.barber-services-dropdown select {
+  height: 4vh;
+  padding: 0 6px 0 1vh;
+  border-radius: 4% / 18%;
+  border: 1px solid rgb(99, 158, 177);
+}
+
+.appt-info h6 {
+  text-align: left;
+}
+
+.book-appt-btn {
+  height: 4vh;
+  margin-top: 2vh;
+  padding: 0 1vh 0 1vh;
+  border-radius: 4% / 18%;
+  border: none;
+  color: white;
+  background-color: rgb(99, 163, 184);
+  cursor: pointer;
+  box-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.7);
+}
+
+.book-appt-btn:hover {
+  background-color: rgb(145, 207, 227);
+}
+
+.book-appt-btn:active {
+  background-color: rgb(115, 170, 188)
+}
+
+.no-avail {
+  color: rgb(145, 180, 202);
+}
+
+.go-back {
+  padding: 1vh 1.5vh;
+  margin-top: 9vh;
+  border-radius: 8% / 20%;
+  border: none;
+  color: white;
+  background-color: rgb(99, 163, 184);
+  cursor: pointer;
+  box-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.7);
+}
+
+.go-back:hover {
+  background-color: rgb(145, 207, 227);
+}
+
+.go-back:active {
+  background-color: rgb(115, 170, 188)
+}
+
+/* ============>> FOOTER <<============ */
+
 .footer-container {
   /* background-color: rgba(132, 131, 128, 0.361); */
   /* background-color: rgb(39, 76, 114); */
@@ -192,45 +558,8 @@ body {
   margin: 0;
   padding: 0;
   color: white;
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
-}
-
-
-
-
-.profile-dropdown {
-  display: flex;
-  flex-direction: column;
-  row-gap: 2vh;
-  padding: 1vh 0 1vh 0;
-  background-color: green;
-  border: 2px solid black;
-  width: 24vh;
-  position: fixed;
-  right: 0.5%;
-  top: 5.5%;
-}
-
-.profile-dropdown a {
-  color: white;
-  text-decoration: none;
-}
-
-.profile-dropdown a:hover {
-  background-color: rgba(160, 205, 160, 0.646);
-}
-
-.nav-labels img {
-  padding: 5px;
-  height: 3vh;
-  background-color: white;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.appointment-placeholder {
-  color: red;
 }

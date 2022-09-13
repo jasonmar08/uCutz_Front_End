@@ -1,10 +1,12 @@
-const BarbershopHomeCard = ({ name, city, state, thumbnail }) => {
+import { NavLink } from "react-router-dom"
+
+const BarbershopHomeCard = ({ name, city, state, thumbnail, id }) => {
 
   return (
     <div>
       <div className="barbershop-card">
         <div className="thumbnail">
-          <img src={thumbnail} alt={name} />
+          <NavLink to={`/barbershops/${id}`}><img src={thumbnail} alt={name} /></NavLink>
         </div>
         <h3>{name}</h3>
         <h5>{city}, {state}</h5>
