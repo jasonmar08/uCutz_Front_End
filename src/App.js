@@ -5,7 +5,8 @@ import BarbershopDetails from './pages/BarbershopDetails'
 import UserRegister from './pages/UserRegister'
 import UserLogin from './pages/UserLogin'
 import UserProfile from './pages/UserProfile'
-import BarberRegisterLogin from './pages/BarberRegisterLogin'
+import BarberRegister from './pages/BarberRegister'
+import BarberLogin from './pages/BarberLogin'
 import BarberProfile from './pages/BarberProfile'
 import ReviewBarber from './pages/ReviewBarber'
 import ReviewBarbershop from './pages/ReviewBarbershop'
@@ -204,7 +205,8 @@ const App = () => {
               />
             }
           />
-          <Route path="/barber/login" element={<BarberRegisterLogin />} />
+          <Route path="/barber/register" element={<BarberRegister />} />
+          <Route path="/barber/login" element={<BarberLogin />} />
           <Route path="/barber/profile/:barberId" element={<BarberProfile />} />
           <Route path="/barbers/:barberId/review" element={<ReviewBarber />} />
           <Route

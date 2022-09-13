@@ -44,7 +44,7 @@ const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown,
       <div className='navbar'>
         <NavLink to='/' onClick={() => setDisplayLoginDropdown(false)} className='logo'><h1>uCutz ✄</h1></NavLink>
         <div className='nav-labels'>
-          <NavLink to='/barber/login' onClick={() => setDisplayLoginDropdown(false)} className='nav-link'>Are you a barber?</NavLink>
+          <NavLink to='/barber/register' onClick={() => setDisplayLoginDropdown(false)} className='nav-link'>Are you a barber?</NavLink>
           <NavLink to='/' onClick={() => setDisplayLoginDropdown(false)} className='nav-link'>Home</NavLink>
           <a onClick={() => toggleDropdown()} className='nav-link'>Sign In</a>
         </div>

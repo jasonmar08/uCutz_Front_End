@@ -194,7 +194,7 @@ body {
   width: 30vh;
 }
 
-.user-register-form input {
+.user-register-form input, .barber-register-form input {
   height: 4vh;
   padding: 0 1vh 0 1vh;
   font-size: 15px;
@@ -203,7 +203,7 @@ body {
   background-color: rgb(245, 246, 246);
 }
 
-.user-register-form button {
+.user-register-form button, .barber-register-form button {
   height: 4vh;
   padding: 0 1vh 0 1vh;
   font-size: 15px;
@@ -214,9 +214,42 @@ body {
   border: none;
 }
 
-.user-register-form button:hover {
+.user-register-form button:hover, .barber-register-form button:hover {
   background-color: rgb(102, 145, 182);
   color: white;
+}
+
+/* ============>> BARBER REGISTER PAGE <<============ */
+
+.barber-register-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.barber-register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 55vh;
+  margin-bottom: 10vh;
+  height: 85vh;
+  border-radius: 2% / 1%;
+  box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.7);
+}
+
+.barber-register-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2vh;
+  width: 30vh;
+}
+
+.barber-form-check-ctn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1vh;
 }
 
 /* ============>> USER PROFILE PAGE <<============ */
