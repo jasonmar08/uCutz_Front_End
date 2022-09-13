@@ -16,7 +16,11 @@ import {
   GetBarberAvailabilityDates,
   GetBarberServicesById
 } from './services/BarberServices'
-import { GetAppointmentsByUserId, GetUserById } from './services/UserServices'
+import {
+  GetAppointmentsByUserId,
+  GetUserById,
+  CreateAppointment
+} from './services/UserServices'
 import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -31,6 +35,7 @@ const App = () => {
 
   const [barbershops, setBarbershops] = useState([])
   const [barbersInBarbershop, setBarbersInBarbershop] = useState([])
+  const [newAppointment, setNewAppointment] = useState([])
   const [userAppointments, setUserAppointments] = useState([])
   const [displayLoginDropdown, setDisplayLoginDropdown] = useState(false)
   const [displayProfileDropdown, setDisplayProfileDropdown] = useState(false)
@@ -70,6 +75,12 @@ const App = () => {
   const getBarberServices = async (barberId) => {
     const services = await GetBarberServicesById(barberId)
     setBarberServices(services)
+  }
+
+  // USER CREATING NEW APPOINTMENT //
+  const createNewAppointment = async (body) => {
+    const appointment = await CreateAppointment(body)
+    setNewAppointment(appointment)
   }
 
   // GETTING USER'S UPCOMING APPOINTMENTS FOR HOMEPAGE //
@@ -114,6 +125,7 @@ const App = () => {
           toggleProfileDropdown={toggleProfileDropdown}
           displayProfileDropdown={displayProfileDropdown}
           setDisplayProfileDropdown={setDisplayProfileDropdown}
+          currentUser={currentUser}
         />
       </header>
       <main>
@@ -151,6 +163,9 @@ const App = () => {
                 barbersInBarbershop={barbersInBarbershop}
                 getBarberServices={getBarberServices}
                 barberServices={barberServices}
+                createNewAppointment={createNewAppointment}
+                newAppointment={newAppointment}
+                user={user}
               />
             }
           />
@@ -184,6 +199,8 @@ const App = () => {
                 authenticated={authenticated}
                 getCurrentUser={getCurrentUser}
                 currentUser={currentUser}
+                setUser={setUser}
+                toggleAuthenticated={toggleAuthenticated}
               />
             }
           />

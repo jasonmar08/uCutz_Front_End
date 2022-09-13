@@ -34,3 +34,21 @@ export const UpdateUserProfileById = async (userId, body) => {
     throw error
   }
 }
+
+export const CreateAppointment = async (data) => {
+  try {
+    const res = await Client.post('/users/appointments', data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const DeleteUserAccount = async (userId) => {
+  try {
+    const res = await Client.delete(`users/${userId}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}

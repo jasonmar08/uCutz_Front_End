@@ -1,7 +1,7 @@
 import UserDropdownLoginForm from './UserDropdownLoginForm'
 import { NavLink } from 'react-router-dom'
 
-const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown, setUser, toggleAuthenticated, user, authenticated, toggleProfileDropdown, displayProfileDropdown, setDisplayProfileDropdown }) => {
+const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown, setUser, toggleAuthenticated, user, authenticated, toggleProfileDropdown, displayProfileDropdown, setDisplayProfileDropdown, currentUser }) => {
   const handleClickLoginDropdown = () => {
     if (displayLoginDropdown === true) {
       return (
@@ -34,7 +34,7 @@ const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown,
         <div className='nav-labels'>
           <NavLink to='/' onClick={() => setDisplayProfileDropdown(false)} className='nav-link'>Home</NavLink>
           <NavLink to={`/user/appointments/${user.id}`} onClick={() => setDisplayProfileDropdown(false)} className='nav-link'>Appointments</NavLink>
-          <img src='../../assets/profile_pic_icon.png' onClick={() => toggleProfileDropdown()} alt='profile picture' />
+          <img src={currentUser.user_image} onClick={() => toggleProfileDropdown()} alt='profile picture' />
         </div>
       </div>
       {handleClickProfilePic()}

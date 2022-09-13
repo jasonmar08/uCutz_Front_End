@@ -158,8 +158,9 @@ body {
 }
 
 .nav-labels img {
-  padding: 5px;
-  height: 3vh;
+  height: 4vh;
+  width: 4vh;
+  object-fit: cover;
   background-color: white;
   border-radius: 50%;
   cursor: pointer;
@@ -231,8 +232,9 @@ body {
 .user-profile-container img {
   padding: 0;
   height: 38vh;
+  width: 38vh;
   border-radius: 50%;
-  object-fit: contain;
+  object-fit: cover;
   border: 3px groove rgb(147, 210, 233);
   box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
 }
@@ -284,6 +286,23 @@ body {
   color: white;
 }
 
+.delete-acc {
+  height: 4vh;
+  padding: 0 1vh;
+  font-size: 15px;
+  background-color: rgb(202, 207, 212);
+  color: rgb(44 56 66);
+  border-radius: 6% / 22%;
+  cursor: pointer;
+  border: none;
+  margin: 1vh 0 4vh 0;
+}
+
+.delete-acc:hover {
+  background-color: rgb(194, 62, 62);
+  color: white;
+}
+
 /* ============>> HOME / BARBERSHOPS LIST <<============ */
 
 .home-page-container {
@@ -319,6 +338,11 @@ body {
   cursor: pointer;
 }
 
+.thumbnail img:hover {
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgb(173, 218, 240);
+}
+
 /* ============>> HOME / USER APPOINTMENTS LIST <<============ */
 
 .home-appts-container {
@@ -343,6 +367,11 @@ body {
   border: 1px solid rgb(210, 210, 210);
   cursor: pointer;
   border-radius: 10% / 14%;
+}
+
+.appt-thumbnail img:hover {
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgb(173, 218, 240);
 }
 
 /* ============>> BARBERSHOP DETAILS PAGE <<============ */
@@ -420,7 +449,7 @@ body {
 
 .barber-avail-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   column-gap: 12vw;
   width: 140vh;
@@ -499,6 +528,7 @@ body {
   padding: 0 6px 0 1vh;
   border-radius: 4% / 18%;
   border: 1px solid rgb(99, 158, 177);
+  cursor: pointer;
 }
 
 .appt-info h6 {

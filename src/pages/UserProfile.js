@@ -1,9 +1,20 @@
-import { UpdateUserProfileById } from '../services/UserServices'
+import {
+  UpdateUserProfileById,
+  DeleteUserAccount
+} from '../services/UserServices'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-const UserProfile = ({ user, authenticated, getCurrentUser, currentUser }) => {
+const UserProfile = ({
+  setUser,
+  toggleAuthenticated,
+  user,
+  authenticated,
+  getCurrentUser,
+  currentUser
+}) => {
   const navigate = useNavigate()
+  const [deletedUser, setDeletedUser] = useState([])
   const { userId } = useParams()
   const initialState = {
     firstName: '',
@@ -45,6 +56,19 @@ const UserProfile = ({ user, authenticated, getCurrentUser, currentUser }) => {
     console.log('FORMSTATE:', formState)
   }
 
+  const handleSubmitDeleteUser = async (userId) => {
+    const user = await DeleteUserAccount(userId)
+    setDeletedUser(user)
+    if (userId) {
+      handleSubmitDeleteUser(userId)
+      setUser(null)
+      toggleAuthenticated(false)
+      localStorage.clear()
+      navigate('/')
+      // console.log('DELETED USER!')
+    }
+  }
+
   useEffect(() => {
     setFormState(currentUser)
   }, [currentUser])
@@ -67,7 +91,7 @@ const UserProfile = ({ user, authenticated, getCurrentUser, currentUser }) => {
 
   return (
     <div>
-      <h2>User Profile</h2>
+      <h2>Hi, {formState.firstName}!</h2>
       <div className="user-profile-container">
         <div className="profile-img-grid">
           <img src={user_image} alt="user image" />
@@ -139,6 +163,12 @@ const UserProfile = ({ user, authenticated, getCurrentUser, currentUser }) => {
           <button>Update Profile</button>
         </form>
       </div>
+      <button
+        onClick={() => handleSubmitDeleteUser(userId)}
+        className="delete-acc"
+      >
+        Delete Account
+      </button>
     </div>
   )
 }
