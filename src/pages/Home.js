@@ -12,7 +12,7 @@ const Home = ({
 
   return user && authenticated ? (
     <div className="home-page-container">
-      <h1>Home</h1>
+      <img src="./assets/uCutz_logo.png" alt="logo" />
       <section>
         <h2>Upcoming Appointments:</h2>
         <div>
@@ -43,7 +43,7 @@ const Home = ({
     </div>
   ) : (
     <div className="home-page-container">
-      <h1>Home</h1>
+      <img src="./assets/uCutz_logo.png" alt="logo" />
       <section className="page" id="barbershop-list">
         <h2>Barbershops</h2>
         <div className="flex-items">

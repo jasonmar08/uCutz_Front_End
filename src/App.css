@@ -22,7 +22,7 @@ body {
   justify-content: space-between;
   height: 3em;
   position: fixed;
-  padding: 0 1em 0 1em;
+  padding: 0 1em 0 0;
   top: 0;
   left: 0;
   right: 0;
@@ -39,6 +39,10 @@ body {
   /* color: rgb(147, 194, 219); */
   /* color: rgb(166, 211, 235); */
   color: rgb(93 201 227);
+}
+
+.logo-nav {
+  height: 5vh;
 }
 
 .nav-labels {
@@ -424,6 +428,10 @@ body {
   margin: 0 13vh;
 }
 
+.home-page-container img {
+  height: 22vh;
+}
+
 .page {
   margin-top: 8vh;
 }
@@ -451,6 +459,7 @@ body {
   object-fit: cover;
   border: 1px solid rgb(210, 210, 210);
   cursor: pointer;
+  border-radius: 10% / 14%;
 }
 
 .thumbnail img:hover {
@@ -551,6 +560,10 @@ body {
   display: flex;
   flex-direction: column;
   row-gap: 3vh;
+  border: 1px solid rgb(147, 210, 233);
+  border-radius: 7% / 8%;
+  padding: 2vh 3vh 4vh 3vh;
+  box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
 }
 
 .barbershop-info-container h4, h5, p, h3, a {
