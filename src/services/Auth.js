@@ -14,6 +14,7 @@ export const SignInUser = async (data) => {
 export const SignInBarber = async (data) => {
   try {
     const res = await Client.post('/auth_barber/login', data)
+    localStorage.setItem('token', res.data.token)
     return res.data.barber
   } catch (error) {
     throw error

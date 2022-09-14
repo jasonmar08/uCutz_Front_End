@@ -8,6 +8,7 @@ import UserProfile from './pages/UserProfile'
 import BarberRegister from './pages/BarberRegister'
 import BarberLogin from './pages/BarberLogin'
 import BarberProfile from './pages/BarberProfile'
+import BarberAppointment from './pages/BarberAppointment'
 import ReviewBarber from './pages/ReviewBarber'
 import ReviewBarbershop from './pages/ReviewBarbershop'
 import BarberAvailability from './pages/BarberAvailability'
@@ -15,11 +16,13 @@ import UserAppointment from './pages/UserAppointment'
 import { CheckSessionUser, CheckSessionBarber } from './services/Auth'
 import {
   GetBarberAvailabilityDates,
-  GetBarberServicesById
+  GetBarberServicesById,
+  GetBarber
 } from './services/BarberServices'
 import {
   GetAppointmentsByUserId,
   GetUserById,
+  GetUser,
   CreateAppointment
 } from './services/UserServices'
 import { Routes, Route } from 'react-router-dom'
@@ -33,6 +36,7 @@ const App = () => {
   const [authenticatedBarber, toggleAuthenticatedBarber] = useState(false)
   const [user, setUser] = useState(null)
   const [currentUser, setCurrentUser] = useState([])
+  const [currentBarber, setCurrentBarber] = useState([])
   const [barber, setBarber] = useState(null)
 
   const [barbershops, setBarbershops] = useState([])
@@ -41,6 +45,8 @@ const App = () => {
   const [userAppointments, setUserAppointments] = useState([])
   const [displayLoginDropdown, setDisplayLoginDropdown] = useState(false)
   const [displayProfileDropdown, setDisplayProfileDropdown] = useState(false)
+  const [displayBarberProfileDropdown, setDisplayBarberProfileDropdown] =
+    useState(false)
   const [barberAvailabilityDates, setBarberAvailabilityDates] = useState([])
   const [barberServices, setBarberServices] = useState([])
 
@@ -66,10 +72,25 @@ const App = () => {
 
   // GETTING CURRENTLY LOGGED IN USER //
   const getCurrentUser = async (userId) => {
-    const user = await GetUserById(userId)
+    const user = await GetUser()
     console.log('CURRENT USER:', user)
     setCurrentUser(user)
   }
+
+  useEffect(() => {
+    getCurrentUser()
+  }, [])
+
+  // GETTING CURRENTLY LOGGED IN BARBER //
+  const getCurrentBarber = async (userId) => {
+    const barber = await GetBarber()
+    console.log('CURRENT BARBER:', barber)
+    setCurrentBarber(barber)
+  }
+
+  useEffect(() => {
+    getCurrentBarber()
+  }, [])
 
   // GETTING BARBER'S AVAILABLE DATES WITH TIMES JOINED //
   const getBarberAvailDates = async (id) => {
@@ -120,21 +141,37 @@ const App = () => {
       : setDisplayProfileDropdown(false)
   }
 
+  const toggleBarberProfileDropdown = () => {
+    displayBarberProfileDropdown === false
+      ? setDisplayBarberProfileDropdown(true)
+      : setDisplayBarberProfileDropdown(false)
+  }
+
+  console.log('CCUU ', currentUser)
+
   return (
     <div className="App">
       <header>
         <NavBar
           displayLoginDropdown={displayLoginDropdown}
           setDisplayLoginDropdown={setDisplayLoginDropdown}
+          displayBarberProfileDropdown={displayBarberProfileDropdown}
+          setDisplayBarberProfileDropdown={setDisplayBarberProfileDropdown}
           toggleDropdown={toggleDropdown}
           setUser={setUser}
           toggleAuthenticated={toggleAuthenticated}
           user={user}
+          barber={barber}
+          setBarber={setBarber}
+          toggleAuthenticatedBarber={toggleAuthenticatedBarber}
           authenticated={authenticated}
+          authenticatedBarber={authenticatedBarber}
           toggleProfileDropdown={toggleProfileDropdown}
+          toggleBarberProfileDropdown={toggleBarberProfileDropdown}
           displayProfileDropdown={displayProfileDropdown}
           setDisplayProfileDropdown={setDisplayProfileDropdown}
           currentUser={currentUser}
+          currentBarber={currentBarber}
         />
       </header>
       <main>
@@ -207,11 +244,16 @@ const App = () => {
                 user={user}
                 authenticated={authenticated}
                 getCurrentUser={getCurrentUser}
+                setCurrentUser={setCurrentUser}
                 currentUser={currentUser}
                 setUser={setUser}
                 toggleAuthenticated={toggleAuthenticated}
               />
             }
+          />
+          <Route
+            path="/barber/appointments/:barberId"
+            element={<BarberAppointment />}
           />
           <Route path="/barber/register" element={<BarberRegister />} />
           <Route

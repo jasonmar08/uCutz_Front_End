@@ -1,5 +1,6 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { convert } from '../utilities/formatForm'
 
 const UserAppointment = ({
   user,
@@ -10,6 +11,8 @@ const UserAppointment = ({
   const navigate = useNavigate()
   const { userId } = useParams()
 
+  const [apptClicked, setApptClicked] = useState(false)
+
   useEffect(() => {
     const getAppointments = async (userId) => {
       await getUserAppointments(userId)
@@ -19,27 +22,84 @@ const UserAppointment = ({
     }
   }, [])
 
+  const appointment = userAppointments.find(
+    (e) => e.userId === parseInt(userId)
+  )
+  if (!appointment) {
+    return <div>Appointment Not Found</div>
+  }
+  const { appt_day, appt_date, appt_time, service } = appointment
+
+  // const handleApptClick = async () => {
+  //   return apptClicked === false
+  //     ? toggleApptClicked(true)
+  //     : toggleApptClicked(false)
+  // }
+
+  // const showApptDetails = async () => {
+  //   if (apptClicked === true) {
+  //     return (
+  //       <div>
+  //         <h2>Appointment Details:</h2>
+  //         <h4>
+  //           Date: {appt_day}, {appt_date}
+  //         </h4>
+  //         <h4>Time: {appt_time}</h4>
+  //         <h4>Service: {service}</h4>
+  //       </div>
+  //     )
+  //   }
+  // }
+
+  // const handleApptClick = async () => {
+  //   return apptClicked === false ? setApptClicked(true) : setApptClicked(false)
+  // }
+
+  // const showApptDetails = async () => {
+  //   if (apptClicked === true) {
+  //     return (
+  //       <div>
+  //         <h2>Appointment Details:</h2>
+  //         <h4>
+  //           Date: {appt_day}, {appt_date}
+  //         </h4>
+  //         <h4>Time: {appt_time}</h4>
+  //         <h4>Service: {service}</h4>
+  //       </div>
+  //     )
+  //   }
+  // }
+
   return (
-    <div>
-      <h2>User Appointments Page</h2>
-      <div className="home-appts-container">
+    <div className="user-appts-page">
+      <h2>Your Upcoming Appointments</h2>
+      <div className="user-appts-container">
         {userAppointments &&
           userAppointments.map(
-            ({ id, inspoImage, appt_day, appt_date, appt_time }) => (
-              <div className="home-appts-card" key={id}>
-                <div className="appt-thumbnail">
+            ({ id, inspoImage, appt_day, appt_date, appt_time, service }) => (
+              <div className="user-appts-card" key={id}>
+                <div className="user-appt-thumbnail">
                   <img src={inspoImage} alt="appointment" />
                 </div>
                 <div>
+                  <h2>Appointment Details:</h2>
                   <h4>
-                    {appt_day}, {appt_date}
+                    Date: {appt_day}, {appt_date}
                   </h4>
-                  <h5>{appt_time}</h5>
+                  <h4>Time: {appt_time}</h4>
+                  <h4>Service: {service}</h4>
                 </div>
               </div>
             )
           )}
       </div>
+      {/* <div>
+        <h2>Appointment Details:</h2>
+        <h4>Date: {appt_date}</h4>
+        <h4>Time: </h4>
+        <h4>Service: </h4>
+        <h4>Price: </h4>
+      </div> */}
     </div>
   )
 }

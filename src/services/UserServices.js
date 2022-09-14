@@ -9,6 +9,15 @@ export const GetUserById = async (userId) => {
   }
 }
 
+export const GetUser = async (userId) => {
+  try {
+    const res = await Client.get('/users')
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
 export const GetAppointmentsByUserId = async (userId) => {
   try {
     const res = await Client.get(`/users/appointments/${userId}`)

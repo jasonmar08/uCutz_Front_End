@@ -11,6 +11,7 @@ const UserProfile = ({
   user,
   authenticated,
   getCurrentUser,
+  setCurrentUser,
   currentUser
 }) => {
   const navigate = useNavigate()
@@ -44,7 +45,7 @@ const UserProfile = ({
       user_image,
       id
     } = formState
-    await UpdateUserProfileById(id, {
+    const response = await UpdateUserProfileById(id, {
       firstName,
       lastName,
       email,
@@ -53,6 +54,15 @@ const UserProfile = ({
       zip_code,
       user_image
     })
+
+    if (response.length > 1) {
+      let users = response[1]
+      if (users.length > 0) {
+        let updatedUser = users[0]
+        setCurrentUser(updatedUser)
+      }
+    }
+
     navigate('/')
     console.log('FORMSTATE:', formState)
   }

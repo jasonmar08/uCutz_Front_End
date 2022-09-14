@@ -1,10 +1,12 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { GetBarberById } from '../services/BarberServices'
+import axios from 'axios'
+import { BASE_URL } from '../services/api'
 
 const BarberAvailability = ({
   getBarberAvailDates,
   barberAvailabilityDates,
-  barbersInBarbershop,
   getBarberServices,
   barberServices,
   createNewAppointment,
@@ -13,6 +15,8 @@ const BarberAvailability = ({
 }) => {
   const navigate = useNavigate()
   const { barberId } = useParams()
+
+  const [barbershop, setBarbershop] = useState([])
 
   const [dates, setDates] = useState([])
   const [times, setTimes] = useState([])
@@ -24,25 +28,27 @@ const BarberAvailability = ({
     appt_date: '',
     appt_time: '',
     service: '',
-    userId: user.id,
+    userId: user?.id,
     barberId: parseInt(barberId)
   })
 
   const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value })
+    console.log(e.target.name, e.target.value)
+    setFormValues((prevstate) => ({
+      ...prevstate,
+      service: e.target.value
+    }))
   }
-
+  console.log('FORM VALL', formValues)
   const handleSubmit = async (e) => {
-    e.preventDefault()
-
     await createNewAppointment({
       specialRequest: '',
       inspoImage: 'https://i.postimg.cc/sXk4hQkQ/8830286-512.png',
-      appt_day: formValues.day,
-      appt_date: formValues.date,
-      appt_time: formValues.time,
-      service: formValues.service,
-      userId: user.id,
+      appt_day: formValues.appt_day,
+      appt_date: formValues.appt_date,
+      appt_time: formValues.appt_time,
+      service: formValues.service.split(' - ')[0],
+      userId: user?.id,
       barberId: parseInt(barberId)
     })
     setFormValues({
@@ -52,7 +58,7 @@ const BarberAvailability = ({
       appt_date: '',
       appt_time: '',
       service: '',
-      userId: user.id,
+      userId: user?.id,
       barberId: parseInt(barberId)
     })
 
@@ -60,11 +66,23 @@ const BarberAvailability = ({
     console.log('CREATED APPOINTMENT')
   }
 
-  const submitForm = () => {
-    handleSubmit()
+  const chooseTime = (time, day, date) => {
+    setFormValues((prevstate) => ({
+      ...prevstate,
+      appt_day: day,
+      appt_date: date,
+      appt_time: time
+    }))
   }
 
   useEffect(() => {
+    const getBarbershop = async (id) => {
+      const res = await GetBarberById(id)
+      console.log('RES', res)
+      setBarbershop(res?.[0])
+    }
+    getBarbershop(barberId)
+
     const getDates = async (barberId) => {
       await getBarberAvailDates(barberId)
     }
@@ -80,10 +98,8 @@ const BarberAvailability = ({
     }
   }, [])
 
-  const { barber_image } = barbersInBarbershop.find(
-    (barber) => barber.id === parseInt(barberId)
-  )
-  if (!barber_image) {
+  console.log('BARBERSHOP', barbershop)
+  if (!barbershop.barber_image) {
     return <div>Barber Not Found</div>
   }
 
@@ -92,7 +108,7 @@ const BarberAvailability = ({
       <h2>Barber Availability</h2>
       <div className="barber-avail-container">
         <div className="barber-avail-pic">
-          <img src={barber_image} alt="barber image" />
+          <img src={barbershop.barber_image} alt="barber image" />
         </div>
         <div className="dates-services-grid">
           <form onSubmit={handleSubmit}>
@@ -102,18 +118,10 @@ const BarberAvailability = ({
                   ({ id, day, date, AvailabilityTimes }) => (
                     <div key={id}>
                       <div className="avail-dates">
-                        <h4
-                          onChange={handleChange}
-                          name="day"
-                          value={formValues.day}
-                        >
+                        <h4 name="day" value={formValues.day}>
                           {day}
                         </h4>
-                        <h5
-                          onChange={handleChange}
-                          name="date"
-                          value={formValues.date}
-                        >
+                        <h5 name="date" value={formValues.date}>
                           ({date})
                         </h5>
                       </div>
@@ -121,7 +129,7 @@ const BarberAvailability = ({
                         {AvailabilityTimes.map(({ id, time, dateId }) => (
                           <div className="times">
                             <h5
-                              onChange={handleChange}
+                              onClick={() => chooseTime(time, day, date)}
                               name="time"
                               value={formValues.time}
                               key={id}
@@ -137,13 +145,12 @@ const BarberAvailability = ({
             </div>
           </form>
           <div className="barber-services-dropdown">
-            <select>
+            <select onChange={handleChange} value={formValues.service}>
               {barberServices.map(({ id, service_name, service_price }) => (
                 <option
-                  onChange={handleChange}
                   name="service"
-                  value={formValues.service}
                   key={id}
+                  value={`${service_name} - ${service_price}`}
                 >
                   {service_name} - {service_price}
                 </option>
@@ -154,12 +161,12 @@ const BarberAvailability = ({
       </div>
       <div className="appt-info">
         <h5>Appointment Details:</h5>
-        <h6>Date: </h6>
-        <h6>Time: </h6>
-        <h6>Service: </h6>
-        <h6>Price: </h6>
+        <h6>Date: {formValues?.appt_date}</h6>
+        <h6>Time: {formValues?.appt_time}</h6>
+        <h6>Service: {formValues?.service.split(' - ')[0]}</h6>
+        <h6>Price: {formValues?.service.split(' - ')[1]}</h6>
       </div>
-      <button onClick={() => submitForm()} className="book-appt-btn">
+      <button onClick={() => handleSubmit()} className="book-appt-btn">
         Book Appointment
       </button>
     </div>
@@ -168,7 +175,7 @@ const BarberAvailability = ({
       <h2>Barber Availability</h2>
       <div className="barber-avail-container">
         <div className="barber-avail-pic">
-          <img src={barber_image} alt="barber image" />
+          <img src={barbershop?.barber_image} alt="barber image" />
         </div>
         <div>
           <h3 className="no-avail">Barber Has No Current Availabilities</h3>
