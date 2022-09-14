@@ -1,11 +1,11 @@
 import UserDropdownLoginForm from './UserDropdownLoginForm'
 import { NavLink } from 'react-router-dom'
 
-const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown, setUser, toggleAuthenticated, user, authenticated, toggleProfileDropdown, displayProfileDropdown, setDisplayProfileDropdown, currentUser, barber, setBarber, toggleAuthenticatedBarber, displayBarberProfileDropdown, setDisplayBarberProfileDropdown, authenticatedBarber, currentBarber, toggleBarberProfileDropdown }) => {
+const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown, setUser, toggleAuthenticated, user, authenticated, toggleProfileDropdown, displayProfileDropdown, setDisplayProfileDropdown, currentUser, barber, setBarber, toggleAuthenticatedBarber, displayBarberProfileDropdown, setDisplayBarberProfileDropdown, authenticatedBarber, currentBarber, setCurrentUser, toggleBarberProfileDropdown, setCurrentBarber }) => {
   const handleClickLoginDropdown = () => {
     if (displayLoginDropdown === true) {
       return (
-        <UserDropdownLoginForm toggleDropdown={toggleDropdown} setUser={setUser} toggleAuthenticated={toggleAuthenticated} setDisplayProfileDropdown={setDisplayProfileDropdown}
+        <UserDropdownLoginForm toggleDropdown={toggleDropdown} setUser={setUser} toggleAuthenticated={toggleAuthenticated} setDisplayProfileDropdown={setDisplayProfileDropdown} setCurrentUser={setCurrentUser}
         />
       )
     }
@@ -13,12 +13,14 @@ const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown,
 
   const handleClickBarberLogOut = () => {
     setBarber(null)
+    setCurrentBarber(null)
     toggleAuthenticatedBarber(false)
     localStorage.clear()
   }
 
   const handleClickLogOut = () => {
     setUser(null)
+    setCurrentUser(null)
     toggleAuthenticated(false)
     localStorage.clear()
   }
@@ -33,67 +35,59 @@ const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown,
     )}
   }
 
+  console.log(barber, user)
+
   const handleClickProfilePic = () => {
     if (displayProfileDropdown === true) {
     return (
       <div className='profile-dropdown'>
-        <NavLink to={`/user/profile/${user.id}`} onClick={() => setDisplayProfileDropdown(false)}>Profile</NavLink>
+        <NavLink to={`/user/profile/${currentUser.id}`} onClick={() => setDisplayProfileDropdown(false)}>Profile</NavLink>
         <NavLink to='/' onClick={() => {handleClickLogOut()}}>Log Out</NavLink>
       </div>
     )}
-  }
+  } 
+  console.log("User: 1 ", currentUser)
+  console.log("Barber: 2 ", currentBarber)
 
-  return user && authenticated ? (
-    <nav>
-      <div className='navbar'>
-        <NavLink to='/' onClick={() => setDisplayProfileDropdown(false)} className='logo'><h1>uCutz ✄</h1></NavLink>
-        <div className='nav-labels'>
-          <NavLink to='/' onClick={() => setDisplayProfileDropdown(false)} className='nav-link'>Home</NavLink>
-          <NavLink to={`/user/appointments/${user.id}`} onClick={() => setDisplayProfileDropdown(false)} className='nav-link'>Appointments</NavLink>
-          <img src={currentUser.user_image} onClick={() => toggleProfileDropdown()} alt='profile picture' />
+  return <div>
+    {
+    (currentUser || currentBarber) ? (
+      currentUser ? (<nav>
+          <div className='navbar'>
+            <NavLink to='/' onClick={() => setDisplayProfileDropdown(false)} className='logo'><h1>uCutz ✄</h1></NavLink>
+            <div className='nav-labels'>
+              <NavLink to='/' onClick={() => setDisplayProfileDropdown(false)} className='nav-link'>Home</NavLink>
+              <NavLink to={`/user/appointments/${currentUser.id}`} onClick={() => setDisplayProfileDropdown(false)} className='nav-link'>Appointments</NavLink>
+              <img src={currentUser.user_image} onClick={() => toggleProfileDropdown()} alt='profile picture' />
+            </div>
+          </div>
+          {handleClickProfilePic()}
+        </nav>) : (<nav>
+          <div className='navbar'>
+            <NavLink to='/' onClick={() => setDisplayBarberProfileDropdown(false)} className='logo'><h1>uCutz ✄</h1></NavLink>
+            <div className='nav-labels'>
+              <NavLink to='/' onClick={() => setDisplayBarberProfileDropdown(false)} className='nav-link'>Home</NavLink>
+              <NavLink to={`/barber/appointments/${currentBarber.id}`} onClick={() => setDisplayBarberProfileDropdown(false)} className='nav-link'>Appointments</NavLink>
+              <img src={currentBarber.barber_image} onClick={() => toggleBarberProfileDropdown()} alt='profile picture' />
+            </div>
+          </div>
+          {handleClickBarberProfilePic()}
+        </nav>)
+      ) : (
+      <nav>
+        <div className='navbar'>
+          <NavLink to='/' onClick={() => setDisplayLoginDropdown(false)} className='logo'><h1>uCutz ✄</h1></NavLink>
+          <div className='nav-labels'>
+            <NavLink to='/barber/register' onClick={() => setDisplayLoginDropdown(false)} className='nav-link'>Are you a barber?</NavLink>
+            <NavLink to='/' onClick={() => setDisplayLoginDropdown(false)} className='nav-link'>Home</NavLink>
+            <a onClick={() => toggleDropdown()} className='nav-link'>Sign In</a>
+          </div>
         </div>
-      </div>
-      {handleClickProfilePic()}
-    </nav>
-  ) : (
-    <nav>
-      <div className='navbar'>
-        <NavLink to='/' onClick={() => setDisplayLoginDropdown(false)} className='logo'><h1>uCutz ✄</h1></NavLink>
-        <div className='nav-labels'>
-          <NavLink to='/barber/register' onClick={() => setDisplayLoginDropdown(false)} className='nav-link'>Are you a barber?</NavLink>
-          <NavLink to='/' onClick={() => setDisplayLoginDropdown(false)} className='nav-link'>Home</NavLink>
-          <a onClick={() => toggleDropdown()} className='nav-link'>Sign In</a>
-        </div>
-      </div>
-      {handleClickLoginDropdown()}
-    </nav>
-  )
-  //   ||
-  // barber && authenticatedBarber ? (
-  //   <nav>
-  //     <div className='navbar'>
-  //       <NavLink to='/' onClick={() => setDisplayBarberProfileDropdown(false)} className='logo'><h1>uCutz ✄</h1></NavLink>
-  //       <div className='nav-labels'>
-  //         <NavLink to='/' onClick={() => setDisplayBarberProfileDropdown(false)} className='nav-link'>Home</NavLink>
-  //         <NavLink to={`/barber/appointments/${barber.id}`} onClick={() => setDisplayBarberProfileDropdown(false)} className='nav-link'>Appointments</NavLink>
-  //         <img src={currentBarber.barber} onClick={() => toggleBarberProfileDropdown()} alt='profile picture' />
-  //       </div>
-  //     </div>
-  //     {handleClickBarberProfilePic()}
-  //   </nav>
-  // ) : (
-  //   <nav>
-  //     <div className='navbar'>
-  //       <NavLink to='/' onClick={() => setDisplayLoginDropdown(false)} className='logo'><h1>uCutz ✄</h1></NavLink>
-  //       <div className='nav-labels'>
-  //         <NavLink to='/barber/register' onClick={() => setDisplayLoginDropdown(false)} className='nav-link'>Are you a barber?</NavLink>
-  //         <NavLink to='/' onClick={() => setDisplayLoginDropdown(false)} className='nav-link'>Home</NavLink>
-  //         <a onClick={() => toggleDropdown()} className='nav-link'>Sign In</a>
-  //       </div>
-  //     </div>
-  //     {handleClickLoginDropdown()}
-  //   </nav>
-  // )
+        {handleClickLoginDropdown()}
+      </nav>)
+  }
+  </div>
+  
 }
 
 export default NavBar

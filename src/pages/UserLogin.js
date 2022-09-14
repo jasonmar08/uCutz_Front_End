@@ -4,7 +4,8 @@ const UserLogin = ({
   setUser,
   toggleAuthenticated,
   toggleProfileDropdown,
-  setDisplayProfileDropdown
+  setDisplayProfileDropdown,
+  setCurrentUser
 }) => {
   return (
     <div className="user-login-page">
@@ -13,6 +14,7 @@ const UserLogin = ({
         setUser={setUser}
         toggleAuthenticated={toggleAuthenticated}
         setDisplayProfileDropdown={setDisplayProfileDropdown}
+        setCurrentUser={setCurrentUser}
       />
     </div>
   )

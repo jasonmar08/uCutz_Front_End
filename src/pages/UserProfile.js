@@ -81,7 +81,9 @@ const UserProfile = ({
   }
 
   useEffect(() => {
-    setFormState(currentUser)
+    if (currentUser) {
+      setFormState(currentUser)
+    }
   }, [currentUser])
 
   useEffect(() => {
@@ -95,10 +97,6 @@ const UserProfile = ({
       setFormState(currentUser)
     }
   }, [])
-
-  console.log('CURRENT USER:', currentUser)
-
-  const { user_image } = currentUser
 
   return (
     <div>

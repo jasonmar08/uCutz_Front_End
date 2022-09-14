@@ -35,8 +35,8 @@ const App = () => {
   const [authenticated, toggleAuthenticated] = useState(false)
   const [authenticatedBarber, toggleAuthenticatedBarber] = useState(false)
   const [user, setUser] = useState(null)
-  const [currentUser, setCurrentUser] = useState([])
-  const [currentBarber, setCurrentBarber] = useState([])
+  const [currentUser, setCurrentUser] = useState(null)
+  const [currentBarber, setCurrentBarber] = useState(null)
   const [barber, setBarber] = useState(null)
 
   const [barbershops, setBarbershops] = useState([])
@@ -70,11 +70,15 @@ const App = () => {
     }
   }, [])
 
+  console.log('CCCUURRREE ', currentUser, currentBarber)
   // GETTING CURRENTLY LOGGED IN USER //
   const getCurrentUser = async (userId) => {
     const user = await GetUser()
-    console.log('CURRENT USER:', user)
-    setCurrentUser(user)
+    console.log('User?? Maybe?? ', user)
+    if (user) {
+      setCurrentUser(user)
+      setUser(user)
+    }
   }
 
   useEffect(() => {
@@ -82,10 +86,13 @@ const App = () => {
   }, [])
 
   // GETTING CURRENTLY LOGGED IN BARBER //
-  const getCurrentBarber = async (userId) => {
+  const getCurrentBarber = async (barberId) => {
     const barber = await GetBarber()
-    console.log('CURRENT BARBER:', barber)
-    setCurrentBarber(barber)
+    console.log('CURRENT BARBER maybe:', barber)
+    if (barber) {
+      setCurrentBarber(barber)
+      setBarber(barber)
+    }
   }
 
   useEffect(() => {
@@ -171,7 +178,9 @@ const App = () => {
           displayProfileDropdown={displayProfileDropdown}
           setDisplayProfileDropdown={setDisplayProfileDropdown}
           currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
           currentBarber={currentBarber}
+          setCurrentBarber={setCurrentBarber}
         />
       </header>
       <main>
@@ -223,6 +232,7 @@ const App = () => {
                 setUser={setUser}
                 toggleAuthenticated={toggleAuthenticated}
                 setDisplayProfileDropdown={setDisplayProfileDropdown}
+                setCurrentUser={setCurrentUser}
               />
             }
           />
@@ -262,6 +272,10 @@ const App = () => {
               <BarberLogin
                 setBarber={setBarber}
                 toggleAuthenticatedBarber={toggleAuthenticatedBarber}
+                setCurrentBarber={setCurrentBarber}
+                setDisplayBarberProfileDropdown={
+                  setDisplayBarberProfileDropdown
+                }
               />
             }
           />

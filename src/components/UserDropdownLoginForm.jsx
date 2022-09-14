@@ -2,7 +2,7 @@ import { SignInUser } from '../services/Auth'
 import { useState } from 'react'
 import { useNavigate, NavLink } from "react-router-dom"
 
-const UserDropdownLoginForm = ({ toggleDropdown, setUser, toggleAuthenticated, setDisplayProfileDropdown }) => {
+const UserDropdownLoginForm = ({ toggleDropdown, setUser, toggleAuthenticated, setDisplayProfileDropdown, setCurrentUser }) => {
   let navigate = useNavigate()
 
   const [formValues, setFormValues] = useState({
@@ -25,6 +25,7 @@ const UserDropdownLoginForm = ({ toggleDropdown, setUser, toggleAuthenticated, s
     })
 
     setUser(payload)
+    setCurrentUser(payload)
     toggleAuthenticated(true)
 
     navigate('/')

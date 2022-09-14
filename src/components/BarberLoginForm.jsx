@@ -2,7 +2,7 @@ import { SignInBarber } from "../services/Auth"
 import { useState } from "react"
 import { useNavigate, NavLink } from "react-router-dom"
 
-const BarberLoginForm = ({ setBarber, toggleAuthenticatedBarber }) => {
+const BarberLoginForm = ({ setBarber, toggleAuthenticatedBarber, setCurrentBarber, setDisplayBarberProfileDropdown }) => {
   let navigate = useNavigate()
 
   const [formValues, setFormValues] = useState({
@@ -25,10 +25,11 @@ const BarberLoginForm = ({ setBarber, toggleAuthenticatedBarber }) => {
     })
 
     setBarber(payload)
+    setCurrentBarber(payload)
     toggleAuthenticatedBarber(true)
 
     navigate('/')
-    // setDisplayProfileDropdown(false)
+    setDisplayBarberProfileDropdown(false)
     console.log(`Signed in with barber, ${formValues.email}`)
   }
 
