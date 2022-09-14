@@ -491,13 +491,13 @@ body {
 
 /* ============>> USER APPOINTMENTS PAGE <<============ */
 
-.user-appts-page {
+.user-appts-page, .barber-appts-page {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.user-appts-container {
+.user-appts-container, .barber-appts-container {
   display: flex;
   flex-direction: column;
   margin-top: 3vh;
@@ -505,7 +505,7 @@ body {
   margin-bottom: 6vh;
 }
 
-.user-appts-card {
+.user-appts-card, .barber-appts-card {
   display: flex;
   column-gap: 4vh;
   text-align: left;
@@ -516,7 +516,7 @@ body {
   border-bottom: 1px solid rgb(227, 224, 224);
 }
 
-.user-appt-thumbnail img {
+.user-appt-thumbnail img, .barber-appt-thumbnail img {
   height: 12em;
   width: 17em;
   object-fit: contain;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
-import { convert } from '../utilities/formatForm'
+import { useParams } from 'react-router-dom'
+import { formatTime } from '../utilities/formatForm'
 
 const UserAppointment = ({
   user,
@@ -8,10 +8,9 @@ const UserAppointment = ({
   getUserAppointments,
   userAppointments
 }) => {
-  const navigate = useNavigate()
   const { userId } = useParams()
 
-  const [apptClicked, setApptClicked] = useState(false)
+  // const [apptClicked, setApptClicked] = useState(false)
 
   useEffect(() => {
     const getAppointments = async (userId) => {
@@ -86,7 +85,7 @@ const UserAppointment = ({
                   <h4>
                     Date: {appt_day}, {appt_date}
                   </h4>
-                  <h4>Time: {appt_time}</h4>
+                  <h4>Time: {formatTime(appt_time)}</h4>
                   <h4>Service: {service}</h4>
                 </div>
               </div>

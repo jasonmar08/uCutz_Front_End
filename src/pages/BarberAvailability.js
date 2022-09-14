@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { GetBarberById } from '../services/BarberServices'
+import { formatTime } from '../utilities/formatForm'
 import axios from 'axios'
 import { BASE_URL } from '../services/api'
 
@@ -134,7 +135,7 @@ const BarberAvailability = ({
                               value={formValues.time}
                               key={id}
                             >
-                              {time}
+                              {formatTime(time)}
                             </h5>
                           </div>
                         ))}
@@ -162,7 +163,7 @@ const BarberAvailability = ({
       <div className="appt-info">
         <h5>Appointment Details:</h5>
         <h6>Date: {formValues?.appt_date}</h6>
-        <h6>Time: {formValues?.appt_time}</h6>
+        <h6>Time: {formatTime(formValues?.appt_time)}</h6>
         <h6>Service: {formValues?.service.split(' - ')[0]}</h6>
         <h6>Price: {formValues?.service.split(' - ')[1]}</h6>
       </div>

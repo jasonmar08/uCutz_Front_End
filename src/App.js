@@ -17,7 +17,8 @@ import { CheckSessionUser, CheckSessionBarber } from './services/Auth'
 import {
   GetBarberAvailabilityDates,
   GetBarberServicesById,
-  GetBarber
+  GetBarber,
+  GetAppointmentsByBarberId
 } from './services/BarberServices'
 import {
   GetAppointmentsByUserId,
@@ -43,6 +44,7 @@ const App = () => {
   const [barbersInBarbershop, setBarbersInBarbershop] = useState([])
   const [newAppointment, setNewAppointment] = useState([])
   const [userAppointments, setUserAppointments] = useState([])
+  const [barberAppointments, setBarberAppointments] = useState([])
   const [displayLoginDropdown, setDisplayLoginDropdown] = useState(false)
   const [displayProfileDropdown, setDisplayProfileDropdown] = useState(false)
   const [displayBarberProfileDropdown, setDisplayBarberProfileDropdown] =
@@ -125,6 +127,12 @@ const App = () => {
     console.log('USER ID', id)
     const appointments = await GetAppointmentsByUserId(id)
     setUserAppointments(appointments)
+  }
+
+  // GETTING BARBER'S UPCOMING APPOINTMENTS FOR APPOINTMENT PAGE //
+  const getBarberAppointments = async (id) => {
+    const appointments = await GetAppointmentsByBarberId(id)
+    setBarberAppointments(appointments)
   }
 
   // GETTING LIST OF BARBERSHOPS FOR HOMEPAGE //
@@ -263,7 +271,12 @@ const App = () => {
           />
           <Route
             path="/barber/appointments/:barberId"
-            element={<BarberAppointment />}
+            element={
+              <BarberAppointment
+                getBarberAppointments={getBarberAppointments}
+                barberAppointments={barberAppointments}
+              />
+            }
           />
           <Route path="/barber/register" element={<BarberRegister />} />
           <Route
@@ -279,7 +292,18 @@ const App = () => {
               />
             }
           />
-          <Route path="/barber/profile/:barberId" element={<BarberProfile />} />
+          <Route
+            path="/barber/profile/:barberId"
+            element={
+              <BarberProfile
+                setCurrentBarber={setCurrentBarber}
+                setBarber={setBarber}
+                toggleAuthenticatedBarber={toggleAuthenticatedBarber}
+                getCurrentBarber={getCurrentBarber}
+                currentBarber={currentBarber}
+              />
+            }
+          />
           <Route path="/barbers/:barberId/review" element={<ReviewBarber />} />
           <Route
             path="/barbershops/:barbershopId/review"
