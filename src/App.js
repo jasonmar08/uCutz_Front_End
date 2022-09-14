@@ -12,7 +12,7 @@ import ReviewBarber from './pages/ReviewBarber'
 import ReviewBarbershop from './pages/ReviewBarbershop'
 import BarberAvailability from './pages/BarberAvailability'
 import UserAppointment from './pages/UserAppointment'
-import { CheckSessionUser } from './services/Auth'
+import { CheckSessionUser, CheckSessionBarber } from './services/Auth'
 import {
   GetBarberAvailabilityDates,
   GetBarberServicesById
@@ -30,6 +30,7 @@ import './App.css'
 
 const App = () => {
   const [authenticated, toggleAuthenticated] = useState(false)
+  const [authenticatedBarber, toggleAuthenticatedBarber] = useState(false)
   const [user, setUser] = useState(null)
   const [currentUser, setCurrentUser] = useState([])
   const [barber, setBarber] = useState(null)
@@ -43,16 +44,23 @@ const App = () => {
   const [barberAvailabilityDates, setBarberAvailabilityDates] = useState([])
   const [barberServices, setBarberServices] = useState([])
 
-  const checkToken = async () => {
+  const checkTokenUser = async () => {
     const user = await CheckSessionUser()
     setUser(user)
     toggleAuthenticated(true)
   }
 
+  const checkTokenBarber = async () => {
+    const barber = await CheckSessionBarber()
+    setBarber(barber)
+    toggleAuthenticatedBarber(true)
+  }
+
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
-      checkToken()
+      checkTokenUser()
+      checkTokenBarber()
     }
   }, [])
 
@@ -91,7 +99,7 @@ const App = () => {
     setUserAppointments(appointments)
   }
 
-  // GETTING LIST OF BARBERSHOPS FOR HOMEPAGE (not protected) //
+  // GETTING LIST OF BARBERSHOPS FOR HOMEPAGE //
   useEffect(() => {
     const getBarbershops = async () => {
       const res = await axios.get(`${BASE_URL}/barbershops/all`)
@@ -206,7 +214,15 @@ const App = () => {
             }
           />
           <Route path="/barber/register" element={<BarberRegister />} />
-          <Route path="/barber/login" element={<BarberLogin />} />
+          <Route
+            path="/barber/login"
+            element={
+              <BarberLogin
+                setBarber={setBarber}
+                toggleAuthenticatedBarber={toggleAuthenticatedBarber}
+              />
+            }
+          />
           <Route path="/barber/profile/:barberId" element={<BarberProfile />} />
           <Route path="/barbers/:barberId/review" element={<ReviewBarber />} />
           <Route

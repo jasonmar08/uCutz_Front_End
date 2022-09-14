@@ -1,10 +1,13 @@
 import BarberLoginForm from '../components/BarberLoginForm'
 
-const BarberLogin = () => {
+const BarberLogin = ({ setBarber, toggleAuthenticatedBarber }) => {
   return (
     <div className="barber-login-page">
       <h2>Barber Login Page</h2>
-      <BarberLoginForm />
+      <BarberLoginForm
+        setBarber={setBarber}
+        toggleAuthenticatedBarber={toggleAuthenticatedBarber}
+      />
     </div>
   )
 }

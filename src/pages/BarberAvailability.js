@@ -14,6 +14,9 @@ const BarberAvailability = ({
   const navigate = useNavigate()
   const { barberId } = useParams()
 
+  const [dates, setDates] = useState([])
+  const [times, setTimes] = useState([])
+
   const [formValues, setFormValues] = useState({
     specialRequest: '',
     inspoImage: 'https://i.postimg.cc/sXk4hQkQ/8830286-512.png',
@@ -22,7 +25,7 @@ const BarberAvailability = ({
     appt_time: '',
     service: '',
     userId: user.id,
-    barberId: barberId
+    barberId: parseInt(barberId)
   })
 
   const handleChange = (e) => {
@@ -40,9 +43,8 @@ const BarberAvailability = ({
       appt_time: formValues.time,
       service: formValues.service,
       userId: user.id,
-      barberId: barberId
+      barberId: parseInt(barberId)
     })
-
     setFormValues({
       specialRequest: '',
       inspoImage: 'https://i.postimg.cc/sXk4hQkQ/8830286-512.png',
@@ -51,7 +53,7 @@ const BarberAvailability = ({
       appt_time: '',
       service: '',
       userId: user.id,
-      barberId: barberId
+      barberId: parseInt(barberId)
     })
 
     navigate('/')
@@ -116,7 +118,7 @@ const BarberAvailability = ({
                         </h5>
                       </div>
                       <div className="avail-times">
-                        {AvailabilityTimes.map(({ id, time }) => (
+                        {AvailabilityTimes.map(({ id, time, dateId }) => (
                           <div className="times">
                             <h5
                               onChange={handleChange}
