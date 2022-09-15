@@ -4,7 +4,7 @@ body {
   text-align: center;
   margin-top: 4em;
   background-color: rgb(0, 0, 0);
-  background-color: white;
+  background-color: rgb(255, 253, 249);
   /* color: rgb(255, 255, 255); */
   color: black;
   font-family: Tahoma, sans-serif;
@@ -188,6 +188,7 @@ body {
   margin-bottom: 10vh;
   height: 70vh;
   border-radius: 2% / 1%;
+  background-color: white;
   box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.7);
 }
 
@@ -195,6 +196,7 @@ body {
   display: flex;
   flex-direction: column;
   row-gap: 2vh;
+  align-items: center;
   width: 30vh;
 }
 
@@ -205,6 +207,7 @@ body {
   border: 1px solid rgb(65 82 97);
   border-radius: 2% / 19%;
   background-color: rgb(245, 246, 246);
+  width: 27vh;
 }
 
 .user-register-form button, .user-login-form button, .barber-register-form button, .barber-login-form button {
@@ -216,6 +219,7 @@ body {
   border-radius: 2% / 19%;
   cursor: pointer;
   border: none;
+  width: 29.5vh;
 }
 
 .user-register-form button:hover, .user-login-form button:hover, .barber-register-form button:hover, .barber-login-form button:hover {
@@ -227,6 +231,7 @@ body {
   text-decoration: none;
   color: rgb(162, 166, 170);
   padding: 5px;
+  width: 30vh;
 }
 
 .user-register-form a, .user-login-form a {
@@ -258,9 +263,10 @@ body {
   align-items: center;
   width: 55vh;
   margin-bottom: 8vh;
-  height: 85vh;
+  height: 80vh;
   border-radius: 2% / 1%;
   box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.7);
+  background-color: white;
 }
 
 .barber-register-form, .barber-login-form {
@@ -268,6 +274,7 @@ body {
   flex-direction: column;
   row-gap: 2vh;
   width: 30vh;
+  align-items: center;
 }
 
 .barber-form-check-ctn {
@@ -281,6 +288,7 @@ body {
   text-decoration: none;
   color: rgb(162, 166, 170);
   padding: 5px;
+  width: 30vh;
 }
 
 .barber-register-form a {
@@ -315,6 +323,7 @@ body {
   height: 32vh;
   border-radius: 2% / 1%;
   box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.7);
+  background-color: white;
 }
 
 .barber-login-form span {
@@ -491,6 +500,7 @@ body {
   border: 1px solid rgb(210, 210, 210);
   cursor: pointer;
   border-radius: 10% / 14%;
+  background-color: white;
 }
 
 .appt-thumbnail img:hover {
@@ -531,6 +541,7 @@ body {
   object-fit: contain;
   border: 1px solid rgb(210, 210, 210);
   border-radius: 10% / 14%;
+  background-color: white;
 }
 
 /* ============>> BARBERSHOP DETAILS PAGE <<============ */
@@ -564,6 +575,7 @@ body {
   border-radius: 7% / 8%;
   padding: 2vh 3vh 4vh 3vh;
   box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
+  background-color: white;
 }
 
 .barbershop-info-container h4, h5, p, h3, a {
@@ -644,6 +656,7 @@ body {
   border-radius: 4% / 8%;
   padding: 2vh 3vh 4vh 3vh;
   box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
+  background-color: white;
 }
 
 .barber-avail-dates h4, h5 {
@@ -746,8 +759,11 @@ body {
 .footer-container {
   /* background-color: rgba(132, 131, 128, 0.361); */
   /* background-color: rgb(39, 76, 114); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: rgb(65 82 97);
-  height: 8em;
+  height: 11em;
   margin: 0;
   padding: 0;
   color: white;
