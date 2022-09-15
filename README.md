@@ -1,4 +1,4 @@
-<img style="center" src="/public/assets/banner3.png" alt="uCutz Banner"  width="1000">
+<img style="center" src="/public/assets/banner4.png" alt="uCutz Banner"  width="1000">
 
 ## Front-End
 
