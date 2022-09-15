@@ -34,7 +34,7 @@ uCutz provides a more efficient way to schedule your next haircut. As a customer
 
 <div style= "center">
     <pre>
-        <img src="/public/assets/homepage.png"  height="450">&nbsp;&nbsp;&nbsp;<img src="/public/assets/barbershop_details.png" height="450">&nbsp;&nbsp;&nbsp;<img src="/public/assets/barber_availability.png" height="450">&nbsp;&nbsp;&nbsp;<img src="/public/assets/barber_appointmetns.png" height="450">&nbsp;&nbsp;&nbsp;<img src="/public/assets/barber_profile2.png" height="450">&nbsp;&nbsp;&nbsp;
+        <img src="/public/assets/homepage.png"  height="450">&nbsp;&nbsp;&nbsp;<img src="/public/assets/barbershop_details.png" height="450">&nbsp;&nbsp;&nbsp;<img src="/public/assets/barber_availability.png" height="450">&nbsp;&nbsp;&nbsp;<img src="/public/assets/barber_appointmetns.png" height="450">&nbsp;&nbsp;&nbsp;<img src="/public/assets/barber_profile.png" height="450">&nbsp;&nbsp;&nbsp;
     </pre>
 </div>
 
