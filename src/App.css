@@ -41,17 +41,6 @@ body {
   color: rgb(93 201 227);
 }
 
-.colorss {
-  position: fixed;
-  right: 23%;
-}
-
-.colorss2 {
-  position: fixed;
-  left: 23%;
-  transform: scaleX(-1);
-}
-
 .logo-nav {
   height: 5vh;
 }
@@ -376,6 +365,7 @@ body {
   object-fit: cover;
   border: 3px groove rgb(147, 210, 233);
   box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
+  background-color: white;
 }
 
 .profile-img-grid {

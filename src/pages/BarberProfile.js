@@ -105,7 +105,7 @@ const BarberProfile = ({
       <div className="user-profile-container">
         <div className="profile-img-grid">
           <img src={formState.barber_image} alt="user image" />
-          <h4>Add your photo to allow your barber to better serve you</h4>
+          <h4>Add your photo to allow your clients to better recognize you</h4>
         </div>
         <form onSubmit={handleSubmit} className="user-profile-form">
           <h4>Profile Photo:</h4>
