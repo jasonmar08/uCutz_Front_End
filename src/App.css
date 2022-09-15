@@ -41,6 +41,17 @@ body {
   color: rgb(93 201 227);
 }
 
+.colorss {
+  position: fixed;
+  right: 23%;
+}
+
+.colorss2 {
+  position: fixed;
+  left: 23%;
+  transform: scaleX(-1);
+}
+
 .logo-nav {
   height: 5vh;
 }

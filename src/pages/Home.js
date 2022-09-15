@@ -44,6 +44,16 @@ const Home = ({
   ) : (
     <div className="home-page-container">
       <img src="./assets/uCutz_logo.png" alt="logo" />
+      <img
+        className="colorss"
+        src="https://cdn.iconfinder.com/icons/4360445/4831702/512/raster.png?token=1663207387-YJpt%2FyPOcXTBgVChWJ9yGo0uIhuWNsvtvnNepj%2BOF%2Fc%3D"
+        alt="logo"
+      />
+      <img
+        className="colorss2"
+        src="https://cdn.iconfinder.com/icons/4360445/4831702/512/raster.png?token=1663207387-YJpt%2FyPOcXTBgVChWJ9yGo0uIhuWNsvtvnNepj%2BOF%2Fc%3D"
+        alt="logo"
+      />
       <section className="page" id="barbershop-list">
         <h2>Barbershops</h2>
         <div className="flex-items">
