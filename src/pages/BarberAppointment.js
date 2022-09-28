@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { formatTime } from '../utilities/formatForm'
+import { formatTime, formatDate } from '../utilities/formatForm'
 
 const BarberAppointment = ({ getBarberAppointments, barberAppointments }) => {
   const { barberId } = useParams()
@@ -36,7 +36,7 @@ const BarberAppointment = ({ getBarberAppointments, barberAppointments }) => {
                 <div>
                   <h2>Appointment Details:</h2>
                   <h4>
-                    Date: {appt_day}, {appt_date}
+                    Date: {appt_day}, {formatDate(appt_date)}
                   </h4>
                   <h4>Time: {formatTime(appt_time)}</h4>
                   <h4>Service: {service}</h4>

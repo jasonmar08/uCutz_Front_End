@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { GetBarberById } from '../services/BarberServices'
-import { formatTime } from '../utilities/formatForm'
+import { formatTime, formatDate } from '../utilities/formatForm'
 import axios from 'axios'
 import { BASE_URL } from '../services/api'
 
@@ -106,10 +106,10 @@ const BarberAvailability = ({
 
   return barberAvailabilityDates[0] ? (
     <div className="barber-avail-page">
-      <h2>Barber Availability</h2>
+      <h2>{barbershop?.firstName}'s Availability</h2>
       <div className="barber-avail-container">
         <div className="barber-avail-pic">
-          <img src={barbershop.barber_image} alt="barber image" />
+          <img src={barbershop?.barber_image} alt="barber image" />
         </div>
         <div className="dates-services-grid">
           <form onSubmit={handleSubmit}>
@@ -123,7 +123,7 @@ const BarberAvailability = ({
                           {day}
                         </h4>
                         <h5 name="date" value={formValues.date}>
-                          ({date})
+                          ({formatDate(date)})
                         </h5>
                       </div>
                       <div className="avail-times">
@@ -173,7 +173,7 @@ const BarberAvailability = ({
     </div>
   ) : (
     <div className="barber-avail-page">
-      <h2>Barber Availability</h2>
+      <h2>{barbershop?.firstName}'s Availability</h2>
       <div className="barber-avail-container">
         <div className="barber-avail-pic">
           <img src={barbershop?.barber_image} alt="barber image" />

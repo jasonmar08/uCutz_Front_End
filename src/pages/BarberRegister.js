@@ -1,10 +1,10 @@
 import BarberRegisterForm from '../components/BarberRegisterForm'
 
-const BarberRegister = () => {
+const BarberRegister = ({ barbershops }) => {
   return (
     <div className="barber-register-page">
       <h2>Barber Register Page</h2>
-      <BarberRegisterForm />
+      <BarberRegisterForm barbershops={barbershops} />
     </div>
   )
 }

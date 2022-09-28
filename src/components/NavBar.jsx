@@ -29,7 +29,7 @@ const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown,
     if (displayBarberProfileDropdown === true) {
     return (
       <div className='profile-dropdown'>
-        <NavLink to={`/barber/profile/${barber.id}`} onClick={() => setDisplayBarberProfileDropdown(false)}>Profile</NavLink>
+        <NavLink to={`/barber/profile/${currentBarber.id}`} onClick={() => setDisplayBarberProfileDropdown(false)}>Profile</NavLink>
         <NavLink to='/' onClick={() => {handleClickBarberLogOut()}}>Log Out</NavLink>
       </div>
     )}

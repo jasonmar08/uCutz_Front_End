@@ -1,4 +1,4 @@
-import { formatTime } from '../utilities/formatForm'
+import { formatTime, formatDate } from '../utilities/formatForm'
 import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 
@@ -25,7 +25,7 @@ const AppointmentCard = ({ getUserAppointments, userAppointments, userId }) => {
               <NavLink to={`/user/appointments/${userId}`}><img src={inspoImage} alt='appointment' /></NavLink>
             </div>
             <div>
-              <h4>{appt_day}, {appt_date}</h4>
+              <h4>{appt_day}, {formatDate(appt_date)}</h4>
               <h5>{formatTime(appt_time)}</h5>
             </div>
           </div>

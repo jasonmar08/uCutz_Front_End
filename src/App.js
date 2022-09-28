@@ -26,6 +26,7 @@ import {
   GetUser,
   CreateAppointment
 } from './services/UserServices'
+import ScrollToTop from './components/ScrollToTop'
 import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -166,6 +167,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <ScrollToTop />
       <header>
         <NavBar
           displayLoginDropdown={displayLoginDropdown}
@@ -278,7 +280,10 @@ const App = () => {
               />
             }
           />
-          <Route path="/barber/register" element={<BarberRegister />} />
+          <Route
+            path="/barber/register"
+            element={<BarberRegister barbershops={barbershops} />}
+          />
           <Route
             path="/barber/login"
             element={

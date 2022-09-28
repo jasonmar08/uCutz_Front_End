@@ -263,7 +263,19 @@ body {
   align-items: center;
   width: 55vh;
   margin-bottom: 8vh;
-  height: 80vh;
+  height: 62.5vh;
+  border-radius: 2% / 1%;
+  box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.7);
+  background-color: white;
+}
+
+.barber-register-container-barbershop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 55vh;
+  margin-bottom: 8vh;
+  height: 110vh;
   border-radius: 2% / 1%;
   box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.7);
   background-color: white;
@@ -275,6 +287,17 @@ body {
   row-gap: 2vh;
   width: 30vh;
   align-items: center;
+}
+
+.barber-register-form select {
+  height: 4vh;
+  padding: 0 1vh 0 1vh;
+  font-size: 15px;
+  border: 1px solid rgb(65 82 97);
+  border-radius: 2% / 19%;
+  background-color: rgb(245, 246, 246);
+  width: 29.5vh;
+  cursor: pointer;
 }
 
 .barber-form-check-ctn {
@@ -603,6 +626,7 @@ body {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid rgb(147, 210, 233);
+  background-color: white;
 }
 
 .thumbnail-round img:hover {
@@ -641,6 +665,7 @@ body {
   object-fit: cover;
   border: 3px groove rgb(147, 210, 233);
   box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
+  background-color: white;
 }
 
 .dates-services-grid {
@@ -679,6 +704,7 @@ body {
 }
 
 .times {
+  width: 5.6rem;
   border-radius: 9% / 22%;
   padding: 3px 0;
   cursor: pointer;

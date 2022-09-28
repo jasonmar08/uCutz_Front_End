@@ -37,7 +37,7 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
             </div>
             <div>
               <h5>Phone:</h5>
-              <p>{formatPhone(phoneNumber)}</p>
+              <p>{phoneNumber ? formatPhone(phoneNumber) : 'No Phone'}</p>
             </div>
             <h4><a href={business_site} target='_blank'>Website</a></h4>
             <div>
@@ -53,11 +53,11 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
         <div className='barbershop-barbers-grid'>
         {
           barbersInBarbershop.map(({ id, barber_image, firstName, lastName }) => (
-              <div className="barbershop-barbers-card" key={barber_image}>
+              <div className="barbershop-barbers-card" key={id}>
                 <div className="thumbnail-round">
                   <NavLink to={`/barbershops/barbers/${id}/availability`}><img src={barber_image} alt='barber' /></NavLink>
                 </div>
-                <h3>{firstName} {lastName}</h3>
+                <h3>{firstName}</h3>
                 {/* <h4>Book With Me!</h4> */}
               </div>
           ))
@@ -80,7 +80,7 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
             </div>
             <div>
               <h5>Phone:</h5>
-              <p>{formatPhone(phoneNumber)}</p>
+              <p>{phoneNumber ? formatPhone(phoneNumber) : 'No Phone'}</p>
             </div>
             <h4><a href={business_site} target='_blank'>Website</a></h4>
             <div>
@@ -96,11 +96,11 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
         <div className='barbershop-barbers-grid'>
         {
           barbersInBarbershop.map(({ id, barber_image, firstName, lastName }) => (
-              <div className="barbershop-barbers-card" key={barber_image}>
+              <div className="barbershop-barbers-card" key={id}>
                 <div className="thumbnail-round">
                   <NavLink to='/user/login'><img src={barber_image} alt='barber' /></NavLink>
                 </div>
-                <h3>{firstName} {lastName}</h3>
+                <h3>{firstName}</h3>
                 {/* <h4>Book With Me!</h4> */}
               </div>
           ))

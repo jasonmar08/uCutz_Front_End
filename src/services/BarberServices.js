@@ -1,5 +1,14 @@
 import Client from './api'
 
+export const CreateBarbershop = async (data) => {
+  try {
+    const res = await Client.post('/barbershops/', data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
 export const GetBarberAvailabilityDates = async (barberId) => {
   try {
     console.log('BBID', barberId)
