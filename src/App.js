@@ -18,12 +18,14 @@ import {
   GetBarberAvailabilityDates,
   GetBarberServicesById,
   GetBarber,
-  GetAppointmentsByBarberId
+  GetAppointmentsByBarberId,
+  GetReviewsByBarbershopId
 } from './services/BarberServices'
 import {
   GetAppointmentsByUserId,
   GetUserById,
   GetUser,
+  GetAllUsers,
   CreateAppointment
 } from './services/UserServices'
 import ScrollToTop from './components/ScrollToTop'
@@ -38,10 +40,12 @@ const App = () => {
   const [authenticatedBarber, toggleAuthenticatedBarber] = useState(false)
   const [user, setUser] = useState(null)
   const [currentUser, setCurrentUser] = useState(null)
+  const [allUsers, setAllUsers] = useState([])
   const [currentBarber, setCurrentBarber] = useState(null)
   const [barber, setBarber] = useState(null)
 
   const [barbershops, setBarbershops] = useState([])
+  const [barbershopReviews, setBarbershopReviews] = useState([])
   const [barbersInBarbershop, setBarbersInBarbershop] = useState([])
   const [newAppointment, setNewAppointment] = useState([])
   const [userAppointments, setUserAppointments] = useState([])
@@ -145,6 +149,23 @@ const App = () => {
     getBarbershops()
   }, [])
 
+  // GETTING BARBERSHOP REVIEWS BY THEIR ID //
+  const getBarbershopReviews = async () => {
+    const reviews = await GetReviewsByBarbershopId()
+    setBarbershopReviews(reviews)
+  }
+  console.log('REVIEWSSSS', barbershopReviews)
+
+  // GETTING ALL USERS //
+  useEffect(() => {
+    const getUsers = async () => {
+      const users = await GetAllUsers()
+      setAllUsers(users)
+    }
+    getUsers()
+  }, [])
+  console.log('ALL USERS: ', allUsers)
+
   const toggleDropdown = () => {
     displayLoginDropdown === false
       ? setDisplayLoginDropdown(true)
@@ -200,6 +221,7 @@ const App = () => {
             element={
               <Home
                 barbershops={barbershops}
+                barbershopReviews={barbershopReviews}
                 user={user}
                 authenticated={authenticated}
                 getUserAppointments={getUserAppointments}
@@ -216,6 +238,7 @@ const App = () => {
                 barbershops={barbershops}
                 barbersInBarbershop={barbersInBarbershop}
                 setBarbersInBarbershop={setBarbersInBarbershop}
+                allUsers={allUsers}
               />
             }
           />

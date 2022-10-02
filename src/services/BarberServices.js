@@ -91,3 +91,21 @@ export const DeleteBarberAccount = async (barberId) => {
     throw error
   }
 }
+
+export const GetAllBarbershopReviews = async () => {
+  try {
+    const res = await Client.get(`barbershop_reviews/all`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const GetReviewsByBarbershopId = async (barbershopId) => {
+  try {
+    const res = await Client.get(`barbershop_reviews/all/${barbershopId}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}

@@ -638,6 +638,89 @@ body {
   border: 2px solid rgba(177, 212, 142, 0.89);
 }
 
+.barbershop-reviews-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 2rem;
+  margin: 0 auto;
+  padding: 3vh 0 3vh 0;
+  width: 140vh;
+  border-top: 1px solid rgb(173, 218, 240);
+  border-bottom: 1px solid rgb(173, 218, 240);
+}
+
+.rate-barbershop {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  width: 24rem;
+  border: 1px solid rgb(147, 210, 233);
+  border-radius: 5% / 6%;
+  padding: 2vh 3vh 4vh 3vh;
+  box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
+  background-color: white;
+}
+
+.rate-barbershop input {
+  height: 4vh;
+  padding: 0 1vh 0 1vh;
+  font-size: 15px;
+  border: 1px solid rgb(65 82 97);
+  border-radius: 2% / 19%;
+  background-color: rgb(245, 246, 246);
+}
+
+.rate-barbershop textarea {
+  height: 4rem;
+  padding: 0.5em 0 0 0.5em;
+  font-size: 15px;
+  border: 1px solid rgb(65 82 97);
+  border-radius: 3% / 16%;
+  background-color: rgb(245, 246, 246);
+  font-family: Arial, Helvetica, sans-serif;
+  resize: none;
+}
+
+.rate-barbershop button {
+  height: 4vh;
+  cursor: pointer;
+  border: none;
+  background-color: rgb(202, 207, 212);
+  color: rgb(44 56 66);
+  border-radius: 2% / 19%;
+  font-size: 15px;
+}
+
+.rate-barbershop button:hover {
+  background-color: rgb(102, 145, 182);
+  color: white;
+}
+
+.rate-barbershop button:active {
+  background-color: rgb(68, 105, 138);
+  color: rgb(230, 230, 230);
+}
+
+.barbershop-reviews {
+  display: flex;
+  column-gap: 4rem;
+  row-gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.barbershop-review-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 30rem;
+  border: 1px solid rgb(147, 210, 233);
+  border-radius: 4% / 9%;
+  padding: 2vh 3vh 4vh 3vh;
+  box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
+  background-color: white;
+}
+
 /* ============>> BARBER AVAILABILITY PAGE <<============ */
 
 .barber-avail-page {

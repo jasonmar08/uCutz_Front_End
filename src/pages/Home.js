@@ -3,6 +3,7 @@ import AppointmentCard from '../components/AppointmentCard'
 
 const Home = ({
   barbershops,
+  barbershopReviews,
   user,
   authenticated,
   getUserAppointments,
@@ -35,6 +36,7 @@ const Home = ({
                 state={state}
                 thumbnail={business_image}
                 id={id}
+                barbershopReviews={barbershopReviews}
               />
             )
           )}
@@ -56,6 +58,7 @@ const Home = ({
                 state={state}
                 thumbnail={business_image}
                 id={id}
+                barbershopReviews={barbershopReviews}
               />
             )
           )}

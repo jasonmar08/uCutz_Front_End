@@ -18,6 +18,15 @@ export const GetUser = async (userId) => {
   }
 }
 
+export const GetAllUsers = async () => {
+  try {
+    const res = await Client.get('/users/all')
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
 export const GetAppointmentsByUserId = async (userId) => {
   try {
     const res = await Client.get(`/users/appointments/${userId}`)

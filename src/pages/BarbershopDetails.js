@@ -5,7 +5,8 @@ const BarbershopDetails = ({
   authenticated,
   barbershops,
   barbersInBarbershop,
-  setBarbersInBarbershop
+  setBarbersInBarbershop,
+  allUsers
 }) => {
   return (
     <div>
@@ -16,6 +17,7 @@ const BarbershopDetails = ({
         barbershops={barbershops}
         barbersInBarbershop={barbersInBarbershop}
         setBarbersInBarbershop={setBarbersInBarbershop}
+        allUsers={allUsers}
       />
     </div>
   )

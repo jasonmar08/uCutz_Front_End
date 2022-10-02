@@ -37,3 +37,21 @@ export const formatDate = (date) => {
 
   return `${month}-${day}-${year}`
 }
+
+export const starReview = (rating) => {
+  if (rating === 1) {
+    return '★☆☆☆☆'
+  } else if (rating === 2) {
+    return '★★☆☆☆'
+  } else if (rating === 3) {
+    return '★★★☆☆'
+  } else if (rating === 4) {
+    return '★★★★☆'
+  } else if (rating === 5) {
+    return '★★★★★'
+  } else if (rating > 4 && rating < 5) {
+    return '★★★★☆'
+  } else if (rating === 'No Reviews Yet') {
+    return 'No Reviews'
+  }
+}

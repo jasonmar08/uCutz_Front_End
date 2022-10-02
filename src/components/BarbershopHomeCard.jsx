@@ -1,6 +1,47 @@
+import { useState, useEffect } from "react"
 import { NavLink } from "react-router-dom"
+import { GetAllBarbershopReviews } from "../services/BarberServices"
+import { starReview } from "../utilities/formatForm"
 
-const BarbershopHomeCard = ({ name, city, state, thumbnail, id }) => {
+const BarbershopHomeCard = ({ name, city, state, thumbnail, id, barbershopReviews }) => {
+  const barbershopId = id
+  const [allReviews, setAllReviews] = useState([])
+
+  useEffect(() => {
+    const getAllBarbershopReviews = async () => {
+      const res = await GetAllBarbershopReviews()
+      setAllReviews(res)
+    }
+    getAllBarbershopReviews()
+  }, [])
+
+  const reviews = allReviews.filter((e) => e.barbershopId === parseInt(barbershopId))
+  let total = 0
+  reviews.forEach(review => {
+    total += review.rating
+
+  })
+  
+  let averageRating 
+  if (reviews.length === 1) {
+    averageRating = total
+  } else if (reviews.length < 1) {
+    averageRating = 'No Reviews Yet'
+  } else {
+    averageRating = total / reviews.length
+  }
+  console.log('Barbershop', barbershopId, '==> AVERAGE RATINGS: ', averageRating)
+
+  // if (!reviews) {
+  //   return <p>✩✩✩✩✩</p>
+  // }
+  const { rating } = reviews
+
+  // const averageRating = () => {
+  //   e
+  // }
+
+  // console.log('ALL RATINGS: ', reviews)
 
   return (
     <div>
@@ -9,6 +50,7 @@ const BarbershopHomeCard = ({ name, city, state, thumbnail, id }) => {
           <NavLink to={`/barbershops/${id}`}><img src={thumbnail} alt={name} /></NavLink>
         </div>
         <h3>{name}</h3>
+        <p>{starReview(averageRating)}</p>
         <h5>{city}, {state}</h5>
       </div>
     </div>
