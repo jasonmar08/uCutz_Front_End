@@ -69,7 +69,7 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
     averageRating = Number(averageRating).toFixed(1)
     barbershopRating = averageRating + ' out of 5'
   } else if (reviews.length < 1) {
-    averageRating = 'No reviews. Be the first to review!'
+    averageRating = 'No reviews. Be the first to rate us!'
     barbershopRating = averageRating
   } else {
     averageRating = total / reviews.length
