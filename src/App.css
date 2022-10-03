@@ -607,6 +607,27 @@ body {
   padding: 5px 1em 5px 1em;
 }
 
+.barbershop-info-container a {
+  text-decoration: none;
+  color: rgb(102, 145, 182);
+  padding: 5px;
+}
+
+.barbershop-info-container a:hover {
+  background-color: rgba(102, 145, 182, 0.308);
+  border-radius: 8% / 19%;
+}
+
+.barbershop-info-container a:active {
+  background-color: rgba(102, 145, 182, 0.58);
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  column-gap: 2rem;
+}
+
 .barbershop-barbers-container {
   display: flex;
   flex-direction: column;

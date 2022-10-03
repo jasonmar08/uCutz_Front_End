@@ -69,7 +69,7 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
     averageRating = Number(averageRating).toFixed(1)
     barbershopRating = averageRating + ' out of 5'
   } else if (reviews.length < 1) {
-    averageRating = 'No reviews. Be the first to rate us!'
+    averageRating = 'No reviews yet. Be the first to rate us!'
     barbershopRating = averageRating
   } else {
     averageRating = total / reviews.length
@@ -154,8 +154,10 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
             <h4><a href={business_site} target='_blank'>Website</a></h4>
             <div>
               <h3>Follow Us:</h3>
-              <a href={fb_link} target='_blank'>Facebook</a>
-              <a href={ig_link} target='_blank'>Instagram</a>
+              <div className='socials'>
+                <a href={fb_link} target='_blank'>Facebook</a>
+                <a href={ig_link} target='_blank'>Instagram</a>
+              </div>
             </div>
           </div>
         </div>
@@ -221,8 +223,10 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
             <h4><a href={business_site} target='_blank'>Website</a></h4>
             <div>
               <h3>Follow Us:</h3>
-              <a href={fb_link} target='_blank'>Facebook</a>
-              <a href={ig_link} target='_blank'>Instagram</a>
+              <div className='socials'>
+                <a href={fb_link} target='_blank'>Facebook</a>
+                <a href={ig_link} target='_blank'>Instagram</a>
+              </div>
             </div>
           </div>
         </div>
