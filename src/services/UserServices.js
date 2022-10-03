@@ -70,3 +70,12 @@ export const DeleteUserAccount = async (userId) => {
     throw error
   }
 }
+
+export const CreateBarbershopReview = async (data) => {
+  try {
+    const res = await Client.post('/barbershop_reviews/', data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}

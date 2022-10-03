@@ -645,6 +645,7 @@ body {
   align-items: center;
   row-gap: 2rem;
   margin: 0 auto;
+  margin-bottom: 6vh;
   padding: 3vh 0 3vh 0;
   width: 140vh;
   border-top: 1px solid rgb(173, 218, 240);
@@ -661,6 +662,40 @@ body {
   padding: 2vh 3vh 4vh 3vh;
   box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
   background-color: white;
+}
+
+.rate-barbershop-unauth {
+  display: flex;
+  align-items: center;
+  row-gap: 1rem;
+  width: 16rem;
+  border: 1px solid rgb(147, 210, 233);
+  border-radius: 4% / 20%;
+  padding: 2vh 3vh 2vh 3vh;
+  box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
+  background-color: white;
+}
+
+.rate-barbershop-unauth span {
+  text-decoration: none;
+  color: rgb(57, 56, 56);
+  padding: 5px;
+  width: 30vh;
+}
+
+.rate-barbershop-unauth a {
+  text-decoration: none;
+  color: rgb(102, 145, 182);
+  padding: 5px;
+}
+
+.rate-barbershop-unauth a:hover {
+  background-color: rgba(102, 145, 182, 0.308);
+  border-radius: 8% / 19%;
+}
+
+.rate-barbershop-unauth a:active {
+  background-color: rgba(102, 145, 182, 0.58);
 }
 
 .rate-barbershop input {
@@ -703,9 +738,32 @@ body {
   color: rgb(230, 230, 230);
 }
 
+#star-radios {
+  display: none;
+}
+
+.yellow-star {
+  color: #ffc107;
+}
+
+.yellow-star-btn {
+  color: #ffc107;
+  cursor: pointer;
+}
+
+.gray-star {
+  color: #e4e5e9;
+}
+
+.gray-star-btn {
+  color: #e4e5e9;
+  cursor: pointer;
+}
+
 .barbershop-reviews {
   display: flex;
   column-gap: 4rem;
+  justify-content: center;
   row-gap: 4rem;
   flex-wrap: wrap;
 }
@@ -713,7 +771,8 @@ body {
 .barbershop-review-card {
   display: flex;
   flex-direction: column;
-  max-width: 30rem;
+  width: 25rem;
+  height: 9rem;
   border: 1px solid rgb(147, 210, 233);
   border-radius: 4% / 9%;
   padding: 2vh 3vh 4vh 3vh;

@@ -1,3 +1,5 @@
+import { FaStar } from 'react-icons/fa'
+
 export const formatPhone = (num) => {
   return `(${num.slice(0, 3)}) ${num.slice(3, 6)}-${num.slice(6)}`
 }
@@ -38,19 +40,31 @@ export const formatDate = (date) => {
   return `${month}-${day}-${year}`
 }
 
-export const starReview = (rating) => {
+export const formatRating = (rating) => {
   if (rating === 1) {
-    return '★☆☆☆☆'
+    return [...Array(5)].map((star, i) => {
+      return <FaStar className={i <= 0 ? 'yellow-star' : 'gray-star'} />
+    })
   } else if (rating === 2) {
-    return '★★☆☆☆'
+    return [...Array(5)].map((star, i) => {
+      return <FaStar className={i <= 1 ? 'yellow-star' : 'gray-star'} />
+    })
   } else if (rating === 3) {
-    return '★★★☆☆'
+    return [...Array(5)].map((star, i) => {
+      return <FaStar className={i <= 2 ? 'yellow-star' : 'gray-star'} />
+    })
   } else if (rating === 4) {
-    return '★★★★☆'
-  } else if (rating === 5) {
-    return '★★★★★'
+    return [...Array(5)].map((star, i) => {
+      return <FaStar className={i <= 3 ? 'yellow-star' : 'gray-star'} />
+    })
+  } else if (rating >= 5) {
+    return [...Array(5)].map((star, i) => {
+      return <FaStar className={i <= 4 ? 'yellow-star' : 'gray-star'} />
+    })
   } else if (rating > 4 && rating < 5) {
-    return '★★★★☆'
+    return [...Array(5)].map((star, i) => {
+      return <FaStar className={i < 4 ? 'yellow-star' : 'gray-star'} />
+    })
   } else if (rating === 'No Reviews Yet') {
     return 'No Reviews'
   }

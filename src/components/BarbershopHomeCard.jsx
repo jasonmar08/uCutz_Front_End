@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { NavLink } from "react-router-dom"
 import { GetAllBarbershopReviews } from "../services/BarberServices"
-import { starReview } from "../utilities/formatForm"
+import { formatRating } from "../utilities/formatForm"
 
 const BarbershopHomeCard = ({ name, city, state, thumbnail, id, barbershopReviews }) => {
   const barbershopId = id
@@ -22,7 +22,7 @@ const BarbershopHomeCard = ({ name, city, state, thumbnail, id, barbershopReview
 
   })
   
-  let averageRating 
+  let averageRating
   if (reviews.length === 1) {
     averageRating = total
   } else if (reviews.length < 1) {
@@ -30,7 +30,6 @@ const BarbershopHomeCard = ({ name, city, state, thumbnail, id, barbershopReview
   } else {
     averageRating = total / reviews.length
   }
-  console.log('Barbershop', barbershopId, '==> AVERAGE RATINGS: ', averageRating)
 
   // if (!reviews) {
   //   return <p>✩✩✩✩✩</p>
@@ -50,7 +49,7 @@ const BarbershopHomeCard = ({ name, city, state, thumbnail, id, barbershopReview
           <NavLink to={`/barbershops/${id}`}><img src={thumbnail} alt={name} /></NavLink>
         </div>
         <h3>{name}</h3>
-        <p>{starReview(averageRating)}</p>
+        <p>{formatRating(averageRating)}</p>
         <h5>{city}, {state}</h5>
       </div>
     </div>

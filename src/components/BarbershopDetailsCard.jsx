@@ -1,13 +1,27 @@
 import { GetAllBarbershopReviews } from '../services/BarberServices'
-import { formatPhone, starReview } from '../utilities/formatForm'
-import { useParams, NavLink } from 'react-router-dom'
+import { CreateBarbershopReview } from '../services/UserServices'
+import { formatPhone, formatRating } from '../utilities/formatForm'
+import { FaStar } from 'react-icons/fa'
+import { useParams, NavLink, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { BASE_URL } from '../services/api'
 import axios from 'axios'
 
 const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarbershop, setBarbersInBarbershop, allUsers }) => {
+  const navigate = useNavigate()
+  const { barbershopId } = useParams()
   const [allReviews, setAllReviews] = useState([])
+  const [rating, setRating] = useState(null)
+  const [hoverRating, setHoverRating] = useState(null)
   let userName = ''
+  const [reviewFormValues, setReviewFormValues] = useState({
+    rating: null,
+    caption: '',
+    comment: '',
+    review_image: '',
+    userId: user?.id,
+    barbershopId: parseInt(barbershopId)
+  })
 
   useEffect(() => {
     const getBarbersByBarbershop = async () => {
@@ -25,34 +39,98 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
     getAllBarbershopReviews()
   }, [])
 
-  const { barbershopId } = useParams()
-  console.log(barbershopId)
-
   const barbershop = barbershops.find(e => e.id === parseInt(barbershopId))
   if (!barbershop) {
     return <div>Barbershop Not Found</div>
   }
   const { id, business_image, business_name, address, city, state, zip_code, phoneNumber, business_site, fb_link, ig_link } = barbershop
 
+  // FILTERING REVIEWS TO SHOW ONLY MATCHING BARBERSHOPID
   const reviews = allReviews.filter((e) => e.barbershopId === parseInt(barbershopId))
   let total = 0
   reviews.forEach(review => {
     total += review.rating
   
+    // FILTERING ALL USERS BY REVIEW.USERID AND USER.ID TO SHOW FIRSTNAME
     const userReview = allUsers.filter(e => e.id === parseInt(review.userId))
 
     userReview.forEach((user) => {
-      return userName = user.firstName
+      if (user.id === parseInt(review.userId)){
+        return userName = user.firstName
+      }
     })
   })
   
-  let averageRating 
+  // CALCULATING BARBERSHOP RATING AVERAGE
+  let barbershopRating = ''
+  let averageRating
   if (reviews.length === 1) {
     averageRating = total
+    averageRating = Number(averageRating).toFixed(1)
+    barbershopRating = averageRating + ' out of 5'
   } else if (reviews.length < 1) {
-    averageRating = 'No Reviews Yet'
+    averageRating = 'No reviews. Be the first to review!'
+    barbershopRating = averageRating
   } else {
     averageRating = total / reviews.length
+    averageRating = Number(averageRating).toFixed(1)
+    barbershopRating = averageRating + ' out of 5'
+  }
+
+  // VALUE FOR EACH STAR INPUT
+  const starButtons = () => {
+    return [...Array(5)].map((star, i) => {
+      const ratingValue = i + 1
+  
+      return (
+        <label>
+          <input
+            type="radio"
+            name="rating"
+            value={ratingValue}
+            onClick={() => setRating(ratingValue)}
+            onChange={handleChange}
+            required
+            id="star-radios"
+          ></input>
+          <FaStar
+            className={ratingValue <= (hoverRating || rating) ? 'yellow-star-btn' : 'gray-star-btn'}
+            onMouseEnter={() => setHoverRating(ratingValue)}
+            onMouseLeave={() => setHoverRating(null)} />
+        </label>
+      )
+    })
+  }
+
+  // CREATING NEW BARBERSHOP REVIEW
+  const handleChange = (e) => {
+    setReviewFormValues((prevstate) => ({
+      ...prevstate,
+      [e.target.name]: e.target.value
+    }))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    await CreateBarbershopReview({
+      rating: reviewFormValues.rating,
+      caption: reviewFormValues.caption,
+      comment: reviewFormValues.comment,
+      review_image: reviewFormValues.review_image,
+      userId: user.id,
+      barbershopId: parseInt(barbershopId)
+    })
+    setReviewFormValues({
+      rating: null,
+      caption: '',
+      comment: '',
+      review_image: '',
+      userId: user.id,
+      barbershopId: parseInt(barbershopId)
+    })
+
+    navigate('/')
   }
 
 
@@ -98,6 +176,30 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
         }
             </div>
       </div>
+      <div className='barbershop-reviews-container'>
+        <div className='rate-barbershop'>
+          <h3>Rate Your Experience:</h3>
+          <h3>{starButtons()}</h3>
+          <p>Your Rating: {rating}</p>
+          <input onChange={handleChange} type='text' name='caption' placeholder='Caption' value={reviewFormValues.caption} required></input>
+          <textarea onChange={handleChange} type='text' name="comment" placeholder='Comments' value={reviewFormValues.comment} required></textarea>
+          <input onChange={handleChange} type='text' name='review_image' placeholder='Photo (Optional)' value={reviewFormValues.review_image}></input>
+          <button onClick={handleSubmit}>Submit Review</button>
+        </div>
+        <h3>Avg. Rating: {formatRating(averageRating)} {barbershopRating}</h3>
+        <div className='barbershop-reviews'>
+          {
+            reviews && reviews.map(({ id, rating, caption, comment, review_image, userId }) => (
+              <div key={id} className='barbershop-review-card'>
+                <h3>{formatRating(rating)}</h3>
+                <h4>{userName} ({userId}) - {caption}</h4>
+                {review_image ? <img src={review_image} alt='review'/> : ''}
+                <p>{comment}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
     </div>
   ) : (
     <div>
@@ -142,23 +244,18 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
         </div>
       </div>
       <div className='barbershop-reviews-container'>
-      <div className='rate-barbershop'>
-        <h4>Rate Your Experience:</h4>
-        <h3>☆☆☆☆☆</h3>
-        <input name='caption' placeholder='Caption'></input>
-        <textarea name="comment" id="" placeholder='Comments'></textarea>
-        <input name='review_image' placeholder='Photo (Optional)'></input>
-        <button>Submit Review</button>
-      </div>
-        <h3>Avg. Rating: {starReview(averageRating)} {averageRating.toFixed(1)}</h3>
+        <h3>Avg. Rating: {formatRating(averageRating)} {barbershopRating}</h3>
+        <div className='rate-barbershop-unauth'>
+          <span><NavLink to='/user/login'>Sign In</NavLink> To Write A Review</span>
+        </div>
         <div className='barbershop-reviews'>
           {
             reviews && reviews.map(({ id, rating, caption, comment, review_image, userId }) => (
               <div key={id} className='barbershop-review-card'>
-                <h3>{starReview(rating)}</h3>
+                <h3>{formatRating(rating)}</h3>
                 <h4>{userName} ({userId}) - {caption}</h4>
                 {review_image ? <img src={review_image} alt='review'/> : ''}
-                <h4>{comment}</h4>
+                <p>{comment}</p>
               </div>
             ))
           }
