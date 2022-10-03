@@ -248,10 +248,10 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
         </div>
       </div>
       <div className='barbershop-reviews-container'>
-        <h3>Avg. Rating: {formatRating(averageRating)} {barbershopRating}</h3>
         <div className='rate-barbershop-unauth'>
           <span><NavLink to='/user/login'>Sign In</NavLink> To Write A Review</span>
         </div>
+        <h3>Avg. Rating: {formatRating(averageRating)} {barbershopRating}</h3>
         <div className='barbershop-reviews'>
           {
             reviews && reviews.map(({ id, rating, caption, comment, review_image, userId }) => (
