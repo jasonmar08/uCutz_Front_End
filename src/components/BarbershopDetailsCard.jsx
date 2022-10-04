@@ -66,17 +66,28 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
   // CALCULATING BARBERSHOP RATING AVERAGE
   let barbershopRating = ''
   let averageRating
-  if (reviews.length === 1) {
-    averageRating = total
-    averageRating = Number(averageRating).toFixed(1)
-    barbershopRating = averageRating + ' out of 5'
-  } else if (reviews.length < 1) {
-    averageRating = 'No reviews yet. Be the first to rate us!'
-    barbershopRating = averageRating
-  } else {
-    averageRating = total / reviews.length
-    averageRating = Number(averageRating).toFixed(1)
-    barbershopRating = averageRating + ' out of 5'
+  const displayAvgRating = () => {
+    if (reviews.length === 1) {
+      averageRating = total
+      averageRating = Number(averageRating).toFixed(1)
+      // barbershopRating = averageRating + ' out of 5'
+      return (
+        <h3>Avg. Rating: {formatRating(averageRating)} {averageRating} out of 5</h3>
+      )
+    } else if (reviews.length < 1) {
+      averageRating = 'No reviews yet. Be the first to rate us!'
+      barbershopRating = averageRating
+      return (
+        <h3>{barbershopRating}</h3>
+      )
+    } else {
+      averageRating = total / reviews.length
+      averageRating = Number(averageRating).toFixed(1)
+      // barbershopRating = averageRating + ' out of 5'
+      return (
+        <h3>Avg. Rating: {formatRating(averageRating)} {averageRating} out of 5</h3>
+      )
+    }
   }
 
   // VALUE FOR EACH STAR INPUT
@@ -174,7 +185,6 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
                   <NavLink to={`/barbershops/barbers/${id}/availability`}><img src={barber_image} alt='barber' /></NavLink>
                 </div>
                 <h3>{firstName}</h3>
-                {/* <h4>Book With Me!</h4> */}
               </div>
           ))
         }
@@ -190,7 +200,7 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
           <input onChange={handleChange} type='text' name='review_image' placeholder='Photo (Optional)' value={reviewFormValues.review_image}></input>
           <button onClick={handleSubmit}>Submit Review</button>
         </div>
-        <h3>Avg. Rating: {formatRating(averageRating)} {barbershopRating}</h3>
+        {displayAvgRating()}
         <div className='barbershop-reviews'>
         {
             reviews && reviews.map(({ id, rating, caption, comment, review_image, User }) => {
@@ -245,7 +255,6 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
                   <NavLink to='/user/login'><img src={barber_image} alt='barber' /></NavLink>
                 </div>
                 <h3>{firstName}</h3>
-                {/* <h4>Book With Me!</h4> */}
               </div>
           ))
         }
@@ -255,17 +264,20 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
         <div className='rate-barbershop-unauth'>
           <span><NavLink to='/user/login'>Sign In</NavLink> To Write A Review</span>
         </div>
-        <h3>Avg. Rating: {formatRating(averageRating)} {barbershopRating}</h3>
+        {displayAvgRating()}
         <div className='barbershop-reviews'>
           {
-            reviews && reviews.map(({ id, rating, caption, comment, review_image, userId }) => (
-              <div key={id} className='barbershop-review-card'>
-                <h3>{formatRating(rating)}</h3>
-                <h4>{userName} ({userId}) - {caption}</h4>
-                {review_image ? <img src={review_image} alt='review'/> : ''}
-                <p>{comment}</p>
-              </div>
-            ))
+            reviews && reviews.map(({ id, rating, caption, comment, review_image, User }) => {
+              const { firstName } = User;
+              return (
+                <div key={id} className='barbershop-review-card'>
+                  <h3>{formatRating(rating)}</h3>
+                  <h4>{firstName} - {caption}</h4>
+                  {review_image ? <img src={review_image} alt='review'/> : ''}
+                  <p>{comment}</p>
+                </div>
+              )
+              })
           }
         </div>
       </div>

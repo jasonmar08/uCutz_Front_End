@@ -54,7 +54,7 @@ const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown,
     (currentUser || currentBarber) ? (
       currentUser ? (<nav>
           <div className='navbar'>
-            <NavLink to='/' onClick={() => setDisplayProfileDropdown(false)} className='logo'><img className='logo-nav' src='./assets/uCutz_nav_logo.png' alt='logo' /></NavLink>
+            <NavLink to='/' onClick={() => setDisplayProfileDropdown(false)} className='logo'><img className='logo-nav' src='/assets/uCutz_nav_logo.png' alt='logo' /></NavLink>
             <div className='nav-labels'>
               <NavLink to='/' onClick={() => setDisplayProfileDropdown(false)} className='nav-link'>Home</NavLink>
               <NavLink to={`/user/appointments/${currentUser.id}`} onClick={() => setDisplayProfileDropdown(false)} className='nav-link'>Appointments</NavLink>
@@ -64,7 +64,7 @@ const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown,
           {handleClickProfilePic()}
         </nav>) : (<nav>
           <div className='navbar'>
-            <NavLink to='/' onClick={() => setDisplayBarberProfileDropdown(false)} className='logo'><img className='logo-nav' src='./assets/uCutz_nav_logo.png' alt='logo' /></NavLink>
+            <NavLink to='/' onClick={() => setDisplayBarberProfileDropdown(false)} className='logo'><img className='logo-nav' src='/assets/uCutz_nav_logo.png' alt='logo' /></NavLink>
             <div className='nav-labels'>
               <NavLink to='/' onClick={() => setDisplayBarberProfileDropdown(false)} className='nav-link'>Home</NavLink>
               <NavLink to={`/barber/appointments/${currentBarber.id}`} onClick={() => setDisplayBarberProfileDropdown(false)} className='nav-link'>Appointments</NavLink>
@@ -76,7 +76,7 @@ const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown,
       ) : (
       <nav>
         <div className='navbar'>
-          <NavLink to='/' onClick={() => setDisplayLoginDropdown(false)} className='logo'><img className='logo-nav' src='./assets/uCutz_nav_logo.png' alt='logo' /></NavLink>
+          <NavLink to='/' onClick={() => setDisplayLoginDropdown(false)} className='logo'><img className='logo-nav' src='/assets/uCutz_nav_logo.png' alt='logo' /></NavLink>
           <div className='nav-labels'>
             <NavLink to='/barber/register' onClick={() => setDisplayLoginDropdown(false)} className='nav-link'>Are you a barber?</NavLink>
             <NavLink to='/' onClick={() => setDisplayLoginDropdown(false)} className='nav-link'>Home</NavLink>
