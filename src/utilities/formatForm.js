@@ -40,32 +40,47 @@ export const formatDate = (date) => {
   return `${month}-${day}-${year}`
 }
 
+// export const formatRating = (rating) => {
+//   if (rating === 1) {
+//     return [...Array(5)].map((star, i) => {
+//       return <FaStar className={i <= 0 ? 'yellow-star' : 'gray-star'} />
+//     })
+//   } else if (rating === 2) {
+//     return [...Array(5)].map((star, i) => {
+//       return <FaStar className={i <= 1 ? 'yellow-star' : 'gray-star'} />
+//     })
+//   } else if (rating === 3) {
+//     return [...Array(5)].map((star, i) => {
+//       return <FaStar className={i <= 2 ? 'yellow-star' : 'gray-star'} />
+//     })
+//   } else if (rating === 4) {
+//     return [...Array(5)].map((star, i) => {
+//       return <FaStar className={i <= 3 ? 'yellow-star' : 'gray-star'} />
+//     })
+//   } else if (rating >= 5) {
+//     return [...Array(5)].map((star, i) => {
+//       return <FaStar className={i <= 4 ? 'yellow-star' : 'gray-star'} />
+//     })
+//   } else if (rating > 4 && rating < 5) {
+//     return [...Array(5)].map((star, i) => {
+//       return <FaStar className={i < 4 ? 'yellow-star' : 'gray-star'} />
+//     })
+//   } else if (rating === 'No Reviews Yet') {
+//     return 'No Reviews'
+//   }
+// }
+
 export const formatRating = (rating) => {
-  if (rating === 1) {
-    return [...Array(5)].map((star, i) => {
-      return <FaStar className={i <= 0 ? 'yellow-star' : 'gray-star'} />
-    })
-  } else if (rating === 2) {
-    return [...Array(5)].map((star, i) => {
-      return <FaStar className={i <= 1 ? 'yellow-star' : 'gray-star'} />
-    })
-  } else if (rating === 3) {
-    return [...Array(5)].map((star, i) => {
-      return <FaStar className={i <= 2 ? 'yellow-star' : 'gray-star'} />
-    })
-  } else if (rating === 4) {
-    return [...Array(5)].map((star, i) => {
-      return <FaStar className={i <= 3 ? 'yellow-star' : 'gray-star'} />
-    })
-  } else if (rating >= 5) {
-    return [...Array(5)].map((star, i) => {
-      return <FaStar className={i <= 4 ? 'yellow-star' : 'gray-star'} />
-    })
-  } else if (rating > 4 && rating < 5) {
-    return [...Array(5)].map((star, i) => {
-      return <FaStar className={i < 4 ? 'yellow-star' : 'gray-star'} />
-    })
-  } else if (rating === 'No Reviews Yet') {
-    return 'No Reviews'
-  }
+  const starPercentage = (rating / 5) * 100
+  const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`
+  // document.querySelector(`.stars-inner`).style.width = starPercentageRounded
+
+  return (
+    <div className="stars-outer">
+      <div
+        style={{ width: starPercentageRounded }}
+        className="stars-inner"
+      ></div>
+    </div>
+  )
 }

@@ -14,7 +14,7 @@ const UserRegisterForm = () => {
     city: '',
     state: '',
     zip_code: '',
-    user_image: '../../assets/profile_pic_icon.png'
+    user_image: '/assets/profile_pic_icon.png'
   })
 
   const handleChange = (e) => {
@@ -32,7 +32,7 @@ const UserRegisterForm = () => {
       city: formValues.city,
       state: formValues.state,
       zip_code: formValues.zip_code,
-      user_image: '../../assets/profile_pic_icon.png'
+      user_image: '/assets/profile_pic_icon.png'
     })
 
     setFormValues({
@@ -44,11 +44,10 @@ const UserRegisterForm = () => {
       city: '',
       state: '',
       zip_code: '',
-      user_image: '../../assets/profile_pic_icon.png'
+      user_image: '/assets/profile_pic_icon.png'
     })
 
     navigate('/user/login')
-    console.log(`Created user, ${formValues.firstName}`)
   }
 
   return (

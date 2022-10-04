@@ -1,4 +1,4 @@
-import { GetAllBarbershopReviews } from '../services/BarberServices'
+import { GetReviewsByBarbershopId } from '../services/BarberServices'
 import { CreateBarbershopReview } from '../services/UserServices'
 import { formatPhone, formatRating } from '../utilities/formatForm'
 import { FaStar } from 'react-icons/fa'
@@ -32,11 +32,11 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
   }, [])
 
   useEffect(() => {
-    const getAllBarbershopReviews = async () => {
-      const res = await GetAllBarbershopReviews()
+    const getAllBarbershopReviews = async (barbershopId) => {
+      const res = await GetReviewsByBarbershopId(barbershopId)
       setAllReviews(res)
     }
-    getAllBarbershopReviews()
+    getAllBarbershopReviews(barbershopId)
   }, [])
 
   const barbershop = barbershops.find(e => e.id === parseInt(barbershopId))
@@ -52,13 +52,15 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
     total += review.rating
   
     // FILTERING ALL USERS BY REVIEW.USERID AND USER.ID TO SHOW FIRSTNAME
-    const userReview = allUsers.filter(e => e.id === parseInt(review.userId))
+    // const userReview = allUsers.filter(e => e.id === parseInt(review.userId))
 
-    userReview.forEach((user) => {
-      if (user.id === parseInt(review.userId)){
-        return userName = user.firstName
-      }
-    })
+    // userReview.forEach((user) => {
+
+    //   if (user.id === parseInt(review.userId)){
+    //     return userName = user.firstName
+    //   }
+    // })
+    // console.log('USER REVIEW', userReview)
   })
   
   // CALCULATING BARBERSHOP RATING AVERAGE
@@ -83,7 +85,7 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
       const ratingValue = i + 1
   
       return (
-        <label>
+        <label key={i}>
           <input
             type="radio"
             name="rating"
@@ -182,7 +184,7 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
         <div className='rate-barbershop'>
           <h3>Rate Your Experience:</h3>
           <h3>{starButtons()}</h3>
-          <p>Your Rating: {rating}</p>
+          <p>Your Rating: {rating} out of 5</p>
           <input onChange={handleChange} type='text' name='caption' placeholder='Caption' value={reviewFormValues.caption} required></input>
           <textarea onChange={handleChange} type='text' name="comment" placeholder='Comments' value={reviewFormValues.comment} required></textarea>
           <input onChange={handleChange} type='text' name='review_image' placeholder='Photo (Optional)' value={reviewFormValues.review_image}></input>
@@ -190,15 +192,17 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
         </div>
         <h3>Avg. Rating: {formatRating(averageRating)} {barbershopRating}</h3>
         <div className='barbershop-reviews'>
-          {
-            reviews && reviews.map(({ id, rating, caption, comment, review_image, userId }) => (
+        {
+            reviews && reviews.map(({ id, rating, caption, comment, review_image, User }) => {
+			const { firstName } = User;
+			return (
               <div key={id} className='barbershop-review-card'>
                 <h3>{formatRating(rating)}</h3>
-                <h4>{userName} ({userId}) - {caption}</h4>
+                <h4>{firstName} - {caption}</h4>
                 {review_image ? <img src={review_image} alt='review'/> : ''}
                 <p>{comment}</p>
               </div>
-            ))
+            )})
           }
         </div>
       </div>

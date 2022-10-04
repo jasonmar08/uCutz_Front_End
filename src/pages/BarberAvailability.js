@@ -11,16 +11,12 @@ const BarberAvailability = ({
   getBarberServices,
   barberServices,
   createNewAppointment,
-  newAppointment,
   user
 }) => {
   const navigate = useNavigate()
   const { barberId } = useParams()
 
   const [barbershop, setBarbershop] = useState([])
-
-  const [dates, setDates] = useState([])
-  const [times, setTimes] = useState([])
 
   const [formValues, setFormValues] = useState({
     specialRequest: '',
@@ -34,13 +30,11 @@ const BarberAvailability = ({
   })
 
   const handleChange = (e) => {
-    console.log(e.target.name, e.target.value)
     setFormValues((prevstate) => ({
       ...prevstate,
       service: e.target.value
     }))
   }
-  console.log('FORM VALL', formValues)
   const handleSubmit = async (e) => {
     await createNewAppointment({
       specialRequest: '',
@@ -64,7 +58,6 @@ const BarberAvailability = ({
     })
 
     navigate('/')
-    console.log('CREATED APPOINTMENT')
   }
 
   const chooseTime = (time, day, date) => {
@@ -79,7 +72,6 @@ const BarberAvailability = ({
   useEffect(() => {
     const getBarbershop = async (id) => {
       const res = await GetBarberById(id)
-      console.log('RES', res)
       setBarbershop(res?.[0])
     }
     getBarbershop(barberId)
@@ -99,7 +91,6 @@ const BarberAvailability = ({
     }
   }, [])
 
-  console.log('BARBERSHOP', barbershop)
   if (!barbershop.barber_image) {
     return <div>Barber Not Found</div>
   }

@@ -64,7 +64,6 @@ const UserProfile = ({
     }
 
     navigate('/')
-    console.log('FORMSTATE:', formState)
   }
 
   const handleSubmitDeleteUser = async (userId) => {
@@ -76,7 +75,6 @@ const UserProfile = ({
       toggleAuthenticated(false)
       localStorage.clear()
       navigate('/')
-      // console.log('DELETED USER!')
     }
   }
 

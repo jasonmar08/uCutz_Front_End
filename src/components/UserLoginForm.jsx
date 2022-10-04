@@ -30,7 +30,6 @@ const UserLoginForm = ({ setUser, toggleAuthenticated, setDisplayProfileDropdown
 
     navigate('/')
     setDisplayProfileDropdown(false)
-    console.log(`Signed in with user, ${formValues.email}`)
   }
 
   return (

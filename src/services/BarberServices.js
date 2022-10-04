@@ -11,9 +11,7 @@ export const CreateBarbershop = async (data) => {
 
 export const GetBarberAvailabilityDates = async (barberId) => {
   try {
-    console.log('BBID', barberId)
     const res = await Client.get(`barbers/availability/dates/${barberId}`)
-    console.log('RES DATA', res.data)
     return res.data
   } catch (error) {
     throw error
@@ -103,7 +101,7 @@ export const GetAllBarbershopReviews = async () => {
 
 export const GetReviewsByBarbershopId = async (barbershopId) => {
   try {
-    const res = await Client.get(`barbershop_reviews/all/${barbershopId}`)
+    const res = await Client.get(`barbershop_reviews/${barbershopId}`)
     return res.data
   } catch (error) {
     throw error

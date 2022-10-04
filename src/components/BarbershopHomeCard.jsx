@@ -49,7 +49,7 @@ const BarbershopHomeCard = ({ name, city, state, thumbnail, id, barbershopReview
           <NavLink to={`/barbershops/${id}`}><img src={thumbnail} alt={name} /></NavLink>
         </div>
         <h3>{name}</h3>
-        <p>{formatRating(averageRating)}</p>
+        <div>{formatRating(averageRating)}</div>
         <h5>{city}, {state}</h5>
       </div>
     </div>

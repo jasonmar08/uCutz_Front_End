@@ -30,7 +30,6 @@ const BarberLoginForm = ({ setBarber, toggleAuthenticatedBarber, setCurrentBarbe
 
     navigate('/')
     setDisplayBarberProfileDropdown(false)
-    console.log(`Signed in with barber, ${formValues.email}`)
   }
 
   return (

@@ -77,11 +77,9 @@ const App = () => {
     }
   }, [])
 
-  console.log('CCCUURRREE ', currentUser, currentBarber)
   // GETTING CURRENTLY LOGGED IN USER //
   const getCurrentUser = async (userId) => {
     const user = await GetUser()
-    console.log('User?? Maybe?? ', user)
     if (user) {
       setCurrentUser(user)
       setUser(user)
@@ -95,7 +93,6 @@ const App = () => {
   // GETTING CURRENTLY LOGGED IN BARBER //
   const getCurrentBarber = async (barberId) => {
     const barber = await GetBarber()
-    console.log('CURRENT BARBER maybe:', barber)
     if (barber) {
       setCurrentBarber(barber)
       setBarber(barber)
@@ -108,12 +105,9 @@ const App = () => {
 
   // GETTING BARBER'S AVAILABLE DATES WITH TIMES JOINED //
   const getBarberAvailDates = async (id) => {
-    console.log('ID', id)
     const dates = await GetBarberAvailabilityDates(id)
-    console.log('DATES', dates)
     setBarberAvailabilityDates(dates)
   }
-  console.log('avail dates', barberAvailabilityDates)
 
   // GETTING EACH BARBER'S SERVICES //
   const getBarberServices = async (barberId) => {
@@ -129,7 +123,6 @@ const App = () => {
 
   // GETTING USER'S UPCOMING APPOINTMENTS FOR HOMEPAGE //
   const getUserAppointments = async (id) => {
-    console.log('USER ID', id)
     const appointments = await GetAppointmentsByUserId(id)
     setUserAppointments(appointments)
   }
@@ -150,21 +143,21 @@ const App = () => {
   }, [])
 
   // GETTING BARBERSHOP REVIEWS BY THEIR ID //
-  const getBarbershopReviews = async () => {
-    const reviews = await GetReviewsByBarbershopId()
-    setBarbershopReviews(reviews)
-  }
-  console.log('REVIEWSSSS', barbershopReviews)
+  // const getBarbershopReviews = async () => {
+  //   const reviews = await GetReviewsByBarbershopId()
+  //   setBarbershopReviews(reviews)
+  // }
+  // console.log('REVIEWSSSS', barbershopReviews)
 
   // GETTING ALL USERS //
-  useEffect(() => {
-    const getUsers = async () => {
-      const users = await GetAllUsers()
-      setAllUsers(users)
-    }
-    getUsers()
-  }, [])
-  console.log('ALL USERS: ', allUsers)
+  // useEffect(() => {
+  //   const getUsers = async () => {
+  //     const users = await GetAllUsers()
+  //     setAllUsers(users)
+  //   }
+  //   getUsers()
+  // }, [])
+  // console.log('ALL USERS: ', allUsers)
 
   const toggleDropdown = () => {
     displayLoginDropdown === false
@@ -183,8 +176,6 @@ const App = () => {
       ? setDisplayBarberProfileDropdown(true)
       : setDisplayBarberProfileDropdown(false)
   }
-
-  console.log('CCUU ', currentUser)
 
   return (
     <div className="App">

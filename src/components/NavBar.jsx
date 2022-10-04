@@ -14,6 +14,8 @@ const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown,
   const handleClickBarberLogOut = () => {
     setBarber(null)
     setCurrentBarber(null)
+    setUser(null)
+    setCurrentUser(null)
     toggleAuthenticatedBarber(false)
     localStorage.clear()
   }
@@ -21,6 +23,8 @@ const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown,
   const handleClickLogOut = () => {
     setUser(null)
     setCurrentUser(null)
+    setBarber(null)
+    setCurrentBarber(null)
     toggleAuthenticated(false)
     localStorage.clear()
   }
@@ -35,8 +39,6 @@ const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown,
     )}
   }
 
-  console.log(barber, user)
-
   const handleClickProfilePic = () => {
     if (displayProfileDropdown === true) {
     return (
@@ -46,8 +48,6 @@ const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown,
       </div>
     )}
   } 
-  console.log("User: 1 ", currentUser)
-  console.log("Barber: 2 ", currentBarber)
 
   return <div>
     {

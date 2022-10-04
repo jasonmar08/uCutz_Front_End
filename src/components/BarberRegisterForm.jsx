@@ -19,7 +19,7 @@ const BarberRegisterForm = ({ barbershops }) => {
     zip_code: '',
     phoneNumber: '',
     // mobile: false,
-    barber_image: '../../assets/barber_profile_pic.png',
+    barber_image: '/assets/barber_profile_pic.png',
     barbershopId: ''
   })
 
@@ -60,7 +60,7 @@ const BarberRegisterForm = ({ barbershops }) => {
       // zip_code: formValues.zip_code,
       phoneNumber: formValues.phoneNumber,
       // mobile: formValues.mobile,
-      barber_image: '../../assets/barber_profile_pic.png',
+      barber_image: '/assets/barber_profile_pic.png',
       barbershopId: formValues.barbershopId
     })
 
@@ -75,7 +75,7 @@ const BarberRegisterForm = ({ barbershops }) => {
       zip_code: '',
       phoneNumber: '',
       // mobile: false,
-      barber_image: '../../assets/barber_profile_pic.png',
+      barber_image: '/assets/barber_profile_pic.png',
       barbershopId: ''
     })
 
@@ -89,7 +89,6 @@ const BarberRegisterForm = ({ barbershops }) => {
     // }
 
     navigate('/barber/login')
-    console.log(`Created barber, ${formValues.firstName}`)
   }
 
   const handleSubmitWithBarbershop = async (e) => {
@@ -117,7 +116,7 @@ const BarberRegisterForm = ({ barbershops }) => {
       zip_code: formValuesBarbershop.zip_code,
       phoneNumber: formValues.phoneNumber,
       // mobile: formValues.mobile,
-      barber_image: '../../assets/barber_profile_pic.png',
+      barber_image: '/assets/barber_profile_pic.png',
       barbershopId: newBarbershop.id
     })
 
@@ -132,7 +131,7 @@ const BarberRegisterForm = ({ barbershops }) => {
       zip_code: '',
       phoneNumber: '',
       // mobile: false,
-      barber_image: '../../assets/barber_profile_pic.png',
+      barber_image: '/assets/barber_profile_pic.png',
       barbershopId: ''
     })
 
@@ -147,8 +146,6 @@ const BarberRegisterForm = ({ barbershops }) => {
     })
 
     navigate('/barber/login')
-    console.log(`Created barber, ${formValues.firstName}`)
-    console.log(`Create new barbershop, ${formValuesBarbershop.business_name} with id of ${barbershop.id}`)
   }
 
   return formValues.barbershopId === 'Not Listed' ? (

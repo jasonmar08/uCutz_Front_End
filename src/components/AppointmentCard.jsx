@@ -14,8 +14,6 @@ const AppointmentCard = ({ getUserAppointments, userAppointments, userId }) => {
     }
   }, [])
 
-  console.log('APPT USER ID:', userId)
-
   return (
     <div className='home-appts-container'>
       {
