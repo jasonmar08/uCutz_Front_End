@@ -14,6 +14,10 @@ body {
   min-height: 78.4vh;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* ============>> NAVBAR <<============ */
 
 .navbar {
@@ -32,6 +36,7 @@ body {
   /* background-color: rgb(24 42 56); */
   background-color: rgb(44 56 66);
   /* border-bottom: 1px solid rgb(199, 197, 197); */
+  z-index: 99999;
 }
 
 .logo {
@@ -576,18 +581,48 @@ body {
   align-items: center;
 }
 
+.barbershop-top-rating {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  width: 8rem;
+}
+
+.barbershop-top-rating h1, .barbershop-top-rating h3, .barbershop-top-rating a {
+  margin: 0;
+  padding: 0;
+}
+
+.barbershop-top-rating a {
+  color: rgb(102, 145, 182);
+  text-decoration: none;
+}
+
+.barbershop-top-rating a:hover {
+  color: rgb(102, 145, 182);
+  text-decoration: underline;
+}
+
 .barbershop-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  column-gap: 12vw;
+  column-gap: 3vw;
   padding: 3vh 0 3vh 0;
   width: 140vh;
   border-top: 1px solid rgb(173, 218, 240);
   border-bottom: 1px solid rgb(173, 218, 240);
 }
 
-.barbershop-container img {
+.map-container {
+  display: flex;
+  justify-content: center;
+  height: 40vh;
+  width: 60vh;
+  overflow: hidden;
+}
+
+.map-container img {
   height: 40vh;
 }
 
@@ -818,13 +853,67 @@ body {
 .barbershop-review-card {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 25rem;
-  height: 9rem;
+  height: 9.5rem;
   border: 1px solid rgb(147, 210, 233);
   border-radius: 4% / 9%;
-  padding: 2vh 3vh 4vh 3vh;
+  padding: 2vh 3vh 2vh 3vh;
   box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
   background-color: white;
+}
+
+.barbershop-review-card p {
+  text-align: justify;
+  padding: 0;
+}
+
+.barbershop-review-card img {
+  height: 5vh;
+  width: 5vh;
+  object-fit: cover;
+  background-color: white;
+  border: 1px solid rgb(147, 210, 233);
+  border-radius: 50%;
+}
+
+.user-review-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-review-info h4 {
+  padding: 0;
+  margin: 0;
+}
+
+.user-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 0.25rem;
+}
+
+.user-personal-info {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
+.review-date {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.user-rating h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.user-caption {
+  width: 13rem;
 }
 
 /* ============>> BARBER AVAILABILITY PAGE <<============ */

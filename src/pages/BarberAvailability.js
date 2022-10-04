@@ -118,13 +118,12 @@ const BarberAvailability = ({
                         </h5>
                       </div>
                       <div className="avail-times">
-                        {AvailabilityTimes.map(({ id, time, dateId }) => (
-                          <div className="times">
+                        {AvailabilityTimes.map(({ id, time }) => (
+                          <div className="times" key={id}>
                             <h5
                               onClick={() => chooseTime(time, day, date)}
                               name="time"
                               value={formValues.time}
-                              key={id}
                             >
                               {formatTime(time)}
                             </h5>
@@ -153,7 +152,7 @@ const BarberAvailability = ({
       </div>
       <div className="appt-info">
         <h5>Appointment Details:</h5>
-        <h6>Date: {formValues?.appt_date}</h6>
+        <h6>Date: {formatDate(formValues?.appt_date)}</h6>
         <h6>Time: {formatTime(formValues?.appt_time)}</h6>
         <h6>Service: {formValues?.service.split(' - ')[0]}</h6>
         <h6>Price: {formValues?.service.split(' - ')[1]}</h6>

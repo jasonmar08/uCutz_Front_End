@@ -78,7 +78,7 @@ const App = () => {
   }, [])
 
   // GETTING CURRENTLY LOGGED IN USER //
-  const getCurrentUser = async (userId) => {
+  const getCurrentUser = async () => {
     const user = await GetUser()
     if (user) {
       setCurrentUser(user)
@@ -91,7 +91,7 @@ const App = () => {
   }, [])
 
   // GETTING CURRENTLY LOGGED IN BARBER //
-  const getCurrentBarber = async (barberId) => {
+  const getCurrentBarber = async () => {
     const barber = await GetBarber()
     if (barber) {
       setCurrentBarber(barber)

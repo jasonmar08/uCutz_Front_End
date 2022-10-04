@@ -1,6 +1,7 @@
+import BarbershopTopRating from './BarbershopTopRating'
 import { GetReviewsByBarbershopId } from '../services/BarberServices'
 import { CreateBarbershopReview } from '../services/UserServices'
-import { formatPhone, formatRating } from '../utilities/formatForm'
+import { formatPhone, formatRating, formatDate } from '../utilities/formatForm'
 import { FaStar } from 'react-icons/fa'
 import { useParams, NavLink, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -63,27 +64,30 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
     // console.log('USER REVIEW', userReview)
   })
   
-  // CALCULATING BARBERSHOP RATING AVERAGE
+  // CALCULATING BARBERSHOP AVERAGE RATING
   let barbershopRating = ''
   let averageRating
+
+  if (reviews.length === 1) {
+    averageRating = total
+    averageRating = Number(averageRating).toFixed(1)
+  } else if (reviews.length < 1) {
+    averageRating = 'No reviews yet. Be the first to rate us!'
+    barbershopRating = averageRating
+  } else {
+    averageRating = total / reviews.length
+    averageRating = Number(averageRating).toFixed(1)
+  }
   const displayAvgRating = () => {
     if (reviews.length === 1) {
-      averageRating = total
-      averageRating = Number(averageRating).toFixed(1)
-      // barbershopRating = averageRating + ' out of 5'
       return (
         <h3>Avg. Rating: {formatRating(averageRating)} {averageRating} out of 5</h3>
       )
     } else if (reviews.length < 1) {
-      averageRating = 'No reviews yet. Be the first to rate us!'
-      barbershopRating = averageRating
       return (
         <h3>{barbershopRating}</h3>
       )
     } else {
-      averageRating = total / reviews.length
-      averageRating = Number(averageRating).toFixed(1)
-      // barbershopRating = averageRating + ' out of 5'
       return (
         <h3>Avg. Rating: {formatRating(averageRating)} {averageRating} out of 5</h3>
       )
@@ -94,7 +98,7 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
   const starButtons = () => {
     return [...Array(5)].map((star, i) => {
       const ratingValue = i + 1
-  
+      
       return (
         <label key={i}>
           <input
@@ -155,6 +159,7 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
           <div className="map-container">
             <img src={business_image} alt='map' />
           </div>
+          <BarbershopTopRating averageRating={averageRating} reviews={reviews} />
           <div className="barbershop-info-container">
             <div>
               <h5>Location:</h5>
@@ -184,7 +189,7 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
                 <div className="thumbnail-round">
                   <NavLink to={`/barbershops/barbers/${id}/availability`}><img src={barber_image} alt='barber' /></NavLink>
                 </div>
-                <h3>{firstName}</h3>
+                <h3 id='reviews-scroll'>{firstName}</h3>
               </div>
           ))
         }
@@ -203,15 +208,28 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
         {displayAvgRating()}
         <div className='barbershop-reviews'>
         {
-            reviews && reviews.map(({ id, rating, caption, comment, review_image, User }) => {
-			const { firstName } = User;
+            reviews && reviews.map(({ id, rating, caption, comment, review_image, createdAt, User }) => {
+			const { firstName, user_image } = User;
 			return (
               <div key={id} className='barbershop-review-card'>
-                <h3>{formatRating(rating)}</h3>
-                <h4>{firstName} - {caption}</h4>
-                {review_image ? <img src={review_image} alt='review'/> : ''}
-                <p>{comment}</p>
-              </div>
+                  <div className='user-review-info'>
+                    <div className='user-rating'>
+                      <div className='user-personal-info'>
+                        {user_image ? <img src={user_image} alt='user' /> : ''}
+                        <div className='review-date'>
+                          <h4>{firstName}</h4>
+                          <p>{formatDate(createdAt)}</p>
+                        </div>
+                      </div>
+                      <h3>{formatRating(rating)}</h3>
+                    </div>
+                    <div className='user-caption'>
+                      <h4>{caption}</h4>
+                    </div>
+                  </div>
+                  {review_image ? <img src={review_image} alt='review'/> : ''}
+                  <p>{comment}</p>
+                </div>
             )})
           }
         </div>
@@ -225,9 +243,10 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
           <div className="map-container">
             <img src={business_image} alt='map' />
           </div>
+          <BarbershopTopRating averageRating={averageRating} reviews={reviews} />
           <div className="barbershop-info-container">
             <div>
-              <h5>Location:</h5>
+              <h5>Address:</h5>
               <p>{address} {city}, {state} {zip_code}</p>
             </div>
             <div>
@@ -254,7 +273,7 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
                 <div className="thumbnail-round">
                   <NavLink to='/user/login'><img src={barber_image} alt='barber' /></NavLink>
                 </div>
-                <h3>{firstName}</h3>
+                <h3 id='reviews-scroll'>{firstName}</h3>
               </div>
           ))
         }
@@ -262,17 +281,30 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
       </div>
       <div className='barbershop-reviews-container'>
         <div className='rate-barbershop-unauth'>
-          <span><NavLink to='/user/login'>Sign In</NavLink> To Write A Review</span>
+          <span><NavLink to='/user/login'>Sign In</NavLink>To Write A Review</span>
         </div>
         {displayAvgRating()}
         <div className='barbershop-reviews'>
           {
-            reviews && reviews.map(({ id, rating, caption, comment, review_image, User }) => {
-              const { firstName } = User;
+            reviews && reviews.map(({ id, rating, caption, comment, review_image, createdAt, User }) => {
+              const { firstName, user_image } = User;
               return (
                 <div key={id} className='barbershop-review-card'>
-                  <h3>{formatRating(rating)}</h3>
-                  <h4>{firstName} - {caption}</h4>
+                  <div className='user-review-info'>
+                    <div className='user-rating'>
+                      <div className='user-personal-info'>
+                        {user_image ? <img src={user_image} alt='user' /> : ''}
+                        <div className='review-date'>
+                          <h4>{firstName}</h4>
+                          <p>{formatDate(createdAt)}</p>
+                        </div>
+                      </div>
+                      <h3>{formatRating(rating)}</h3>
+                    </div>
+                    <div className='user-caption'>
+                      <h4>{caption}</h4>
+                    </div>
+                  </div>
                   {review_image ? <img src={review_image} alt='review'/> : ''}
                   <p>{comment}</p>
                 </div>
