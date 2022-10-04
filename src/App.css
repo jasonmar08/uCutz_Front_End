@@ -14,6 +14,10 @@ body {
   min-height: 78.4vh;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* ============>> NAVBAR <<============ */
 
 .navbar {
