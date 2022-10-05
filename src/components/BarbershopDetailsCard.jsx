@@ -254,12 +254,14 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
                       <h4>{caption}</h4>
                     </div>
                   </div>
-                    {review_image ? (
+                  {review_image ? (
+                    <div className='image-comment-review'>
                       <div className='review-image-card' onClick={() => handleReviewImageClick(review_image)}>
                         <img src={review_image} alt='review' />
                       </div>
-                    ) : ''}
-                  <p>{comment}</p>
+                      <p>{comment}</p>
+                    </div>
+                  ) : <p>{comment}</p> }
                 </div>
             )})
           }
@@ -349,11 +351,13 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
                     </div>
                   </div>
                     {review_image ? (
-                      <div className='review-image-card' onClick={() => handleReviewImageClick(review_image)}>
-                        <img src={review_image} alt='review' />
+                      <div className='image-comment-review'>
+                        <div className='review-image-card' onClick={() => handleReviewImageClick(review_image)}>
+                          <img src={review_image} alt='review' />
+                        </div>
+                        <p>{comment}</p>
                       </div>
-                    ) : ''}
-                  <p>{comment}</p>
+                    ) : <p>{comment}</p> }
                 </div>
               )
               })
