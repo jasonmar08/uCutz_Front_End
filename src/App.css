@@ -1008,7 +1008,8 @@ html {
   border: 1px solid rgb(147, 210, 233);
   border-radius: 2% / 3%;
   box-shadow: 5px 8px 12px -10px rgba(0, 0, 0, 0.282);
-  background-color: rgba(67, 66, 66, 0.576);
+  background-color: rgba(44, 56, 66, 0.561);
+  /* background-color: rgba(67, 66, 66, 0.576); */
   z-index: 99999;
   height: 47rem;
   bottom: 10%;
