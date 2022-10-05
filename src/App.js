@@ -56,6 +56,8 @@ const App = () => {
     useState(false)
   const [barberAvailabilityDates, setBarberAvailabilityDates] = useState([])
   const [barberServices, setBarberServices] = useState([])
+  const [loginToView, toggleLoginToView] = useState(false)
+  const [barberSelectedId, setBarberSelectedId] = useState(null)
 
   const checkTokenUser = async () => {
     const user = await CheckSessionUser()
@@ -177,6 +179,11 @@ const App = () => {
       : setDisplayBarberProfileDropdown(false)
   }
 
+  // PROMT USER TO LOGIN TO VIEW BARBER AVAILABILITY
+  const handleBarberImageClick = () => {
+    loginToView === false ? toggleLoginToView(true) : toggleLoginToView(false)
+  }
+
   return (
     <div className="App">
       <ScrollToTop />
@@ -203,6 +210,7 @@ const App = () => {
           setCurrentUser={setCurrentUser}
           currentBarber={currentBarber}
           setCurrentBarber={setCurrentBarber}
+          toggleLoginToView={toggleLoginToView}
         />
       </header>
       <main>
@@ -230,6 +238,9 @@ const App = () => {
                 barbersInBarbershop={barbersInBarbershop}
                 setBarbersInBarbershop={setBarbersInBarbershop}
                 allUsers={allUsers}
+                handleBarberImageClick={handleBarberImageClick}
+                toggleLoginToView={toggleLoginToView}
+                setBarberSelectedId={setBarberSelectedId}
               />
             }
           />
@@ -257,6 +268,9 @@ const App = () => {
                 toggleAuthenticated={toggleAuthenticated}
                 setDisplayProfileDropdown={setDisplayProfileDropdown}
                 setCurrentUser={setCurrentUser}
+                loginToView={loginToView}
+                toggleLoginToView={toggleLoginToView}
+                barberSelectedId={barberSelectedId}
               />
             }
           />
@@ -331,7 +345,10 @@ const App = () => {
         </Routes>
       </main>
       <footer>
-        <Footer />
+        <Footer
+          setDisplayLoginDropdown={setDisplayLoginDropdown}
+          toggleLoginToView={toggleLoginToView}
+        />
       </footer>
     </div>
   )

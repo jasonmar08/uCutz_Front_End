@@ -2,7 +2,7 @@ import { SignInUser } from '../services/Auth'
 import { useState } from 'react'
 import { useNavigate, NavLink } from "react-router-dom"
 
-const UserDropdownLoginForm = ({ toggleDropdown, setUser, toggleAuthenticated, setDisplayProfileDropdown, setCurrentUser }) => {
+const UserDropdownLoginForm = ({ toggleDropdown, setUser, toggleAuthenticated, setDisplayProfileDropdown, setCurrentUser, toggleLoginToView }) => {
   let navigate = useNavigate()
 
   const [formValues, setFormValues] = useState({
@@ -31,6 +31,7 @@ const UserDropdownLoginForm = ({ toggleDropdown, setUser, toggleAuthenticated, s
     navigate('/')
     toggleDropdown()
     setDisplayProfileDropdown(false)
+    toggleLoginToView(false)
   }
 
   return (
@@ -41,7 +42,7 @@ const UserDropdownLoginForm = ({ toggleDropdown, setUser, toggleAuthenticated, s
         <input onChange={handleChange} type="password" name='password' placeholder="Password" value={formValues.password} required></input>
         <button disabled={!formValues.email || !formValues.password}>Sign In</button>
       </form>
-      <span>Not a Member? <NavLink to='/user/register' onClick={() => {toggleDropdown()}}>Sign Up</NavLink></span>
+      <span>Not a Member? <NavLink to='/user/register' onClick={() => {toggleDropdown(); toggleLoginToView(false)}}>Sign Up</NavLink></span>
     </div>
   )
 }

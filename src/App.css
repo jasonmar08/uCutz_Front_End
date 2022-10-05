@@ -254,6 +254,12 @@ html {
   background-color: rgba(102, 145, 182, 0.58);
 }
 
+#login-to-view {
+  color: rgb(93 201 227);
+  margin-top: 6vh;
+  margin-bottom: -8vh;
+}
+
 /* ============>> BARBER REGISTER PAGE <<============ */
 
 .barber-register-page {
@@ -1032,6 +1038,8 @@ html {
   top: -2%;
   color: rgb(218, 229, 230);
   cursor: pointer;
+  font-weight: 100;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .image-full-screen h1:hover {

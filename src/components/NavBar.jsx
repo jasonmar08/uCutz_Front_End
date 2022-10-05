@@ -1,11 +1,11 @@
 import UserDropdownLoginForm from './UserDropdownLoginForm'
 import { NavLink } from 'react-router-dom'
 
-const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown, setUser, toggleAuthenticated, user, authenticated, toggleProfileDropdown, displayProfileDropdown, setDisplayProfileDropdown, currentUser, barber, setBarber, toggleAuthenticatedBarber, displayBarberProfileDropdown, setDisplayBarberProfileDropdown, authenticatedBarber, currentBarber, setCurrentUser, toggleBarberProfileDropdown, setCurrentBarber }) => {
+const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown, setUser, toggleAuthenticated, user, authenticated, toggleProfileDropdown, displayProfileDropdown, setDisplayProfileDropdown, currentUser, barber, setBarber, toggleAuthenticatedBarber, displayBarberProfileDropdown, setDisplayBarberProfileDropdown, authenticatedBarber, currentBarber, setCurrentUser, toggleBarberProfileDropdown, setCurrentBarber, toggleLoginToView }) => {
   const handleClickLoginDropdown = () => {
     if (displayLoginDropdown === true) {
       return (
-        <UserDropdownLoginForm toggleDropdown={toggleDropdown} setUser={setUser} toggleAuthenticated={toggleAuthenticated} setDisplayProfileDropdown={setDisplayProfileDropdown} setCurrentUser={setCurrentUser}
+        <UserDropdownLoginForm toggleDropdown={toggleDropdown} setUser={setUser} toggleAuthenticated={toggleAuthenticated} setDisplayProfileDropdown={setDisplayProfileDropdown} setCurrentUser={setCurrentUser} toggleLoginToView={toggleLoginToView}
         />
       )
     }
@@ -76,10 +76,10 @@ const NavBar = ({ toggleDropdown, displayLoginDropdown, setDisplayLoginDropdown,
       ) : (
       <nav>
         <div className='navbar'>
-          <NavLink to='/' onClick={() => setDisplayLoginDropdown(false)} className='logo'><img className='logo-nav' src='/assets/uCutz_nav_logo.png' alt='logo' /></NavLink>
+          <NavLink to='/' onClick={() => {setDisplayLoginDropdown(false); toggleLoginToView(false);}} className='logo'><img className='logo-nav' src='/assets/uCutz_nav_logo.png' alt='logo' /></NavLink>
           <div className='nav-labels'>
-            <NavLink to='/barber/register' onClick={() => setDisplayLoginDropdown(false)} className='nav-link'>Are you a barber?</NavLink>
-            <NavLink to='/' onClick={() => setDisplayLoginDropdown(false)} className='nav-link'>Home</NavLink>
+            <NavLink to='/barber/register' onClick={() => {setDisplayLoginDropdown(false); toggleLoginToView(false);}} className='nav-link'>Are you a barber?</NavLink>
+            <NavLink to='/' onClick={() => {setDisplayLoginDropdown(false); toggleLoginToView(false);}} className='nav-link'>Home</NavLink>
             <a onClick={() => toggleDropdown()} className='nav-link'>Sign In</a>
           </div>
         </div>

@@ -10,7 +10,7 @@ import { BASE_URL } from '../services/api'
 import axios from 'axios'
 import { isDisabled } from '@testing-library/user-event/dist/utils'
 
-const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarbershop, setBarbersInBarbershop, allUsers }) => {
+const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarbershop, setBarbersInBarbershop, allUsers, toggleLoginToView, handleBarberImageClick, setBarberSelectedId }) => {
   const navigate = useNavigate()
   const { barbershopId } = useParams()
   const [allReviews, setAllReviews] = useState([])
@@ -165,6 +165,11 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
     }
   }
 
+  // PROMPT USER LOGIN TO VIEW BARBER AVAILABILITY
+  const handleBarberClick = (id) => {
+    toggleLoginToView(true)
+    setBarberSelectedId(id)
+  }
 
   return user && authenticated ? (
     <div>
@@ -304,7 +309,7 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
           barbersInBarbershop.map(({ id, barber_image, firstName }) => (
               <div className="barbershop-barbers-card" key={id}>
                 <div className="thumbnail-round">
-                  <NavLink to='/user/login'><img src={barber_image} alt='barber' /></NavLink>
+                  <NavLink to='/user/login'><img src={barber_image} onClick={() => handleBarberClick(id)} alt='barber' /></NavLink>
                 </div>
                 <h3 id='reviews-scroll'>{firstName}</h3>
               </div>

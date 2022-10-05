@@ -6,7 +6,10 @@ const BarbershopDetails = ({
   barbershops,
   barbersInBarbershop,
   setBarbersInBarbershop,
-  allUsers
+  allUsers,
+  toggleLoginToView,
+  handleBarberImageClick,
+  setBarberSelectedId
 }) => {
   return (
     <div>
@@ -18,6 +21,9 @@ const BarbershopDetails = ({
         barbersInBarbershop={barbersInBarbershop}
         setBarbersInBarbershop={setBarbersInBarbershop}
         allUsers={allUsers}
+        toggleLoginToView={toggleLoginToView}
+        handleBarberImageClick={handleBarberImageClick}
+        setBarberSelectedId={setBarberSelectedId}
       />
     </div>
   )
