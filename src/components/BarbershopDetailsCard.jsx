@@ -1,4 +1,5 @@
 import BarbershopTopRating from './BarbershopTopRating'
+import ReviewImageFullScreen from './ReviewImageFullScreen'
 import { GetReviewsByBarbershopId } from '../services/BarberServices'
 import { CreateBarbershopReview } from '../services/UserServices'
 import { formatPhone, formatRating, formatDate } from '../utilities/formatForm'
@@ -7,6 +8,7 @@ import { useParams, NavLink, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { BASE_URL } from '../services/api'
 import axios from 'axios'
+import { isDisabled } from '@testing-library/user-event/dist/utils'
 
 const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarbershop, setBarbersInBarbershop, allUsers }) => {
   const navigate = useNavigate()
@@ -14,6 +16,8 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
   const [allReviews, setAllReviews] = useState([])
   const [rating, setRating] = useState(null)
   const [hoverRating, setHoverRating] = useState(null)
+  const [fullImage, toggleFullImage] = useState(false)
+  const [selectedImage, setSelectedImage] = useState('')
   let userName = ''
   const [reviewFormValues, setReviewFormValues] = useState({
     rating: null,
@@ -150,6 +154,17 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
     navigate('/')
   }
 
+  // OPEN REVIEW IMAGE ON FULL SCREEN DIV
+  const handleReviewImageClick = (review_image) => {
+    if (fullImage === false) {
+      setSelectedImage(review_image)
+      toggleFullImage(true)
+    } else {
+      toggleFullImage(false)
+      setSelectedImage('')
+    }
+  }
+
 
   return user && authenticated ? (
     <div>
@@ -183,17 +198,17 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
       <div className='barbershop-barbers-container'>
         <h3>Schedule With A Barber:</h3>
         <div className='barbershop-barbers-grid'>
-        {
-          barbersInBarbershop.map(({ id, barber_image, firstName }) => (
-              <div className="barbershop-barbers-card" key={id}>
-                <div className="thumbnail-round">
-                  <NavLink to={`/barbershops/barbers/${id}/availability`}><img src={barber_image} alt='barber' /></NavLink>
+          {
+            barbersInBarbershop.map(({ id, barber_image, firstName }) => (
+                <div className="barbershop-barbers-card" key={id}>
+                  <div className="thumbnail-round">
+                    <NavLink to={`/barbershops/barbers/${id}/availability`}><img src={barber_image} alt='barber' /></NavLink>
+                  </div>
+                  <h3 id='reviews-scroll'>{firstName}</h3>
                 </div>
-                <h3 id='reviews-scroll'>{firstName}</h3>
-              </div>
-          ))
-        }
-            </div>
+            ))
+          }
+        </div>
       </div>
       <div className='barbershop-reviews-container'>
         <div className='rate-barbershop'>
@@ -206,12 +221,24 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
           <button onClick={handleSubmit}>Submit Review</button>
         </div>
         {displayAvgRating()}
+        <div className='review-image-grid'>
+          {reviews.map(({ id, review_image }) => (
+            <div key={id}>
+              {review_image ? (
+                <div className='review-image' onClick={() => handleReviewImageClick(review_image)}>
+                  <img src={review_image} alt='review' />
+                </div>
+              ) : ''}
+            </div>
+          ))}
+        </div>
         <div className='barbershop-reviews'>
         {
             reviews && reviews.map(({ id, rating, caption, comment, review_image, createdAt, User }) => {
 			const { firstName, user_image } = User;
 			return (
               <div key={id} className='barbershop-review-card'>
+                {fullImage === true ? <ReviewImageFullScreen handleReviewImageClick={handleReviewImageClick} selectedImage={selectedImage} /> : '' }
                   <div className='user-review-info'>
                     <div className='user-rating'>
                       <div className='user-personal-info'>
@@ -227,7 +254,11 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
                       <h4>{caption}</h4>
                     </div>
                   </div>
-                  {review_image ? <img src={review_image} alt='review'/> : ''}
+                    {review_image ? (
+                      <div className='review-image-card' onClick={() => handleReviewImageClick(review_image)}>
+                        <img src={review_image} alt='review' />
+                      </div>
+                    ) : ''}
                   <p>{comment}</p>
                 </div>
             )})
@@ -284,12 +315,24 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
           <span><NavLink to='/user/login'>Sign In</NavLink>To Write A Review</span>
         </div>
         {displayAvgRating()}
+        <div className='review-image-grid'>
+          {reviews.map(({ id, review_image }) => (
+            <div key={id}>
+              {review_image ? (
+                <div className='review-image' onClick={() => handleReviewImageClick(review_image)}>
+                  <img src={review_image} alt='review' />
+                </div>
+              ) : ''}
+            </div>
+          ))}
+        </div>
         <div className='barbershop-reviews'>
           {
             reviews && reviews.map(({ id, rating, caption, comment, review_image, createdAt, User }) => {
               const { firstName, user_image } = User;
               return (
                 <div key={id} className='barbershop-review-card'>
+                {fullImage === true ? <ReviewImageFullScreen handleReviewImageClick={handleReviewImageClick} selectedImage={selectedImage} /> : '' }
                   <div className='user-review-info'>
                     <div className='user-rating'>
                       <div className='user-personal-info'>
@@ -305,7 +348,11 @@ const BarbershopDetailsCard = ({ user, authenticated, barbershops, barbersInBarb
                       <h4>{caption}</h4>
                     </div>
                   </div>
-                  {review_image ? <img src={review_image} alt='review'/> : ''}
+                    {review_image ? (
+                      <div className='review-image-card' onClick={() => handleReviewImageClick(review_image)}>
+                        <img src={review_image} alt='review' />
+                      </div>
+                    ) : ''}
                   <p>{comment}</p>
                 </div>
               )

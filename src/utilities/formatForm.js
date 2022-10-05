@@ -63,7 +63,7 @@ export const formatDate = (date) => {
     month = 'Dec'
   }
 
-  return `${month} ${day}, ${year}`
+  return month ? `${month} ${day}, ${year}` : ''
 }
 
 // export const formatRating = (rating) => {
