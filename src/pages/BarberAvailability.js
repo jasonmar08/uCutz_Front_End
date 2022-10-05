@@ -169,7 +169,9 @@ const BarberAvailability = ({
           <img src={barbershop?.barber_image} alt="barber image" />
         </div>
         <div>
-          <h3 className="no-avail">Barber Has No Current Availabilities</h3>
+          <h3 className="no-avail">
+            {barbershop?.firstName} Has No Future Availability At This Time
+          </h3>
         </div>
       </div>
       <button className="go-back" onClick={() => navigate(-1)}>
