@@ -6,8 +6,6 @@ import { useState } from "react"
 const BarberRegisterForm = ({ barbershops }) => {
   let navigate = useNavigate()
 
-  const [newBarbershop, setNewBarbershop] = useState([])
-
   const [formValues, setFormValues] = useState({
     firstName: '',
     lastName: '',
@@ -94,7 +92,7 @@ const BarberRegisterForm = ({ barbershops }) => {
   const handleSubmitWithBarbershop = async (e) => {
     e.preventDefault()
 
-    const barbershop = await CreateBarbershop({
+    const newBarbershop = await CreateBarbershop({
       business_name: formValuesBarbershop.business_name,
       address: formValuesBarbershop.address,
       city: formValuesBarbershop.city,
@@ -103,8 +101,6 @@ const BarberRegisterForm = ({ barbershops }) => {
       phoneNumber: formValuesBarbershop.phoneNumber,
       business_image: formValuesBarbershop.business_image
     })
-
-    setNewBarbershop(barbershop)
 
     await RegisterBarber({
       firstName: formValues.firstName,
@@ -159,7 +155,7 @@ const BarberRegisterForm = ({ barbershops }) => {
         <input onChange={handleChange} type="password" name='password' placeholder="Password" value={formValues.password} required></input>
         <input onChange={handleChange} type="password" name='confirmPassword' placeholder="Confirm Password" value={formValues.confirmPassword} required></input>
         <select onChange={handleChange} name='barbershopId' value={formValues.barbershopId} required className="barber-dropdown">
-          <option value='' disabled selected>Choose Affiliated Barbershop</option>
+          <option value='' disabled>Choose Affiliated Barbershop</option>
           {barbershops.map(({ id, business_name }) => (
             <option key={business_name} value={id}>
               {business_name}
@@ -195,7 +191,7 @@ const BarberRegisterForm = ({ barbershops }) => {
         <input onChange={handleChange} type="password" name='confirmPassword' placeholder="Confirm Password" value={formValues.confirmPassword} required></input>
         {/* <label>Service Location:</label> */}
         <select onChange={handleChange} name='barbershopId' value={formValues.barbershopId} required className="barber-dropdown">
-          <option value='' disabled selected>Choose Affiliated Barbershop</option>
+          <option value='' disabled>Choose Affiliated Barbershop</option>
           {barbershops.map(({ id, business_name }) => (
             <option key={business_name} value={id}>
               {business_name}
