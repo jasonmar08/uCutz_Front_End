@@ -9,11 +9,12 @@
 ---
 
 #### By: Jason Martinez
+
 <a href="https://www.linkedin.com/in/martinez-jason/" target="_blank" rel="noreferrer">LinkedIn</a> | <a href="https://github.com/jasonmar08" target="_blank" rel="noreferrer">GitHub</a>
 
 ---
 
-### <a href="https://ucutz-dc42e.web.app/" target="_blank" alt="Deployed Website" rel="noreferrer">Deployed Website</a>
+### <a href="http://d16pebddosrjbz.cloudfront.net/" target="_blank" alt="Deployed Website" rel="noreferrer">Deployed Website</a>
 
 ---
 
@@ -25,8 +26,8 @@ uCutz provides a more efficient way to schedule your next haircut. As a customer
 
 ## Getting Started
 
-1.   `Fork` and `Clone` this repo.
-2.   Run `npm i` to install dependencies.
+1.  `Fork` and `Clone` this repo.
+2.  Run `npm i` to install dependencies.
 
 ---
 
@@ -57,7 +58,7 @@ uCutz provides a more efficient way to schedule your next haircut. As a customer
 
 ## Future Updates
 
-- [ ] Implement online payment system 
+- [ ] Implement online payment system
 - [ ] Add sort and filter options
 - [ ] Allow users to message barber directly
 
