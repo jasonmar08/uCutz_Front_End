@@ -24,9 +24,9 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 3em;
+  height: 48px;
   position: fixed;
-  padding: 0 1em 0 0;
+  padding: 0 16px 0 0;
   top: 0;
   left: 0;
   right: 0;
@@ -47,14 +47,14 @@ html {
 }
 
 .logo-nav {
-  height: 5vh;
+  height: 44.4px;
 }
 
 .nav-labels {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 20em;
+  width: 320px;
 }
 
 .nav-link {
@@ -493,6 +493,7 @@ html {
   align-items: center;
   justify-content: center;
   column-gap: 4vh;
+  flex-wrap: wrap;
 }
 
 .barbershop-card {
@@ -627,9 +628,10 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   column-gap: 3vw;
   padding: 3vh 0 3vh 0;
-  width: 140vh;
+  width: 1243.2px;
   border-top: 1px solid rgb(173, 218, 240);
   border-bottom: 1px solid rgb(173, 218, 240);
 }
@@ -637,13 +639,13 @@ html {
 .map-container {
   display: flex;
   justify-content: center;
-  height: 40vh;
-  width: 60vh;
+  height: 355.2px;
+  width: 532.7;
   overflow: hidden;
 }
 
 .map-container img {
-  height: 40vh;
+  height: 355.2px;
 }
 
 .barbershop-info-container {
@@ -694,6 +696,9 @@ html {
 .barbershop-barbers-grid {
   display: flex;
   column-gap: 4vh;
+  row-gap: 4vh;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .thumbnail-round img {
@@ -719,11 +724,11 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 2rem;
+  flex-wrap: wrap;
+  row-gap: 32px;
   margin: 0 auto;
   margin-bottom: 6vh;
-  padding: 3vh 0 3vh 0;
-  width: 140vh;
+  padding: 26.64px 0 26.64px 0;
   border-top: 1px solid rgb(173, 218, 240);
   border-bottom: 1px solid rgb(173, 218, 240);
 }
@@ -864,16 +869,20 @@ html {
 
 .barbershop-reviews {
   display: flex;
-  column-gap: 4rem;
+  column-gap: 64px;
   justify-content: center;
   align-items: center;
-  row-gap: 4rem;
+  row-gap: 64px;
   flex-wrap: wrap;
 }
 
 .review-image-grid {
   display: flex;
   column-gap: 1rem;
+  row-gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .review-image {
@@ -905,11 +914,11 @@ html {
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
-  width: 25rem;
-  min-height: 10rem;
+  width: 400px;
+  min-height: 160px;
   border: 1px solid rgb(147, 210, 233);
   border-radius: 4% / 9%;
-  padding: 2vh 3vh 2vh 3vh;
+  padding: 17.76px 26.64px 17.76px 26.64px;
   box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
   background-color: white;
 }
@@ -1214,4 +1223,80 @@ html {
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .logo-nav {
+    height: 38px;
+  }
+
+  .nav-labels a {
+    padding: 0;
+  }
+
+  .nav-link {
+    font-size: 13px;
+  }
+
+  .barbershop-container {
+    flex-direction: column;
+    row-gap: 30px;
+    width: 320px;
+  }
+
+  .map-container {
+    width: 100%;
+  }
+
+  .barbershop-reviews-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .barbershop-reviews {
+    flex-direction: column;
+  }
+
+  .barbershop-review-card {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    width: 320px;
+    min-height: 160px;
+    border: 1px solid rgb(147, 210, 233);
+    border-radius: 4% / 9%;
+    padding: 17.76px 26.64px 17.76px 26.64px;
+    box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
+    background-color: white;
+  }
+  
+  .barbershop-review-card p {
+    text-align: justify;
+    padding: 0;
+  }
+  
+  .barbershop-review-card img {
+    height: 5vh;
+    width: 5vh;
+    object-fit: cover;
+    background-color: white;
+    border: 1px solid rgb(147, 210, 233);
+    border-radius: 50%;
+  }
+
+  .user-review-info {
+    flex-direction: column;
+  }
+
+  .image-comment-review {
+    flex-direction: column;
+    row-gap: 1.5rem;
+  }
+  
+  .image-comment-review p {
+    width: 19rem;
+  }
+
+  .review-image-card img {
+  }
 }
