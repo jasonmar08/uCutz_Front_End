@@ -33,9 +33,19 @@ uCutz provides a more efficient way to schedule your next haircut. As a customer
 
 ## Screenshots
 
+#### Mobile Version
+
 <div style= "center">
     <pre>
-        <img src="/public/assets/homepage.png"  height="450">&nbsp;&nbsp;&nbsp;<img src="/public/assets/barbershop_details.png" height="450">&nbsp;&nbsp;&nbsp;<img src="/public/assets/barber_availability.png" height="450">&nbsp;&nbsp;&nbsp;<img src="/public/assets/barber_appointmetns.png" height="450">&nbsp;&nbsp;&nbsp;<img src="/public/assets/barber_profile.png" height="450">&nbsp;&nbsp;&nbsp;
+        <img src="/public/assets/ucutz_home_mobile.png"  height="350">&nbsp;&nbsp;&nbsp;<img src="/public/assets/ucutz_login_home_mobile.png" height="350">&nbsp;&nbsp;&nbsp;<img src="/public/assets/ucutz_barbershop_mobile.png" height="350">&nbsp;&nbsp;&nbsp;<img src="/public/assets/ucutz_rating_mobile.png" height="350">&nbsp;&nbsp;&nbsp;<img src="/public/assets/ucutz_availability_mobile.png" height="350">&nbsp;&nbsp;&nbsp;<img src="/public/assets/ucutz_profile_mobile.png" height="350">&nbsp;&nbsp;&nbsp;
+    </pre>
+</div>
+
+#### Browser Version
+
+<div style= "center">
+    <pre>
+        <img src="/public/assets/ucutz_home.png"  height="400">&nbsp;&nbsp;&nbsp;<img src="/public/assets/ucutz_login_home.png" height="400">&nbsp;&nbsp;&nbsp;<img src="/public/assets/ucutz_barbershop.png" height="400">&nbsp;&nbsp;&nbsp;<img src="/public/assets/ucutz_rating.png" height="400">&nbsp;&nbsp;&nbsp;<img src="/public/assets/ucutz_availability.png" height="400">&nbsp;&nbsp;&nbsp;<img src="/public/assets/ucutz_profile.png" height="400">&nbsp;&nbsp;&nbsp;
     </pre>
 </div>
 
