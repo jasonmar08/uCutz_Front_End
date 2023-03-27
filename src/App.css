@@ -1375,7 +1375,12 @@ h5 {
   }
 
   .home-header-grid {
+    justify-content: unset;
     background-position: 24%;
+  }
+
+  .home-header-grid img {
+    margin-top: 125px;
   }
 
   .banner-overlay {
