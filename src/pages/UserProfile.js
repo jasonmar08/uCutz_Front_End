@@ -97,7 +97,7 @@ const UserProfile = ({
   }, [])
 
   return (
-    <div>
+    <div className="user-profile-page">
       <h2>Hi, {formState.firstName}!</h2>
       <div className="user-profile-container">
         <div className="profile-img-grid">

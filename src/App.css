@@ -2,16 +2,22 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
-  margin-top: 4em;
-  background-color: rgb(0, 0, 0);
-  background-color: rgb(255, 253, 249);
+  /* margin-top: 4em; */
+  /* background-image: linear-gradient(to bottom right, #503a1e, #644c2f, #937858); */
+  /* background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Brick_wall_background_5322.jpg/1200px-Brick_wall_background_5322.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; */
   /* color: rgb(255, 255, 255); */
-  color: black;
+  color: rgb(244, 242, 239);
   font-family: Tahoma, sans-serif;
+  background-image: linear-gradient(to bottom right, #503a1e, #644c2f, #937858);
+  /* background-image: url('https://primosbarbershop.com/wp-content/uploads/2022/11/vintage-wooden-table-with-beard-shaping-salon-tools_53876-127084.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; */
 }
 
 .App main {
-  min-height: 78.4vh;
+  min-height: calc(100vh - 60px);
 }
 
 html {
@@ -24,9 +30,9 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 48px;
+  height: 44px;
   position: fixed;
-  padding: 0 16px 0 0;
+  padding: 5px 16px 5px 0;
   top: 0;
   left: 0;
   right: 0;
@@ -34,9 +40,24 @@ html {
   /* background-color: rgba(132, 131, 128, 0.361); */
   /* background-color: rgb(39, 76, 114); */
   /* background-color: rgb(24 42 56); */
-  background-color: rgb(44 56 66);
+  /* background-color: rgb(44 56 66); */
   /* border-bottom: 1px solid rgb(199, 197, 197); */
   z-index: 99999;
+}
+
+.navbar-colored {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  position: fixed;
+  padding: 5px 16px 5px 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.28);
+  z-index: 9999999999;
+  backdrop-filter: saturate(180%) blur(20px);
 }
 
 .logo {
@@ -48,6 +69,7 @@ html {
 
 .logo-nav {
   height: 44.4px;
+  margin-top: 3px;
 }
 
 .nav-labels {
@@ -64,7 +86,7 @@ html {
 }
 
 .nav-link:hover {
-  color: rgb(93 201 227);
+  color: #f0b45b;
 }
 
 /* ============>> NAVBAR / LOGIN DROPDOWN <<============ */
@@ -79,25 +101,28 @@ html {
   row-gap: 2vh;
   padding: 3vh 0 3vh 0;
   width: 37vh;
-  background-color: rgb(65 82 97);
-  border-radius: 3% / 4%;
+  background-color: rgba(91, 63, 40, 0.738);
+  backdrop-filter: saturate(120%) blur(7px);
+  z-index: 99999999999;
+  border-radius: 10px;
   box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
 }
 
-.login-dropdown h3, span {
+.login-dropdown h3,
+span {
   margin: 0;
   color: rgb(202, 207, 212);
 }
 
 .login-dropdown a {
   text-decoration: none;
-  color: rgb(102, 145, 182);
+  color: #f0b45b;
   padding: 5px;
 }
 
 .login-dropdown a:hover {
-  background-color: rgba(102, 145, 182, 0.308);
-  color: rgb(178, 214, 247);
+  background-color: #e3be8742;
+  color: #f0c077;
   border-radius: 8% / 19%;
 }
 
@@ -128,12 +153,12 @@ html {
 }
 
 .dropdown-form button:hover {
-  background-color: rgb(102, 145, 182);
+  background-color: #d79e4a;
   color: white;
 }
 
 .dropdown-form button:active {
-  background-color: rgb(68, 105, 138);
+  background-color: #c38b37;
   color: rgb(230, 230, 230);
 }
 
@@ -149,8 +174,9 @@ html {
   padding: 2vh 0 2vh 0;
   row-gap: 0.5vh;
   width: 23vh;
-  background-color: rgb(65 82 97);
-  border-radius: 3% / 4%;
+  background-color: rgba(91, 63, 40, 0.738);
+  backdrop-filter: saturate(120%) blur(7px);
+  border-radius: 5px;
   box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
 }
 
@@ -162,8 +188,8 @@ html {
 }
 
 .profile-dropdown a:hover {
-  background-color: rgba(102, 145, 182, 0.799);
-  border-radius: 4% / 24%;
+  background-color: #e3be8742;
+  border-radius: 6px;
 }
 
 .nav-labels img {
@@ -181,7 +207,11 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+  background-image: url('https://primosbarbershop.com/wp-content/uploads/2022/11/vintage-wooden-table-with-beard-shaping-salon-tools_53876-127084.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .user-register-container {
@@ -190,14 +220,15 @@ html {
   align-items: center;
   justify-content: center;
   width: 55vh;
-  margin-bottom: 10vh;
+  /* margin-bottom: 10vh; */
   height: 70vh;
-  border-radius: 2% / 1%;
-  background-color: white;
+  border-radius: 5px;
+  backdrop-filter: saturate(120%) blur(8px);
   box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.7);
 }
 
-.user-register-form, .user-login-form {
+.user-register-form,
+.user-login-form {
   display: flex;
   flex-direction: column;
   row-gap: 2vh;
@@ -205,59 +236,66 @@ html {
   width: 30vh;
 }
 
-.user-register-form input, .user-login-form input, .barber-register-form input, .barber-login-form input {
+.user-register-form input,
+.user-login-form input,
+.barber-register-form input,
+.barber-login-form input {
   height: 4vh;
   padding: 0 1vh 0 1vh;
   font-size: 15px;
   border: 1px solid rgb(65 82 97);
-  border-radius: 2% / 19%;
+  border-radius: 6px;
   background-color: rgb(245, 246, 246);
   width: 27vh;
 }
 
-.user-register-form button, .user-login-form button, .barber-register-form button, .barber-login-form button {
+.user-register-form button,
+.user-login-form button,
+.barber-register-form button,
+.barber-login-form button {
   height: 4vh;
   padding: 0 1vh 0 1vh;
   font-size: 15px;
   background-color: rgb(202, 207, 212);
   color: rgb(44 56 66);
-  border-radius: 2% / 19%;
+  border-radius: 6px;
   cursor: pointer;
   border: none;
   width: 29.5vh;
 }
 
-.user-register-form button:hover, .user-login-form button:hover, .barber-register-form button:hover, .barber-login-form button:hover {
-  background-color: rgb(102, 145, 182);
-  color: white;
+.user-register-form button:hover,
+.user-login-form button:hover,
+.barber-register-form button:hover,
+.barber-login-form button:hover {
+  background-color: #d79e4a;
+  color: black;
 }
 
-.user-register-form span, .user-login-form span {
+.user-register-form span,
+.user-login-form span {
   text-decoration: none;
-  color: rgb(162, 166, 170);
   padding: 5px;
   width: 30vh;
 }
 
-.user-register-form a, .user-login-form a {
+.user-register-form a,
+.user-login-form a {
   text-decoration: none;
-  color: rgb(102, 145, 182);
+  color: #f0b45b;
   padding: 5px;
 }
 
-.user-register-form a:hover, .user-login-form a:hover {
-  background-color: rgba(102, 145, 182, 0.308);
-  border-radius: 8% / 19%;
-}
-
-.user-register-form a:active, .user-login-form a:active {
-  background-color: rgba(102, 145, 182, 0.58);
+.user-register-form a:hover,
+.user-login-form a:hover {
+  background-color: #e3be8742;
+  border-radius: 4px;
 }
 
 #login-to-view {
-  color: rgb(93 201 227);
-  margin-top: 6vh;
-  margin-bottom: -8vh;
+  color: #f4dcba;
+  margin-bottom: 25px;
+  z-index: 999999;
 }
 
 /* ============>> BARBER REGISTER PAGE <<============ */
@@ -266,6 +304,12 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  /* margin-top: 55px; */
+  background-image: url('https://primosbarbershop.com/wp-content/uploads/2022/11/vintage-wooden-table-with-beard-shaping-salon-tools_53876-127084.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: calc(100vh - 60px);
 }
 
 .barber-register-container {
@@ -275,9 +319,9 @@ html {
   width: 55vh;
   margin-bottom: 8vh;
   height: 62.5vh;
-  border-radius: 2% / 1%;
+  border-radius: 5px;
   box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.7);
-  background-color: white;
+  backdrop-filter: blur(8px);
 }
 
 .barber-register-container-barbershop {
@@ -287,12 +331,13 @@ html {
   width: 55vh;
   margin-bottom: 8vh;
   height: 110vh;
-  border-radius: 2% / 1%;
+  border-radius: 5px;
   box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.7);
-  background-color: white;
+  backdrop-filter: blur(8px);
 }
 
-.barber-register-form, .barber-login-form {
+.barber-register-form,
+.barber-login-form {
   display: flex;
   flex-direction: column;
   row-gap: 2vh;
@@ -301,11 +346,11 @@ html {
 }
 
 .barber-register-form select {
-  height: 4vh;
+  height: 37px;
   padding: 0 1vh 0 1vh;
   font-size: 15px;
   border: 1px solid rgb(65 82 97);
-  border-radius: 2% / 19%;
+  border-radius: 6px;
   background-color: rgb(245, 246, 246);
   width: 29.5vh;
   cursor: pointer;
@@ -320,68 +365,72 @@ html {
 
 .barber-register-form span {
   text-decoration: none;
-  color: rgb(162, 166, 170);
   padding: 5px;
   width: 30vh;
 }
 
 .barber-register-form a {
   text-decoration: none;
-  color: rgb(102, 145, 182);
+  color: #f0b45b;
   padding: 5px;
 }
 
 .barber-register-form a:hover {
-  background-color: rgba(102, 145, 182, 0.308);
-  border-radius: 8% / 19%;
-}
-
-.barber-register-form a:active {
-  background-color: rgba(102, 145, 182, 0.58);
+  color: #f0b45b;
+  background-color: #e3be8742;
+  border-radius: 4px;
 }
 
 /* ============>> BARBER LOGIN PAGE <<============ */
 
-.barber-login-page, .user-login-page {
+.barber-login-page,
+.user-login-page {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  min-height: calc(100vh - 60px);
+  background-image: url('https://primosbarbershop.com/wp-content/uploads/2022/11/vintage-wooden-table-with-beard-shaping-salon-tools_53876-127084.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.barber-login-container, .user-login-container {
+.barber-login-container,
+.user-login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 55vh;
-  margin-top: 13vh;
+  /* margin-top: 13vh; */
   height: 32vh;
-  border-radius: 2% / 1%;
+  border-radius: 5px;
   box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.7);
-  background-color: white;
+  backdrop-filter: blur(8px);
 }
 
 .barber-login-form span {
   text-decoration: none;
-  color: rgb(162, 166, 170);
+  /* color: rgb(162, 166, 170); */
   padding: 5px;
 }
 
 .barber-login-form a {
   text-decoration: none;
-  color: rgb(102, 145, 182);
+  color: #f0b45b;
   padding: 5px;
 }
 
 .barber-login-form a:hover {
-  background-color: rgba(102, 145, 182, 0.308);
+  color: #f0c077;
+  background-color: #e3be8742;
   border-radius: 8% / 19%;
 }
 
-.barber-login-form a:active {
-  background-color: rgba(102, 145, 182, 0.58);
-}
-
 /* ============>> USER PROFILE PAGE <<============ */
+
+.user-profile-page {
+  padding-top: 60px;
+}
 
 .user-profile-container {
   display: flex;
@@ -389,6 +438,8 @@ html {
   align-items: flex-start;
   margin-top: 8vh;
   column-gap: 12vw;
+  row-gap: 30px;
+  flex-wrap: wrap;
 }
 
 .user-profile-container img {
@@ -397,7 +448,7 @@ html {
   width: 38vh;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px groove rgb(147, 210, 233);
+  border: 3px groove #bd965b;
   box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
   background-color: white;
 }
@@ -445,7 +496,7 @@ html {
 }
 
 .user-profile-form button:hover {
-  background-color: rgb(102, 145, 182);
+  background-color: #b88841;
   color: white;
 }
 
@@ -466,18 +517,88 @@ html {
   color: white;
 }
 
+.delete-acc:active {
+  background-color: rgb(147, 46, 46);
+}
+
 /* ============>> HOME / BARBERSHOPS LIST <<============ */
 
 .home-page-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 5vh;
-  margin: 0 13vh;
+  /* row-gap: 5vh; */
+  /* margin: 0 13vh; */
+  background-image: linear-gradient(to bottom right, #503a1e, #644c2f, #937858);
+}
+
+.home-page-container-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* row-gap: 5vh; */
+  /* margin: 0 13vh; */
+  background-image: linear-gradient(to bottom right, #503a1e, #644c2f, #937858);
+  padding-top: 60px;
 }
 
 .home-page-container img {
-  height: 22vh;
+  height: 300px;
+  z-index: 99999;
+}
+
+.home-page-container-login img {
+  height: 300px;
+  z-index: 99999;
+}
+
+.home-header-grid {
+  align-items: center;
+  background-image: url('https://i.postimg.cc/x8RZW2Dd/home-banner.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+}
+
+.header-text {
+  color: white;
+  z-index: 99999;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.header-button {
+  border: none;
+  padding: 12px 25px;
+  border-radius: 4px;
+  background-color: #f0b45b00;
+  border: 1px solid #f0b45b;
+  color: white;
+  z-index: 99999;
+  cursor: pointer;
+  font-size: 15px;
+  box-shadow: 0 8px 15px -6px rgba(0, 0, 0, 0.7);
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+}
+
+.header-button:hover {
+  background-color: #f0b45b;
+  color: black;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 #barbershop-list {
@@ -485,7 +606,9 @@ html {
   flex-direction: column;
   row-gap: 1rem;
   /* margin-top: 8vh; */
-  margin-bottom: 8vh;
+  padding-bottom: 8vh;
+  /* background-image: linear-gradient(to bottom right, #503a1e, #644c2f, #937858); */
+  width: 100%;
 }
 
 .flex-items {
@@ -511,19 +634,25 @@ html {
   align-items: center;
   height: 12em;
   width: 16em;
-  border: 1px solid rgb(210, 210, 210);
+  border: 1px solid #a59c8a;
   cursor: pointer;
-  border-radius: 10% / 14%;
+  border-radius: 7px;
   overflow: hidden;
 }
 
 .thumbnail img {
   height: 12.5em;
+  transition: 0.4s;
+}
+
+.thumbnail img:hover {
+  transform: scale(1.1);
+  transition: 0.4s;
 }
 
 .thumbnail:hover {
   box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
-  border: 1px solid rgb(173, 218, 240);
+  border: 1px solid #725933;
 }
 
 /* ============>> HOME / USER APPOINTMENTS LIST <<============ */
@@ -532,6 +661,8 @@ html {
   display: flex;
   column-gap: 6vh;
   justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 20px;
 }
 
 .home-appts-card {
@@ -547,26 +678,29 @@ html {
   height: 9em;
   width: 13em;
   object-fit: contain;
-  border: 1px solid rgb(210, 210, 210);
+  border: 1px solid #a59c8a;
   cursor: pointer;
-  border-radius: 10% / 14%;
-  background-color: white;
+  border-radius: 10px;
+  background-color: #d4c1a4;
 }
 
 .appt-thumbnail img:hover {
   box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
-  border: 1px solid rgb(173, 218, 240);
+  border: 1px solid #725933;
 }
 
 /* ============>> USER APPOINTMENTS PAGE <<============ */
 
-.user-appts-page, .barber-appts-page {
+.user-appts-page,
+.barber-appts-page {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: linear-gradient(to bottom right, #503a1e, #644c2f, #937858);
 }
 
-.user-appts-container, .barber-appts-container {
+.user-appts-container,
+.barber-appts-container {
   display: flex;
   flex-direction: column;
   margin-top: 3vh;
@@ -574,24 +708,27 @@ html {
   margin-bottom: 6vh;
 }
 
-.user-appts-card, .barber-appts-card {
+.user-appts-card,
+.barber-appts-card {
   display: flex;
   column-gap: 4vh;
   text-align: left;
+  align-items: center;
   justify-content: center;
   width: 70vh;
   padding: 2vh 0;
-  border-top: 1px solid rgb(227, 224, 224);
-  border-bottom: 1px solid rgb(227, 224, 224);
+  border-top: 1px groove #f3d2a0;
+  border-bottom: 1px groove #f3d2a0;
 }
 
-.user-appt-thumbnail img, .barber-appt-thumbnail img {
+.user-appt-thumbnail img,
+.barber-appt-thumbnail img {
   height: 12em;
   width: 17em;
   object-fit: contain;
-  border: 1px solid rgb(210, 210, 210);
+  border: 1px solid #a59c8a;
   border-radius: 10% / 14%;
-  background-color: white;
+  background-color: #d4c1a4;
 }
 
 /* ============>> BARBERSHOP DETAILS PAGE <<============ */
@@ -600,6 +737,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 55px;
 }
 
 .barbershop-top-rating {
@@ -609,18 +747,20 @@ html {
   width: 8rem;
 }
 
-.barbershop-top-rating h1, .barbershop-top-rating h3, .barbershop-top-rating a {
+.barbershop-top-rating h1,
+.barbershop-top-rating h3,
+.barbershop-top-rating a {
   margin: 0;
   padding: 0;
 }
 
 .barbershop-top-rating a {
-  color: rgb(102, 145, 182);
+  color: #f7dbb2;
   text-decoration: none;
 }
 
 .barbershop-top-rating a:hover {
-  color: rgb(102, 145, 182);
+  color: #f7dbb2;
   text-decoration: underline;
 }
 
@@ -632,8 +772,8 @@ html {
   column-gap: 3vw;
   padding: 3vh 0 3vh 0;
   width: 1243.2px;
-  border-top: 1px solid rgb(173, 218, 240);
-  border-bottom: 1px solid rgb(173, 218, 240);
+  border-top: 1px solid #e9c896;
+  border-bottom: 1px solid #e9c896;
 }
 
 .map-container {
@@ -652,31 +792,36 @@ html {
   display: flex;
   flex-direction: column;
   row-gap: 3vh;
-  border: 1px solid rgb(147, 210, 233);
-  border-radius: 7% / 8%;
+  border: 1px solid #7c694d;
+  border-radius: 30px;
   padding: 2vh 3vh 4vh 3vh;
   box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
-  background-color: white;
+  background-color: rgba(116, 89, 67, 0.738);
 }
 
-.barbershop-info-container h4, h5, p, h3, a {
+.barbershop-info-container h4,
+h5,
+p,
+h3,
+a {
   margin: 0;
   padding: 5px 1em 5px 1em;
 }
 
 .barbershop-info-container a {
   text-decoration: none;
-  color: rgb(102, 145, 182);
+  color: #f0b45b;
   padding: 5px;
 }
 
 .barbershop-info-container a:hover {
-  background-color: rgba(102, 145, 182, 0.308);
-  border-radius: 8% / 19%;
+  color: #f0c077;
+  background-color: #e3be8742;
+  border-radius: 4px;
 }
 
 .barbershop-info-container a:active {
-  background-color: rgba(102, 145, 182, 0.58);
+  background-color: #c3a37342;
 }
 
 .socials {
@@ -706,17 +851,17 @@ html {
   width: 20vh;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid rgb(147, 210, 233);
+  border: 2px solid #bd965b;
   background-color: white;
 }
 
 .thumbnail-round img:hover {
-  border: 2px solid rgb(221, 255, 188);
+  border: 2px solid #ffe2b6;
   box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
 }
 
 .thumbnail-round img:active {
-  border: 2px solid rgba(177, 212, 142, 0.89);
+  border: 2px solid #ae9774;
 }
 
 .barbershop-reviews-container {
@@ -729,8 +874,8 @@ html {
   margin: 0 auto;
   margin-bottom: 6vh;
   padding: 26.64px 0 26.64px 0;
-  border-top: 1px solid rgb(173, 218, 240);
-  border-bottom: 1px solid rgb(173, 218, 240);
+  border-top: 1px solid #e9c896;
+  border-bottom: 1px solid #e9c896;
 }
 
 .stars-outer {
@@ -740,9 +885,8 @@ html {
 }
 
 .stars-outer::before {
-  content: "\f005 \f005 \f005 \f005 \f005";
+  content: '\f005 \f005 \f005 \f005 \f005';
   color: #e4e5e9;
-  
 }
 
 .stars-inner {
@@ -755,7 +899,7 @@ html {
 }
 
 .stars-inner::before {
-  content: "\f005 \f005 \f005 \f005 \f005";
+  content: '\f005 \f005 \f005 \f005 \f005';
   color: #ffc107;
 }
 
@@ -764,11 +908,11 @@ html {
   flex-direction: column;
   row-gap: 1rem;
   width: 24rem;
-  border: 1px solid rgb(147, 210, 233);
-  border-radius: 5% / 6%;
+  border: 1px solid #7c694d;
+  border-radius: 30px;
   padding: 2vh 3vh 4vh 3vh;
   box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
-  background-color: white;
+  background-color: rgba(116, 89, 67, 0.738);
 }
 
 .rate-barbershop-unauth {
@@ -776,33 +920,30 @@ html {
   align-items: center;
   row-gap: 1rem;
   width: 16rem;
-  border: 1px solid rgb(147, 210, 233);
+  border: 1px solid #7c694d;
   border-radius: 4% / 20%;
   padding: 2vh 3vh 2vh 3vh;
   box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
-  background-color: white;
+  background-color: rgba(122, 99, 80, 0.738);
 }
 
 .rate-barbershop-unauth span {
+  color: #f7ebdd;
   text-decoration: none;
-  color: rgb(57, 56, 56);
   padding: 5px;
   width: 30vh;
 }
 
 .rate-barbershop-unauth a {
   text-decoration: none;
-  color: rgb(102, 145, 182);
+  color: #f0b45b;
   padding: 5px;
 }
 
 .rate-barbershop-unauth a:hover {
-  background-color: rgba(102, 145, 182, 0.308);
-  border-radius: 8% / 19%;
-}
-
-.rate-barbershop-unauth a:active {
-  background-color: rgba(102, 145, 182, 0.58);
+  color: #f0b45b;
+  background-color: #e3be8742;
+  border-radius: 4px;
 }
 
 .rate-barbershop input {
@@ -810,7 +951,7 @@ html {
   padding: 0 1vh 0 1vh;
   font-size: 15px;
   border: 1px solid rgb(65 82 97);
-  border-radius: 2% / 19%;
+  border-radius: 6px;
   background-color: rgb(245, 246, 246);
 }
 
@@ -819,7 +960,7 @@ html {
   padding: 0.5em 0 0 0.5em;
   font-size: 15px;
   border: 1px solid rgb(65 82 97);
-  border-radius: 3% / 16%;
+  border-radius: 6px;
   background-color: rgb(245, 246, 246);
   font-family: Arial, Helvetica, sans-serif;
   resize: none;
@@ -831,17 +972,17 @@ html {
   border: none;
   background-color: rgb(202, 207, 212);
   color: rgb(44 56 66);
-  border-radius: 2% / 19%;
+  border-radius: 6px;
   font-size: 15px;
 }
 
 .rate-barbershop button:hover {
-  background-color: rgb(102, 145, 182);
+  background-color: #d79e4a;
   color: white;
 }
 
 .rate-barbershop button:active {
-  background-color: rgb(68, 105, 138);
+  background-color: #b2823a;
   color: rgb(230, 230, 230);
 }
 
@@ -891,19 +1032,19 @@ html {
   align-items: center;
   height: 8.5rem;
   width: 8.5rem;
-  border: 1px solid rgb(147, 210, 233);
+  border: 1px solid #bd965b;
   border-radius: 10%;
   overflow: hidden;
   cursor: pointer;
 }
 
 .review-image:hover {
-  border: 1px solid rgb(221, 255, 188);
+  border: 1px solid #ffe2b6;
   box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
 }
 
 .review-image:active {
-  border: 1px solid rgba(177, 212, 142, 0.89);
+  border: 1px solid #ae9774;
 }
 
 .review-image img {
@@ -916,11 +1057,12 @@ html {
   /* justify-content: space-between; */
   width: 400px;
   min-height: 160px;
-  border: 1px solid rgb(147, 210, 233);
+  border: 1px solid #8b7757;
   border-radius: 4% / 9%;
   padding: 17.76px 26.64px 17.76px 26.64px;
   box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
-  background-color: white;
+  /* background-color: rgba(127, 100, 77, 0.738); */
+  background-image: linear-gradient(to bottom right, #634d2f, #715839, #937858);
 }
 
 .barbershop-review-card p {
@@ -980,18 +1122,18 @@ html {
   height: 4rem;
   width: 4rem;
   overflow: hidden;
-  border: 1px solid rgb(147, 210, 233);
+  border: 1px solid #bd965b;
   border-radius: 10%;
   cursor: pointer;
 }
 
 .review-image-card:hover {
-  border: 1px solid rgb(221, 255, 188);
+  border: 1px solid #ffe2b6;
   box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.7);
 }
 
 .review-image-card:active {
-  border: 1px solid rgba(177, 212, 142, 0.89);
+  border: 1px solid #ae9774;
 }
 
 .review-image-card img {
@@ -1020,10 +1162,10 @@ html {
   justify-content: center;
   align-items: center;
   position: fixed;
-  border: 1px solid rgb(147, 210, 233);
-  border-radius: 2% / 3%;
+  border: 1px solid #69502b;
+  border-radius: 25px;
   box-shadow: 5px 8px 12px -10px rgba(0, 0, 0, 0.282);
-  background-color: rgba(44, 56, 66, 0.561);
+  background-color: #44321d;
   /* background-color: rgba(67, 66, 66, 0.576); */
   z-index: 99999;
   height: 47rem;
@@ -1052,11 +1194,7 @@ html {
 }
 
 .image-full-screen h1:hover {
-  color:rgb(129, 195, 218)
-}
-
-.image-full-screen h1:active {
-  color:rgb(69, 131, 153)
+  color: #ebd2ab;
 }
 
 #full-screen-review {
@@ -1070,6 +1208,7 @@ html {
   flex-direction: column;
   align-items: center;
   margin-bottom: 5vh;
+  padding-top: 60px;
 }
 
 .barber-avail-container {
@@ -1079,8 +1218,8 @@ html {
   column-gap: 12vw;
   width: 140vh;
   padding: 3vh 0 3vh 0;
-  border-top: 1px solid rgb(173, 218, 240);
-  border-bottom: 1px solid rgb(173, 218, 240);
+  border-top: 1px solid #e9c896;
+  border-bottom: 1px solid #e9c896;
 }
 
 .barber-avail-pic img {
@@ -1088,7 +1227,7 @@ html {
   width: 45vh;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px groove rgb(147, 210, 233);
+  border: 3px groove #bd965b;
   box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.7);
   background-color: white;
 }
@@ -1103,19 +1242,23 @@ html {
 .barber-avail-dates {
   display: flex;
   column-gap: 8vh;
-  border: 1px solid rgb(147, 210, 233);
-  border-radius: 4% / 8%;
+  border: 1px solid #7c694d;
+  border-radius: 23px;
   padding: 2vh 3vh 4vh 3vh;
   box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
-  background-color: white;
+  background-color: rgba(116, 89, 67, 0.738);
 }
 
-.barber-avail-dates h4, h5 {
+.barber-avail-dates h4,
+h5 {
   margin: 0;
 }
 
 .avail-dates {
-  border-bottom: 1px solid rgb(147, 210, 233);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid #e9c896;
   padding-bottom: 5px;
 }
 
@@ -1130,18 +1273,19 @@ html {
 
 .times {
   width: 5.6rem;
-  border-radius: 9% / 22%;
+  border-radius: 8px;
   padding: 3px 0;
   cursor: pointer;
+  background-color: rgba(146, 119, 96, 0.738);
   box-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.7);
 }
 
 .times:hover {
-  background-color: rgb(147, 210, 233);
+  background-color: rgba(175, 149, 125, 0.738);
 }
 
 .times:active {
-  background-color: rgb(82, 137, 156);
+  background-color: rgba(103, 86, 70, 0.738);
 }
 
 .barber-services-dropdown {
@@ -1155,7 +1299,7 @@ html {
   height: 4vh;
   padding: 0 6px 0 1vh;
   border-radius: 4% / 18%;
-  border: 1px solid rgb(99, 158, 177);
+  border: 1px solid #bd965b;
   cursor: pointer;
 }
 
@@ -1167,24 +1311,24 @@ html {
   height: 4vh;
   margin-top: 2vh;
   padding: 0 1vh 0 1vh;
-  border-radius: 4% / 18%;
+  border-radius: 7px;
   border: none;
   color: white;
-  background-color: rgb(99, 163, 184);
+  background-color: #d79e4a;
   cursor: pointer;
   box-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.7);
 }
 
 .book-appt-btn:hover {
-  background-color: rgb(145, 207, 227);
+  background-color: #e1ac5c;
 }
 
 .book-appt-btn:active {
-  background-color: rgb(115, 170, 188)
+  background-color: #9d7231;
 }
 
 .no-avail {
-  color: rgb(145, 180, 202);
+  color: #eed4ac;
 }
 
 .go-back {
@@ -1193,17 +1337,17 @@ html {
   border-radius: 8% / 20%;
   border: none;
   color: white;
-  background-color: rgb(99, 163, 184);
+  background-color: #9d7231;
   cursor: pointer;
   box-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.7);
 }
 
 .go-back:hover {
-  background-color: rgb(145, 207, 227);
+  background-color: #bf914d;
 }
 
 .go-back:active {
-  background-color: rgb(115, 170, 188)
+  background-color: #755424;
 }
 
 /* ============>> FOOTER <<============ */
@@ -1214,7 +1358,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: rgb(65 82 97);
+  background-color: rgb(56, 43, 32);
   height: 11em;
   margin: 0;
   padding: 0;
@@ -1226,6 +1370,19 @@ html {
 }
 
 @media only screen and (max-width: 600px) {
+  .home-page-container-login img {
+    height: 200px;
+  }
+
+  .home-header-grid {
+    background-position: 24%;
+  }
+
+  .appt-thumbnail img {
+    height: 7em;
+    width: 11em;
+  }
+
   .logo-nav {
     height: 38px;
   }
@@ -1236,6 +1393,44 @@ html {
 
   .nav-link {
     font-size: 13px;
+  }
+
+  .profile-dropdown {
+    z-index: 9999999;
+  }
+
+  .barber-register-container,
+  .barber-register-container-barbershop,
+  .barber-login-container,
+  .user-login-container,
+  .user-register-container {
+    width: 390px;
+  }
+
+  .user-appts-page {
+    padding-top: 60px;
+    overflow: hidden;
+  }
+
+  .user-appts-card,
+  .barber-appts-card {
+    column-gap: 25px;
+  }
+
+  .user-appt-thumbnail img,
+  .barber-appt-thumbnail img {
+    height: 6em;
+    width: 10em;
+  }
+
+  .user-appts-card h2,
+  .barber-appts-card h2 {
+    font-size: 17px;
+  }
+
+  .user-appts-card h4,
+  .barber-appts-card h4 {
+    font-size: 12px;
   }
 
   .barbershop-container {
@@ -1263,24 +1458,23 @@ html {
     /* justify-content: space-between; */
     width: 320px;
     min-height: 160px;
-    border: 1px solid rgb(147, 210, 233);
-    border-radius: 4% / 9%;
+    border: 1px solid #8b7757;
+    border-radius: 20px;
     padding: 17.76px 26.64px 17.76px 26.64px;
     box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.7);
-    background-color: white;
   }
-  
+
   .barbershop-review-card p {
     text-align: justify;
     padding: 0;
   }
-  
+
   .barbershop-review-card img {
     height: 5vh;
     width: 5vh;
     object-fit: cover;
     background-color: white;
-    border: 1px solid rgb(147, 210, 233);
+    border: 1px solid rgb(233, 153, 147);
     border-radius: 50%;
   }
 
@@ -1292,11 +1486,80 @@ html {
     flex-direction: column;
     row-gap: 1.5rem;
   }
-  
+
   .image-comment-review p {
     width: 19rem;
   }
 
   .review-image-card img {
+    border-radius: 0;
+    height: 4rem;
+    width: 4rem;
+  }
+
+  .image-full-screen {
+    top: 20%;
+    height: 400px;
+    width: 390px;
+    left: 2.5%;
+  }
+
+  .image-full-screen img {
+    height: 275px;
+    width: auto;
+    border-radius: 0;
+    border: none;
+  }
+
+  .image-full-screen h1 {
+    font-size: 26px;
+    right: 5%;
+  }
+
+  .user-rating {
+    align-items: center;
+  }
+
+  .user-personal-info img {
+    border: 1px solid #a59c8a;
+  }
+
+  .rate-barbershop {
+    width: 21rem;
+  }
+
+  .barber-avail-container {
+    flex-direction: column;
+    row-gap: 45px;
+    width: 385px;
+  }
+
+  .barber-avail-pic img {
+    height: 300px;
+    width: 300px;
+  }
+
+  .barber-avail-dates {
+    column-gap: 5px;
+    padding: 15px 8px 20px 8px;
+  }
+
+  .barber-avail-dates h4,
+  h5 {
+    font-size: 13px;
+  }
+
+  .avail-dates {
+    width: 125px;
+  }
+
+  .avail-dates h5 {
+    width: 125px;
+    padding: 0;
+    margin: 5px 0;
+  }
+
+  .avail-times h5 {
+    font-size: 12px;
   }
 }
