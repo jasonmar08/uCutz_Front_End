@@ -1375,12 +1375,10 @@ h5 {
   }
 
   .home-header-grid {
-    justify-content: start;
     background-position: 24%;
   }
 
   .home-header-grid img {
-    margin-top: 70px;
   }
 
   .banner-overlay {
