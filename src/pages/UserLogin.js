@@ -12,6 +12,7 @@ const UserLogin = ({
 }) => {
   return (
     <div className="user-login-page">
+      <div className="forms-overlay"></div>
       <h1>User Login Page</h1>
       {loginToView === true ? (
         <h3 id="login-to-view">Please login to view barber's availability</h3>

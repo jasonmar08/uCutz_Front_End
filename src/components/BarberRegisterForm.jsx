@@ -1,7 +1,7 @@
-import { RegisterBarber } from "../services/Auth"
-import { CreateBarbershop } from "../services/BarberServices"
-import { useNavigate, NavLink } from "react-router-dom"
-import { useState } from "react"
+import { RegisterBarber } from '../services/Auth'
+import { CreateBarbershop } from '../services/BarberServices'
+import { useNavigate, NavLink } from 'react-router-dom'
+import { useState } from 'react'
 
 const BarberRegisterForm = ({ barbershops }) => {
   let navigate = useNavigate()
@@ -36,9 +36,13 @@ const BarberRegisterForm = ({ barbershops }) => {
   }
 
   const handleChangeBarbershop = (e) => {
-    setFormValuesBarbershop({ ...formValuesBarbershop, [e.target.name]: e.target.value })
+    setFormValuesBarbershop({
+      ...formValuesBarbershop,
+      [e.target.name]: e.target.value
+    })
 
-    setFormValues({ ...formValues,
+    setFormValues({
+      ...formValues,
       city: formValuesBarbershop.city,
       state: formValuesBarbershop.state,
       zip_code: formValuesBarbershop.zip_code
@@ -147,15 +151,68 @@ const BarberRegisterForm = ({ barbershops }) => {
   return formValues.barbershopId === 'Not Listed' ? (
     <div className="barber-register-container-barbershop">
       <h2>Barber Register</h2>
-      <form onSubmit={handleSubmitWithBarbershop} className="barber-register-form">
-        <input onChange={handleChange} type="text" name='firstName' placeholder="First Name" value={formValues.firstName} required></input>
-        <input onChange={handleChange} type="text" name='lastName' placeholder="Last Name" value={formValues.lastName} required></input>
-        <input onChange={handleChange} type="tel" name='phoneNumber' placeholder="Mobile Number" value={formValues.phoneNumber} required></input>
-        <input onChange={handleChange} type="email" name='email' placeholder="Email" value={formValues.email} required></input>
-        <input onChange={handleChange} type="password" name='password' placeholder="Password" value={formValues.password} required></input>
-        <input onChange={handleChange} type="password" name='confirmPassword' placeholder="Confirm Password" value={formValues.confirmPassword} required></input>
-        <select onChange={handleChange} name='barbershopId' value={formValues.barbershopId} required className="barber-dropdown">
-          <option value='' disabled>Choose Affiliated Barbershop</option>
+      <form
+        onSubmit={handleSubmitWithBarbershop}
+        className="barber-register-form"
+      >
+        <input
+          onChange={handleChange}
+          type="text"
+          name="firstName"
+          placeholder="First Name"
+          value={formValues.firstName}
+          required
+        ></input>
+        <input
+          onChange={handleChange}
+          type="text"
+          name="lastName"
+          placeholder="Last Name"
+          value={formValues.lastName}
+          required
+        ></input>
+        <input
+          onChange={handleChange}
+          type="tel"
+          name="phoneNumber"
+          placeholder="Mobile Number"
+          value={formValues.phoneNumber}
+          required
+        ></input>
+        <input
+          onChange={handleChange}
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formValues.email}
+          required
+        ></input>
+        <input
+          onChange={handleChange}
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formValues.password}
+          required
+        ></input>
+        <input
+          onChange={handleChange}
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          value={formValues.confirmPassword}
+          required
+        ></input>
+        <select
+          onChange={handleChange}
+          name="barbershopId"
+          value={formValues.barbershopId}
+          required
+          className="barber-dropdown"
+        >
+          <option value="" disabled>
+            Choose Affiliated Barbershop
+          </option>
           {barbershops.map(({ id, business_name }) => (
             <option key={business_name} value={id}>
               {business_name}
@@ -168,30 +225,139 @@ const BarberRegisterForm = ({ barbershops }) => {
           <label>Are you mobile?</label>
           <input type="checkbox" name='mobile' value={formValues.mobile} required></input>
         </div> */}
-        <input onChange={handleChangeBarbershop} type="text" name='business_name' placeholder="Barbershop Name" value={formValuesBarbershop.business_name} required></input>
-        <input onChange={handleChangeBarbershop} type="text" name='address' placeholder="Address" value={formValuesBarbershop.address} required></input>
-        <input onChange={handleChangeBarbershop} type="text" name='city' placeholder="City" value={formValuesBarbershop.city} required></input>
-        <input onChange={handleChangeBarbershop} type="text" name='state' placeholder="State" value={formValuesBarbershop.state} required></input>
-        <input onChange={handleChangeBarbershop} type="text" name='zip_code' placeholder="Zip Code" value={formValuesBarbershop.zip_code} required></input>
-        <input onChange={handleChangeBarbershop} type="tel" name='phoneNumber' placeholder="Phone Number" value={formValuesBarbershop.phoneNumber} required></input>
-        <input onChange={handleChangeBarbershop} type="text" name='business_image' placeholder="Business Image" value={formValuesBarbershop.business_image} required></input>
-        <button disabled={!formValues.email || (!formValues.password && formValues.confirmPassword === formValues.password)}>Create Account</button>
-        <span>Already have an account? <NavLink to='/barber/login'>Sign In</NavLink></span>
+        <input
+          onChange={handleChangeBarbershop}
+          type="text"
+          name="business_name"
+          placeholder="Barbershop Name"
+          value={formValuesBarbershop.business_name}
+          required
+        ></input>
+        <input
+          onChange={handleChangeBarbershop}
+          type="text"
+          name="address"
+          placeholder="Address"
+          value={formValuesBarbershop.address}
+          required
+        ></input>
+        <input
+          onChange={handleChangeBarbershop}
+          type="text"
+          name="city"
+          placeholder="City"
+          value={formValuesBarbershop.city}
+          required
+        ></input>
+        <input
+          onChange={handleChangeBarbershop}
+          type="text"
+          name="state"
+          placeholder="State"
+          value={formValuesBarbershop.state}
+          required
+        ></input>
+        <input
+          onChange={handleChangeBarbershop}
+          type="text"
+          name="zip_code"
+          placeholder="Zip Code"
+          value={formValuesBarbershop.zip_code}
+          required
+        ></input>
+        <input
+          onChange={handleChangeBarbershop}
+          type="tel"
+          name="phoneNumber"
+          placeholder="Phone Number"
+          value={formValuesBarbershop.phoneNumber}
+          required
+        ></input>
+        <input
+          onChange={handleChangeBarbershop}
+          type="text"
+          name="business_image"
+          placeholder="Business Image"
+          value={formValuesBarbershop.business_image}
+          required
+        ></input>
+        <button
+          disabled={
+            !formValues.email ||
+            (!formValues.password &&
+              formValues.confirmPassword === formValues.password)
+          }
+        >
+          Create Account
+        </button>
+        <span>
+          Already have an account? <NavLink to="/barber/login">Sign In</NavLink>
+        </span>
       </form>
     </div>
   ) : (
     <div className="barber-register-container">
       <h2>Barber Register</h2>
       <form onSubmit={handleSubmit} className="barber-register-form">
-        <input onChange={handleChange} type="text" name='firstName' placeholder="First Name" value={formValues.firstName} required></input>
-        <input onChange={handleChange} type="text" name='lastName' placeholder="Last Name" value={formValues.lastName} required></input>
-        <input onChange={handleChange} type="tel" name='phoneNumber' placeholder="Mobile Number" value={formValues.phoneNumber} required></input>
-        <input onChange={handleChange} type="email" name='email' placeholder="Email" value={formValues.email} required></input>
-        <input onChange={handleChange} type="password" name='password' placeholder="Password" value={formValues.password} required></input>
-        <input onChange={handleChange} type="password" name='confirmPassword' placeholder="Confirm Password" value={formValues.confirmPassword} required></input>
+        <input
+          onChange={handleChange}
+          type="text"
+          name="firstName"
+          placeholder="First Name"
+          value={formValues.firstName}
+          required
+        ></input>
+        <input
+          onChange={handleChange}
+          type="text"
+          name="lastName"
+          placeholder="Last Name"
+          value={formValues.lastName}
+          required
+        ></input>
+        <input
+          onChange={handleChange}
+          type="tel"
+          name="phoneNumber"
+          placeholder="Mobile Number"
+          value={formValues.phoneNumber}
+          required
+        ></input>
+        <input
+          onChange={handleChange}
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formValues.email}
+          required
+        ></input>
+        <input
+          onChange={handleChange}
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formValues.password}
+          required
+        ></input>
+        <input
+          onChange={handleChange}
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          value={formValues.confirmPassword}
+          required
+        ></input>
         {/* <label>Service Location:</label> */}
-        <select onChange={handleChange} name='barbershopId' value={formValues.barbershopId} required className="barber-dropdown">
-          <option value='' disabled>Choose Affiliated Barbershop</option>
+        <select
+          onChange={handleChange}
+          name="barbershopId"
+          value={formValues.barbershopId}
+          required
+          className="barber-dropdown"
+        >
+          <option value="" disabled>
+            Choose Affiliated Barbershop
+          </option>
           {barbershops.map(({ id, business_name }) => (
             <option key={business_name} value={id}>
               {business_name}
@@ -206,8 +372,18 @@ const BarberRegisterForm = ({ barbershops }) => {
           <label>Are you mobile?</label>
             <input type="checkbox" name='mobile' value={formValues.mobile} required></input>
         </div> */}
-        <button disabled={!formValues.email || (!formValues.password && formValues.confirmPassword === formValues.password)}>Create Account</button>
-        <span>Already have an account? <NavLink to='/barber/login'>Sign In</NavLink></span>
+        <button
+          disabled={
+            !formValues.email ||
+            (!formValues.password &&
+              formValues.confirmPassword === formValues.password)
+          }
+        >
+          Create Account
+        </button>
+        <span>
+          Already have an account? <NavLink to="/barber/login">Sign In</NavLink>
+        </span>
       </form>
     </div>
   )

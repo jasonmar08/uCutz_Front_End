@@ -8,6 +8,7 @@ const BarberLogin = ({
 }) => {
   return (
     <div className="barber-login-page">
+      <div className="forms-overlay"></div>
       <h2>Barber Login Page</h2>
       <BarberLoginForm
         setBarber={setBarber}
