@@ -1377,7 +1377,6 @@ h5 {
   .home-header-grid {
     justify-content: unset;
     background-position: 24%;
-    height: 176%;
   }
 
   .home-header-grid img {
@@ -1385,7 +1384,7 @@ h5 {
   }
 
   .banner-overlay {
-    height: 124%;
+    padding-bottom: 100px;
   }
 
   .appt-thumbnail img {
