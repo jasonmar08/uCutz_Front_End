@@ -1378,6 +1378,10 @@ h5 {
     background-position: 24%;
   }
 
+  .banner-overlay {
+    height: 124%;
+  }
+
   .appt-thumbnail img {
     height: 7em;
     width: 11em;
