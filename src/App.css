@@ -1376,11 +1376,11 @@ h5 {
 
   .home-header-grid {
     justify-content: unset;
-    background-position: 24%;
+    /* background-position: 24%; */
   }
 
   .home-header-grid img {
-    margin-top: 100px;
+    padding-top: 80px;
   }
 
   .appt-thumbnail img {
