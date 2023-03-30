@@ -939,6 +939,7 @@ a {
 .rate-barbershop-unauth {
   display: flex;
   align-items: center;
+  justify-content: center;
   row-gap: 1rem;
   width: 16rem;
   border: 1px solid #7c694d;
@@ -952,7 +953,7 @@ a {
   color: #f7ebdd;
   text-decoration: none;
   padding: 5px;
-  width: 30vh;
+  min-width: 30vh;
 }
 
 .rate-barbershop-unauth a {
